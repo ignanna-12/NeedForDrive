@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/NeedForDrive/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/NeedForDrive/static/js/main.5297d44b.chunk.js",
+    "main.js.map": "/NeedForDrive/static/js/main.5297d44b.chunk.js.map",
+    "runtime-main.js": "/NeedForDrive/static/js/runtime-main.7e5c5742.js",
+    "runtime-main.js.map": "/NeedForDrive/static/js/runtime-main.7e5c5742.js.map",
+    "static/js/2.c61b31f1.chunk.js": "/NeedForDrive/static/js/2.c61b31f1.chunk.js",
+    "static/js/2.c61b31f1.chunk.js.map": "/NeedForDrive/static/js/2.c61b31f1.chunk.js.map",
+    "static/js/3.f7328739.chunk.js": "/NeedForDrive/static/js/3.f7328739.chunk.js",
+    "static/js/3.f7328739.chunk.js.map": "/NeedForDrive/static/js/3.f7328739.chunk.js.map",
+    "index.html": "/NeedForDrive/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/NeedForDrive/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.c61b31f1.chunk.js.LICENSE.txt": "/NeedForDrive/static/js/2.c61b31f1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/NeedForDrive/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7e5c5742.js",
+    "static/js/2.c61b31f1.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.5297d44b.chunk.js"
+  ]
+}
