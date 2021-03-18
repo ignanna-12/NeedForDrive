@@ -1,5 +1,7 @@
-.startScreen {
-    display: grid;
+.startScreen {    
     grid-area: start;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
     background-color: #FFFFFF;
 }

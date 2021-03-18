@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1vh;
+    padding-top: 2vh;
     padding-bottom: 1vh;
 }
 .sidebar_menu_button {
@@ -15,6 +15,9 @@
     border: none;
     cursor: pointer;
 }
+.sidebar_menu_button:focus {
+    outline: none;
+}
 .sidebar_menu_button_icon {
     fill: #FFFFFF;
 }
@@ -23,6 +26,7 @@
 }
 .sidebar_menu_button_p {
     color: #0EC261;
+    font-family: 'Roboto-Bold';
 }
 .sidebar_menu_button_p:hover {
     color: #FFFFFF;
