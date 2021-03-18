@@ -1,19 +1,17 @@
 .sidebar {
-    width: 64px;
-    height: 810px;
+    grid-area: sidebar;
     background-color: #151B1F;
     display: flex;
-    align-content: flex-start;
-    justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 .sidebar_menu_button {
-    background-color: #151B1F;
+    background-color: transparent;
     width: 32px;
     height: 32px;
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
     border: none;
     cursor: pointer;
 }
@@ -22,4 +20,10 @@
 }
 .sidebar_menu_button_icon:hover {
     fill:#0EC261;
+}
+.sidebar_menu_button_p {
+    color: #0EC261;
+}
+.sidebar_menu_button_p:hover {
+    color: #FFFFFF;
 }
