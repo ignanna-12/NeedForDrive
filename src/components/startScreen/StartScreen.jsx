@@ -7,8 +7,10 @@ import styles from './StartScreen.module.scss';
 const StartScreen = () => {
   return (
     <div className={styles.startScreen}>
-      <Logo />
-      <Autocomplete />
+      <div className={styles.first_row}>
+        <Logo />
+        <Autocomplete />
+      </div>
       <HeroBlock />
     </div>
   );

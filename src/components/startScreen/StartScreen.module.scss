@@ -5,3 +5,9 @@
     align-content: space-around;
     background-color: #FFFFFF;
 }
+.first_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 2vh;
+}

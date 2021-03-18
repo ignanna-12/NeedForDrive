@@ -22,7 +22,8 @@ export default class Autocomplete extends Component {
     }
     return (
       <ul>
-        {suggestions.map((item, key) => (
+        {suggestions.map((item) => (
+          // eslint-disable-next-line react/jsx-key
           <li>{item}</li>
         ))}
       </ul>
