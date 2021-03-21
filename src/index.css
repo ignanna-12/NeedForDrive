@@ -10,3 +10,7 @@
   font-family: 'Roboto-Medium';
   src: local('Roboto-Medium'), url(./files/fonts/roboto/Roboto-Medium.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: local('Roboto-Regular'), url(./files/fonts/roboto/Roboto-Regular.ttf) format('truetype');
+}
