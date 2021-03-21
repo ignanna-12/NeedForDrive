@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './SideBar.module.scss';
 
-const SideBar = (lg = false) => {
+const SideBar = () => {
+  const [lg, setLg] = useState(true);
   const onClickLanguage = () => {
-    return (lg = !lg);
+    setLg((i) => (i = !lg));
   };
   return (
     <div className={styles.sidebar}>
@@ -17,8 +18,8 @@ const SideBar = (lg = false) => {
           <path d="M3.5 7a.5.5 0 010-1h17a.5.5 0 110 1h-17zm0 5a.5.5 0 110-1h17a.5.5 0 110 1h-17zm0 5a.5.5 0 110-1h17a.5.5 0 110 1h-17z"></path>
         </svg>
       </button>
-      <button className={styles.sidebar_menu_button} onClick={onClickLanguage()}>
-        <p className={styles.sidebar_menu_button_p}>{lg ? 'Ru' : 'Eng'}</p>
+      <button className={styles.sidebar_menu_button} onClick={onClickLanguage}>
+        {lg ? 'Ru' : 'Eng'}
       </button>
     </div>
   );

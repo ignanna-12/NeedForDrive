@@ -1,6 +1,6 @@
 .app-wrapper {
   height: 100vh;
   display: grid;
-  grid-template-columns: 64px 1fr 1fr;
-  grid-template-areas: 'sidebar start slider';
+  grid-template-columns:1fr 1fr;
+  grid-template-areas: 'start slider';
 }

@@ -1,11 +1,16 @@
 .startScreen {    
     grid-area: start;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-content: space-around;
     background-color: #FFFFFF;
 }
-.first_row {
+.startScreen_info{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.top_row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

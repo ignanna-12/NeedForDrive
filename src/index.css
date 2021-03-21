@@ -6,3 +6,7 @@
   font-family: 'Roboto-Light';
   src: local('Roboto-Light'), url(./files/fonts/roboto/Roboto-Light.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: local('Roboto-Medium'), url(./files/fonts/roboto/Roboto-Medium.ttf) format('truetype');
+}

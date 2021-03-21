@@ -1,5 +1,6 @@
 .sidebar {
-    grid-area: sidebar;
+    width:64px;
+    height: 100vh;
     background-color: #151B1F;
     display: flex;
     flex-direction: column;
@@ -13,7 +14,9 @@
     width: 32px;
     height: 32px;
     border: none;
-    cursor: pointer;
+    cursor: pointer;    
+    color: #0EC261;
+    font-family: 'Roboto-Bold';
 }
 .sidebar_menu_button:focus {
     outline: none;
@@ -23,10 +26,6 @@
 }
 .sidebar_menu_button_icon:hover {
     fill:#0EC261;
-}
-.sidebar_menu_button_p {
-    color: #0EC261;
-    font-family: 'Roboto-Bold';
 }
 .sidebar_menu_button_p:hover {
     color: #FFFFFF;

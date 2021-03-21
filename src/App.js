@@ -14,7 +14,6 @@ const images = [
 function App() {
   return (
     <div className="app-wrapper">
-      <SideBar />
       <StartScreen />
       <Slider slides={images} />
     </div>
