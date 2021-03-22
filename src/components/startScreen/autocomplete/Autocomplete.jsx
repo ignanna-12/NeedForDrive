@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Autocomplete.module.scss';
 
 const Autocomplete = () => {
+  const [display, setDisplay] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const cities = ['Ульяновск', 'Самара', 'Сочи', 'Уфа', 'Саранск'];
+
+  const setCity = (city) => {
+    setSearch(city);
+    setDisplay(false);
+  };
+
+  const onClickInput = () => {
+    setSearch('');
+    setDisplay(!display);
+  };
+
   return (
     <div className={styles.autocomplete}>
       <svg
@@ -31,8 +46,30 @@ const Autocomplete = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <p>Ульяновск</p>
+      <div className="styles.autocontainer">
+        <input
+          className={styles.autocontainer_input}
+          onClick={onClickInput}
+          placeholder="город"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        {display && (
+          <div>
+            {cities
+              .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
+              .map((v, i) => {
+                return (
+                  <div className={styles.list} key={i} onClick={() => setCity(v)}>
+                    <span>{v}</span>
+                  </div>
+                );
+              })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
+
 export default Autocomplete;
