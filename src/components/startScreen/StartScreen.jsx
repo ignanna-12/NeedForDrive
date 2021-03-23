@@ -16,6 +16,7 @@ const StartScreen = () => {
           <Autocomplete />
         </div>
         <HeroBlock />
+        <button className={styles.start_btn}>Забронировать</button>
         <Footer />
       </div>
     </div>

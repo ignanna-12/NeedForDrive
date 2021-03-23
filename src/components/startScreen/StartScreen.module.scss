@@ -18,3 +18,20 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.start_btn{
+position: absolute;
+margin-top: 487px;
+height: 48px;
+width: 250px;
+font-size: 18px;
+font-family: 'Roboto-Medium';
+border-radius: 8px;
+background: linear-gradient(to right, #0EC261, #039F67);
+color: #EEEEEE;
+border: none;
+cursor: pointer;
+}
+.start_btn:focus{
+    border: none;
+    outline: none;
+}
