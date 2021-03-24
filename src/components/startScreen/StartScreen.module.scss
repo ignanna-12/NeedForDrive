@@ -1,37 +1,96 @@
-.startScreen {    
+.startScreen {
     grid-area: start;
     display: flex;
     flex-direction: row;
     background-color: #FFFFFF;
 }
 .startScreen_info{
-    width: 100%;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
     padding-left: 64px;
     padding-top: 32px;
-    padding-right: 64px;
+    padding-right: 32px;
 }
 .top_row {
+    width:48vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 .start_btn{
-position: absolute;
-margin-top: 487px;
-height: 48px;
-width: 250px;
-font-size: 18px;
-font-family: 'Roboto-Medium';
-border-radius: 8px;
-background: linear-gradient(to right, #0EC261, #039F67);
-color: #EEEEEE;
-border: none;
-cursor: pointer;
+    position: absolute;
+    margin-top: 487px;
+    height: 48px;
+    width: 250px;
+    font-size: 18px;
+    font-family: 'Roboto-Medium';
+    border-radius: 8px;
+    background: linear-gradient(to right, #0EC261, #039F67);
+    color: #EEEEEE;
+    border: none;
+    cursor: pointer;
 }
 .start_btn:focus{
     border: none;
     outline: none;
+}
+@media (max-width: 1024px){
+    .startScreen {
+    position: absolute;
+    }
+    .startScreen_info{
+        width:58vw;
+        padding-left: 32px;
+    }
+    .top_row {
+        width:60vw;
+    }
+}
+@media (max-width: 780px){
+    .startScreen {
+        position: relative;
+    }
+    .startScreen_info{
+        width:100vw;
+        padding-left: 20px;
+    }
+    .top_row {
+        width:100vw;
+    }
+    .start_btn{
+        position: absolute;
+        margin-top: 400px;
+    }
+}
+@media (max-width: 320px){
+    .startScreen {
+        flex-direction:column;
+        justify-items: flex-start;
+        align-content: flex-start;
+        padding-left: 0px;
+    }
+    .startScreen_info{
+        width:100vw;
+        height: 100vh;
+        padding-left: 0px;
+        display:flex;
+        flex-direction: column;
+        justify-items: space-between;
+    }
+    .top_row {
+        width:100vw;
+        display: flex;
+        flex-direction: column;
+        justify-items: right;
+        align-items: flex-end;
+        padding-right: 5px;
+    }
+    .start_btn{
+        position: absolute;
+        margin-top: 300px;
+        height: 50px;
+        width: 100vw;
+        border-radius: 0px;
+    }
 }

@@ -36,3 +36,18 @@
     fill: #0EC261;
     cursor: pointer;
 }
+@media (max-width: 1024px){
+    .menu {
+        position:absolute;
+        width: 60vw;
+    }
+}
+@media (max-width: 780px){
+    .menu {
+        position:absolute;
+        width: 100vw;
+    }
+    .options {
+        margin-top: 117px;
+    }
+}

@@ -20,3 +20,26 @@
     font-family: 'Roboto-Light';
     line-height: 26px;
 }
+@media (max-width: 780px){
+    .hero{
+        width: 100vw;
+        position:absolute;
+        margin-top: 125px;
+    }
+}
+@media (max-width: 320px){
+    .hero{
+        width: 100vw;
+        position:absolute;
+        margin-top: 100px;
+    }
+    .carshering {
+        font-size: 32px;
+    }
+    .need {
+        font-size: 32px;
+    }
+    .arenda {
+        font-size: 18px;
+    }
+}

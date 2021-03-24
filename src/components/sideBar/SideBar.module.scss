@@ -48,3 +48,27 @@
 	background: #151B1F;
     opacity: 0.8;
 }
+@media (max-width: 780px){
+    .sidebar {  
+        width: 80px;
+    }  
+}
+@media (max-width: 320px){
+    .sidebar { 
+        position: relative;
+        width:32px;
+        height: 32px;
+        background-color:transparent;
+        overflow: hidden;
+    }
+    .sidebar_menu_button_up {
+        margin-top: 0px;
+    }
+    .sidebar_menu_button_icon {
+        fill: #151515;
+        stroke:#151515;
+    }
+    .sidebar_menu_button_down{
+       display: none;
+    }  
+}
