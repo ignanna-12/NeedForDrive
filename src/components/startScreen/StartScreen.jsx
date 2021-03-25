@@ -9,11 +9,18 @@ import styles from './StartScreen.module.scss';
 const StartScreen = () => {
   return (
     <div className={styles.startScreen}>
-      <SideBar />
+      <div className={styles.sidebar_hidden_when_mobile}>
+        <SideBar />
+      </div>
       <div className={styles.startScreen_info}>
         <div className={styles.top_row}>
-          <Logo />
-          <Autocomplete />
+          <div className={styles.sidebar_for_mobile}>
+            <SideBar />
+          </div>
+          <div className={styles.top_row_logo_city}>
+            <Logo />
+            <Autocomplete />
+          </div>
         </div>
         <HeroBlock />
         <button className={styles.start_btn}>Забронировать</button>

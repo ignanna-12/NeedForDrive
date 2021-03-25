@@ -13,10 +13,19 @@
     padding-right: 32px;
 }
 .top_row {
-    width:48vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.sidebar_for_mobile{
+    display: none;
+}
+.top_row_logo_city{    
+    width:40vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 5px;
 }
 .start_btn{
     position: absolute;
@@ -52,11 +61,14 @@
         position: relative;
     }
     .startScreen_info{
-        width:100vw;
+        width:95vw;
         padding-left: 20px;
     }
     .top_row {
-        width:100vw;
+        width:95vw;
+    }
+    .top_row_logo_city{
+        width: 100vw;
     }
     .start_btn{
         position: absolute;
@@ -72,7 +84,7 @@
     }
     .startScreen_info{
         width:100vw;
-        height: 100vh;
+        height: 90vh;
         padding-left: 0px;
         display:flex;
         flex-direction: column;
@@ -80,11 +92,20 @@
     }
     .top_row {
         width:100vw;
+        padding-right: 5px;
+    }
+    .sidebar_hidden_when_mobile{
+        display:none;
+    }
+    .sidebar_for_mobile{
+        display: flex;
+        padding-left: none;
+    }
+    .top_row_logo_city{
         display: flex;
         flex-direction: column;
-        justify-items: right;
+        justify-content: flex-start;
         align-items: flex-end;
-        padding-right: 5px;
     }
     .start_btn{
         position: absolute;

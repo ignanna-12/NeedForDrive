@@ -55,17 +55,27 @@
 }
 @media (max-width: 320px){
     .sidebar { 
-        position: relative;
-        width:32px;
-        height: 32px;
+        width:320px;
+        position: absolute;
         background-color:transparent;
+        overflow: hidden;        
+        justify-items:left;
+    }
+    .sidebar_button{    
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         overflow: hidden;
     }
     .sidebar_menu_button_up {
         margin-top: 0px;
+        margin-left: 0px;
+        z-index:7;
     }
     .sidebar_menu_button_icon {
-        fill: #151515;
+        fill: #FFFFFF;
         stroke:#151515;
     }
     .sidebar_menu_button_down{
