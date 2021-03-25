@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBar from '../sideBar/SideBar';
 import Autocomplete from './autocomplete/Autocomplete';
+import City from './city/City';
 import Footer from './footer/Footer';
 import HeroBlock from './heroBlock/HeroBlock';
 import Logo from './logo/Logo';
@@ -19,7 +20,7 @@ const StartScreen = () => {
           </div>
           <div className={styles.top_row_logo_city}>
             <Logo />
-            <Autocomplete />
+            <City />
           </div>
         </div>
         <HeroBlock />

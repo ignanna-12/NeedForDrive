@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 100px;
 }
 .copyright {
     color: #999999;
@@ -14,7 +13,7 @@
     font-size: 13px;
     font-family: 'Roboto-Regular';
 }
-@media (max-width: 320px){
+@media (max-width: 780px){
     .footer {
         height: 72px;
         display: flex;

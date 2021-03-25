@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import SVG from 'react-inlinesvg';
+import LeftArrow from '../../assets/icons/-keyboard-arrow-left_90113.svg';
+import RightArrow from '../../assets/icons/-keyboard-arrow-right_90294.svg';
 import styles from './Slider.module.scss';
-import Slide1 from '../../files/images/Slide1.png';
-import Slide2 from '../../files/images/Slide2.png';
-import Slide3 from '../../files/images/Slide3.png';
-import Slide4 from '../../files/images/Slide4.png';
+import Slide1 from '../../assets/images/Slide1.png';
+import Slide2 from '../../assets/images/Slide2.png';
+import Slide3 from '../../assets/images/Slide3.png';
+import Slide4 from '../../assets/images/Slide4.png';
 
 const images = [
   <img key={1} src={Slide1} alt={Slide1} />,
@@ -37,9 +40,7 @@ const Slider = () => {
   return (
     <div className={styles.slider}>
       <button className={styles.slider_btn} onClick={onClickLeft}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
-        </svg>
+        <SVG src={LeftArrow} />
       </button>
       <div className={styles.slider_content}>
         <div></div>
@@ -92,9 +93,7 @@ const Slider = () => {
         </div>
       </div>
       <button className={styles.slider_btn} onClick={onClickRight}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
-        </svg>
+        <SVG src={RightArrow} />
       </button>
       <div className={styles.slider_img} key={activeIndex}>
         {images[activeIndex]}

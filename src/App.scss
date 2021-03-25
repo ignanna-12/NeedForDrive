@@ -1,18 +1,18 @@
 .app-wrapper {
-  max-width: 100vw;
-  height: 100vh;
   display: grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:50% 50%;
   grid-template-areas: 'start slider';
+  padding:0;
+  margin:-1%;
 }
-@media (max-width: 1024px){
+@media (max-width: 1440px){
   .app-wrapper {
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-template-areas: 'start slider';
     }
 }
-@media (max-width: 780px){
+@media (max-width: 1024px){
   .app-wrapper {
     display: grid;
     grid-template-columns: 1 fr;

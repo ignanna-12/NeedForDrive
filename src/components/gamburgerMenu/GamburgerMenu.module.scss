@@ -30,19 +30,18 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    fill: #FFFFFF;
 }
-.social svg:hover{
+.social SVG path:hover{
     fill: #0EC261;
     cursor: pointer;
 }
-@media (max-width: 1024px){
+@media (max-width: 1440px){
     .menu {
         position:absolute;
         width: 60vw;
     }
 }
-@media (max-width: 780px){
+@media (max-width: 1024px){
     .menu_container{
         display: none;
     }
@@ -54,7 +53,7 @@
         margin-top: 117px;
     }
 }
-@media (max-width:320px){
+@media (max-width:780px){
     .menu_container{
         width:100vw;
         z-index:5;

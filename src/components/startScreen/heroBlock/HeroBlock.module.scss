@@ -7,7 +7,6 @@
     color: #121212;
     font-size: 70px;
     font-family: 'Roboto-Bold';
-    text-shadow: 0 3px 1px rgba(0,0,0,.3);
 }
 .need {
     color: #0EC261;
@@ -20,14 +19,14 @@
     font-family: 'Roboto-Light';
     line-height: 26px;
 }
-@media (max-width: 780px){
+@media (max-width: 1024px){
     .hero{
         width: 100vw;
         position:absolute;
         margin-top: 125px;
     }
 }
-@media (max-width: 320px){
+@media (max-width: 780px){
     .hero{
         width: 100vw;
         position:absolute;
