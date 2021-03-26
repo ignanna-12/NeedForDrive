@@ -9,7 +9,7 @@
   .app-wrapper {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-areas: 'start slider';
+    grid-template-areas: 'start start start slider slider';
     }
 }
 @media (max-width: 1024px){
