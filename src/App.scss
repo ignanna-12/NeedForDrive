@@ -1,9 +1,9 @@
 .app-wrapper {
+  position: absolute;
   display: grid;
-  grid-template-columns:50% 50%;
+  grid-template-columns:1fr 1fr;
   grid-template-areas: 'start slider';
-  padding:0;
-  margin:-1%;
+  margin: -8px;
 }
 @media (max-width: 1440px){
   .app-wrapper {

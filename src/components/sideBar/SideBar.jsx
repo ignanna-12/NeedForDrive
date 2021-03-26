@@ -16,10 +16,16 @@ const SideBar = () => {
       {!toggle && <GamburgerMenu />}
       <div className={styles.sidebar_button}>
         <button className={styles.sidebar_menu_button_up} onClick={() => setToggle(!toggle)}>
-          {toggle ? <SVG src={Gamburger_button} /> : <SVG src={Cross} />}
+          {toggle ? (
+            <SVG src={Gamburger_button} />
+          ) : (
+            <div className={styles.whenMobile}>
+              <SVG src={Cross} />
+            </div>
+          )}
         </button>
         <button className={styles.sidebar_menu_button_down} onClick={onClickLanguage}>
-          {lg ? 'Ru' : 'Eng'}
+          {lg ? 'Рус' : 'Eng'}
         </button>
       </div>
     </div>

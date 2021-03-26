@@ -2,7 +2,8 @@
     width:64px;
     background-color: #151B1F;
 }
-.sidebar_button{    
+.sidebar_button{ 
+    position: relative; 
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -24,20 +25,21 @@
 }
 .sidebar_menu_button_down{
     @extend .sidebar_menu_button_up;
-    z-index: 1;
-    margin-bottom: 10px;
-    margin-bottom: 32px;        
+    width: 40px;
+    height: 40px;
+    margin-bottom: 32px;
+    z-index: 1;       
     color: #0EC261;
     font-family: 'Roboto-Bold';
+    justify-content: center;
 }
 .sidebar_menu_button_down:hover{
     color:#FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
 }
 .sidebar_menu_button_down:focus{
-    color:#FFFFFF;
-    outline: 1px;
-    border-radius: 20px;
-    border-color: #FFFFFF;
+    color:#0EC261;
 }
 .sidebar_menu_button_icon {
     fill: #FFFFFF;
@@ -62,6 +64,8 @@
 }
 @media (max-width: 780px){
     .sidebar { 
+        margin-top: -15%;
+        margin-left: -2%;
         width:100vw;
         position: absolute;
         background-color:transparent;
@@ -81,12 +85,18 @@
         margin-left: 0px;
         width: 32px;
         z-index:7;
+        fill:#151B1F;
+        stroke:#151B1F;
     }
-    .sidebar_menu_button_icon {
-        fill: #FFFFFF;
-        stroke:#151515;
+    .sidebar_menu_button_up SVG path{
+        fill:#FFFFFF;
+        stroke:#151B1F;
     }
     .sidebar_menu_button_down{
        display: none;
-    }  
+    }
+    .whenMobile SVG path{
+        fill:#FFFFFF;
+        stroke:#FFFFFF;
+    }
 }

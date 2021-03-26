@@ -1,4 +1,5 @@
 .startScreen {
+    position:absolute;
     grid-area: start;
     display: flex;
     flex-direction: row;
@@ -43,9 +44,13 @@
     border: none;
     cursor: pointer;
 }
+.start_btn:hover{
+    filter: brightness(90%);
+}
 .start_btn:focus{
     border: none;
     outline: none;
+    filter: brightness(80%);
 }
 @media (max-width: 1440px){
     .startScreen {
@@ -81,12 +86,11 @@
         flex-direction:column;
         justify-items: flex-start;
         align-content: flex-start;
-        padding-left: 0px;
     }
     .startScreen_info{
         width:100vw;
-        height: 90vh;
-        padding-left: 0px;
+        height: 95vh;
+        margin-left: 0;
         display:flex;
         flex-direction: column;
         justify-items: space-between;
@@ -94,14 +98,13 @@
     .top_row {
         width:100vw;
         padding-right: 10px;
-        align-items: center;
+        align-items: flex-end;
     }
     .sidebar_hidden_when_mobile{
         display:none;
     }
     .sidebar_for_mobile{
         display: flex;
-        padding-left: 8px;
     }
     .top_row_logo_city{
         display: flex;
