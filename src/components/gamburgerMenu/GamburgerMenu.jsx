@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from './GamburgerMenu.module.scss';
 import SVG from 'react-inlinesvg';
+import Cross from '../../assets/icons/cross.svg';
 import Facebook from '../../assets/icons/Facebook_white.svg';
 import Instagram from '../../assets/icons/Instagram_white.svg';
 import Telegram from '../../assets/icons/Telegram_white.svg';
 
-const GamburgerMenu = () => {
+const GamburgerMenu = ({ updateToggle }) => {
   return (
-    <div>
+    <>
       <div className={styles.menu_container}></div>
       <div className={styles.menu}>
+        <button className={styles.sidebar_menu_button_up} onClick={updateToggle}>
+          <SVG src={Cross} />
+        </button>
         <div className={styles.options}>
           <p>ПАРКОВКА</p>
           <p>СТРАХОВКА</p>
@@ -22,7 +26,7 @@ const GamburgerMenu = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

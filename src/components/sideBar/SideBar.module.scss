@@ -1,36 +1,37 @@
 .sidebar {
+    height: 100%;
     width:64px;
     background-color: #151B1F;
 }
-.sidebar_button{ 
-    position: relative; 
+.sidebar_button{
+    height: 100%;
     display: flex;
-    height: 100vh;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     overflow: hidden;
+    align-items: center;
 }
 .sidebar_menu_button_up {
     background-color: transparent;
-    width: 32px;
     height: 32px;
-    margin-top: 32px;
     border: none;
     cursor: pointer;
     z-index: 5;
+    margin-top: 32px;
 }
 .sidebar_menu_button_up:focus {
     outline: none;
 }
 .sidebar_menu_button_down{
     @extend .sidebar_menu_button_up;
-    width: 40px;
-    height: 40px;
+    margin-top: 0px;
     margin-bottom: 32px;
+    width: 48px;
+    height: 48px;
     z-index: 1;       
     color: #0EC261;
     font-family: 'Roboto-Bold';
+    font-size: 13px;
     justify-content: center;
 }
 .sidebar_menu_button_down:hover{
@@ -41,18 +42,9 @@
 .sidebar_menu_button_down:focus{
     color:#0EC261;
 }
-.sidebar_menu_button_icon {
-    fill: #FFFFFF;
-    stroke:#FFFFFF
-}
-.sidebar_menu_button_icon:hover {
-    fill:#0EC261;
-    stroke:#0EC261;
-}
 .menu {
-    position:absolute;
-    width: 195vw;
-    height: 100pc;
+    width: 100%;
+    height: 100%;
     z-index: 4;    
 	background: #151B1F;
     opacity: 0.8;
@@ -63,18 +55,15 @@
     }  
 }
 @media (max-width: 780px){
-    .sidebar { 
-        margin-top: -15%;
-        margin-left: -2%;
-        width:100vw;
-        position: absolute;
+    .sidebar {
+        width:100%;
         background-color:transparent;
         overflow: hidden;        
         justify-items:left;
     }
     .sidebar_button{    
         display: flex;
-        height: 100vh;
+        height: 100%;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
@@ -85,8 +74,6 @@
         margin-left: 0px;
         width: 32px;
         z-index:7;
-        fill:#151B1F;
-        stroke:#151B1F;
     }
     .sidebar_menu_button_up SVG path{
         fill:#151B1F;
@@ -94,9 +81,5 @@
     }
     .sidebar_menu_button_down{
        display: none;
-    }
-    .whenMobile SVG path{
-        fill:#FFFFFF;
-        stroke:#FFFFFF;
     }
 }

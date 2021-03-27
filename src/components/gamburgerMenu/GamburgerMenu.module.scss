@@ -1,18 +1,33 @@
 .menu_container {
     position:absolute;
-    width: 100vw;
+    width: 100%;
     height: 100%;
     z-index: 4;    
 	background: #151B1F;
     opacity: 0.8;
+    top: 0;
 }
 .menu {
     position:absolute;
-    width: 50vw;
+    width: 50%;
     height: 100%;
     background-color: #111518;
     opacity: 1.0;
     z-index: 5;
+    top:0;
+}
+.sidebar_menu_button_up {
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+    margin-top: 32px;
+    margin-left:10px;
+}
+.sidebar_menu_button_up:focus {
+    outline: none;
 }
 .options {
     font-size: 32px;
@@ -38,7 +53,7 @@
 @media (max-width: 1440px){
     .menu {
         position:absolute;
-        width: 60vw;
+        width: 60%;
     }
 }
 @media (max-width: 1024px){
@@ -47,7 +62,7 @@
     }
     .menu {
         position:absolute;
-        width: 100vw;
+        width: 100%;
     }
     .options {
         margin-top: 117px;
@@ -55,13 +70,15 @@
 }
 @media (max-width:780px){
     .menu_container{
-        width:100vw;
+        width:100%;
         z-index:5;
     }
     .menu {
-        width: 100vw;
+        width: 100%;
         height: 100%;        
-        z-index:6;
+        z-index:6;        
+        position: absolute;
+        top: 0;
     }
     .options {
         font-size: 22px;

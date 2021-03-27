@@ -1,11 +1,13 @@
 .startScreen {
-    position:absolute;
+    height: 100%;
     grid-area: start;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     background-color: #FFFFFF;
 }
 .startScreen_info{
+    width: 100%;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,16 +26,14 @@
     display: none;
 }
 .top_row_logo_city{    
-    width: 40vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    padding-right: 5px;
 }
 .start_btn{
-    position: absolute;
-    margin-top: 487px;
+    margin-top: 160px;
     height: 48px;
     width: 250px;
     font-size: 18px;
@@ -45,62 +45,51 @@
     cursor: pointer;
 }
 .start_btn:hover{
-    filter: brightness(90%);
+    background: linear-gradient(to right, #0B934A, #026E47);
 }
 .start_btn:focus{
     border: none;
     outline: none;
-    filter: brightness(80%);
+    background: linear-gradient(to right, #076432, #013C27);
 }
-@media (max-width: 1440px){
-    .startScreen {
-    position: relative;
-    height: 100vh;
-    width: auto;
-    }
-    .startScreen_info{
-        padding-left: 32px;
-    }
-    .top_row {
-        width:100%;
-    }
-}
+
 @media (max-width: 1024px){
     .startScreen {
-        width: 100vw;
-        position: relative;
+        width: 100%;
     }
     .startScreen_info{
-        padding-left: 20px;
-    }
-    .top_row {
+        padding-left: 16px;        
+        padding-top: 16px;
+        padding-right: 16px;
+        padding-bottom: 0px;
     }
     .top_row_logo_city{
-        width: 100vw;
+        width: 100%;
     }
     .start_btn{
-        position: absolute;
-        margin-top: 400px;
+        margin-top: 200px;
     }
 }
 @media (max-width: 780px){
-    .startScreen {
+    .startScreen {        
+        width:100%;
+        height: 100%;
         flex-direction:column;
         justify-items: flex-start;
         align-content: flex-start;
     }
     .startScreen_info{
-        width:100vw;
-        height: 95vh;
-        margin-left: 0;
+        width:100%;
+        height: 100%;
         display:flex;
         flex-direction: column;
-        justify-items: space-between;
+        justify-content: space-between;
+        padding-left: 5px;
     }
     .top_row {
-        width:100vw;
+        width:100%;
         padding-right: 10px;
-        align-items: flex-end;
+        align-items: flex-start;
     }
     .sidebar_hidden_when_mobile{
         display:none;
@@ -113,13 +102,12 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-end;
-        margin-right: 16px;
+        margin-right: 10px;
     }
     .start_btn{
-        position: absolute;
-        margin-top: 300px;
+        margin-top: 75px;
         height: 50px;
-        width: 100vw;
+        width: 100%;
         border-radius: 0px;
     }
 }

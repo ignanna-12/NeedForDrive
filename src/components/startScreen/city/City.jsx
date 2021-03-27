@@ -5,9 +5,9 @@ import styles from './City.module.scss';
 
 const City = () => {
   return (
-    <div className={styles.autocomplete}>
+    <div className={styles.location}>
       <SVG src={Location} />
-      <div className="styles.autocontainer">Ульяновск</div>
+      <div className={styles.city}>Ульяновск</div>
     </div>
   );
 };

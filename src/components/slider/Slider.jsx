@@ -27,6 +27,7 @@ const classBtn = [
   styles.slider_content_btn2,
   styles.slider_content_btn3,
 ];
+const classBackground = [styles.slider0, styles.slider1, styles.slider2, styles.slider3];
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -38,7 +39,7 @@ const Slider = () => {
   };
 
   return (
-    <div className={styles.slider}>
+    <div className={classBackground[activeIndex]}>
       <button className={styles.slider_btn} onClick={onClickLeft}>
         <SVG src={LeftArrow} />
       </button>
@@ -95,9 +96,6 @@ const Slider = () => {
       <button className={styles.slider_btn} onClick={onClickRight}>
         <SVG src={RightArrow} />
       </button>
-      <div className={styles.slider_img} key={activeIndex}>
-        {images[activeIndex]}
-      </div>
     </div>
   );
 };
