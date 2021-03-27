@@ -1,35 +1,32 @@
 {
   "files": {
-    "main.css": "/NeedForDrive/static/css/main.4bf0bd05.chunk.css",
-    "main.js": "/NeedForDrive/static/js/main.40ca09a5.chunk.js",
-    "main.js.map": "/NeedForDrive/static/js/main.40ca09a5.chunk.js.map",
+    "main.css": "/NeedForDrive/static/css/main.99b0b994.chunk.css",
+    "main.js": "/NeedForDrive/static/js/main.48b1ba53.chunk.js",
+    "main.js.map": "/NeedForDrive/static/js/main.48b1ba53.chunk.js.map",
     "runtime-main.js": "/NeedForDrive/static/js/runtime-main.6ecacf03.js",
     "runtime-main.js.map": "/NeedForDrive/static/js/runtime-main.6ecacf03.js.map",
-    "static/js/2.9ef2e7eb.chunk.js": "/NeedForDrive/static/js/2.9ef2e7eb.chunk.js",
-    "static/js/2.9ef2e7eb.chunk.js.map": "/NeedForDrive/static/js/2.9ef2e7eb.chunk.js.map",
+    "static/js/2.fa132051.chunk.js": "/NeedForDrive/static/js/2.fa132051.chunk.js",
+    "static/js/2.fa132051.chunk.js.map": "/NeedForDrive/static/js/2.fa132051.chunk.js.map",
     "static/js/3.831c15df.chunk.js": "/NeedForDrive/static/js/3.831c15df.chunk.js",
     "static/js/3.831c15df.chunk.js.map": "/NeedForDrive/static/js/3.831c15df.chunk.js.map",
     "index.html": "/NeedForDrive/index.html",
-    "static/css/main.4bf0bd05.chunk.css.map": "/NeedForDrive/static/css/main.4bf0bd05.chunk.css.map",
-    "static/js/2.9ef2e7eb.chunk.js.LICENSE.txt": "/NeedForDrive/static/js/2.9ef2e7eb.chunk.js.LICENSE.txt",
-    "static/media/-keyboard-arrow-left_90113.94071a8c.svg": "/NeedForDrive/static/media/-keyboard-arrow-left_90113.94071a8c.svg",
-    "static/media/-keyboard-arrow-right_90294.0ea1b26d.svg": "/NeedForDrive/static/media/-keyboard-arrow-right_90294.0ea1b26d.svg",
+    "static/css/main.99b0b994.chunk.css.map": "/NeedForDrive/static/css/main.99b0b994.chunk.css.map",
+    "static/js/2.fa132051.chunk.js.LICENSE.txt": "/NeedForDrive/static/js/2.fa132051.chunk.js.LICENSE.txt",
+    "static/media/-keyboard-arrow-left_90113.4b5c9b42.svg": "/NeedForDrive/static/media/-keyboard-arrow-left_90113.4b5c9b42.svg",
+    "static/media/-keyboard-arrow-right_90294.b1e36b13.svg": "/NeedForDrive/static/media/-keyboard-arrow-right_90294.b1e36b13.svg",
     "static/media/Facebook_white.c1876cc3.svg": "/NeedForDrive/static/media/Facebook_white.c1876cc3.svg",
     "static/media/Group.9d09636f.svg": "/NeedForDrive/static/media/Group.9d09636f.svg",
     "static/media/Instagram_white.98094ec4.svg": "/NeedForDrive/static/media/Instagram_white.98094ec4.svg",
     "static/media/index.css": "/NeedForDrive/static/media/Roboto-Regular.cfe3602c.ttf",
-    "static/media/Slide1.ec7c8b55.png": "/NeedForDrive/static/media/Slide1.ec7c8b55.png",
-    "static/media/Slide2.69fb35f3.png": "/NeedForDrive/static/media/Slide2.69fb35f3.png",
-    "static/media/Slide3.63d9fbaf.png": "/NeedForDrive/static/media/Slide3.63d9fbaf.png",
-    "static/media/Slide4.6936d30b.png": "/NeedForDrive/static/media/Slide4.6936d30b.png",
+    "static/media/Slider.module.scss": "/NeedForDrive/static/media/Slide4.6936d30b.png",
     "static/media/Telegram_white.e8137bbe.svg": "/NeedForDrive/static/media/Telegram_white.e8137bbe.svg",
     "static/media/cross.2990540f.svg": "/NeedForDrive/static/media/cross.2990540f.svg",
     "static/media/gamb.cec3097c.svg": "/NeedForDrive/static/media/gamb.cec3097c.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.6ecacf03.js",
-    "static/js/2.9ef2e7eb.chunk.js",
-    "static/css/main.4bf0bd05.chunk.css",
-    "static/js/main.40ca09a5.chunk.js"
+    "static/js/2.fa132051.chunk.js",
+    "static/css/main.99b0b994.chunk.css",
+    "static/js/main.48b1ba53.chunk.js"
   ]
 }
