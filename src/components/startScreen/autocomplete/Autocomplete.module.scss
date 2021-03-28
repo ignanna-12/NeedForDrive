@@ -1,8 +1,23 @@
 .autocomplete {
     display: flex;
     flex-direction: row;
-    align-items:center;
-    color: #999999;
+    justify-content: space-between;    
+    color:#999999;
+    font-size: 14px;
+    font-family: 'Roboto-Regular';
+    padding-right: none;
+    margin-right: none;
+}
+.autocontainer{
+    display: flex;
+    flex-direction:column;
+    justify-items: left;
+}
+.autocontainer_input{
+    outline: none;
+    outline-offset: none;
+    border:none;
+    color:#999999;
     font-size: 14px;
     font-family: 'Roboto-Regular';
 }

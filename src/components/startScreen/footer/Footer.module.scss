@@ -13,3 +13,21 @@
     font-size: 13px;
     font-family: 'Roboto-Regular';
 }
+@media (max-width: 780px){
+    .footer {
+        height: 72px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        justify-content: center;
+        margin-right: 0px;
+        background-color: #121212;
+        padding-right: 16px;
+    }
+    .copyright {
+        color: #FFFFFF;
+    }
+    .phone {
+        color: #0EC261;
+    }
+}

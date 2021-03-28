@@ -1,11 +1,12 @@
 .hero {
     line-height: 0.3;
+    position:absolute;
+    margin-top: 225px;
 }
 .carshering {
     color: #121212;
     font-size: 70px;
     font-family: 'Roboto-Bold';
-    text-shadow: 0 3px 1px rgba(0,0,0,.3);
 }
 .need {
     color: #0EC261;
@@ -16,4 +17,28 @@
     color: #999999;
     font-size: 26px;
     font-family: 'Roboto-Light';
+    line-height: 26px;
+}
+@media (max-width: 1024px){
+    .hero{
+        width: 100%;
+        position:absolute;
+        margin-top: 125px;
+    }
+}
+@media (max-width: 780px){
+    .hero{
+        width: 100%;
+        position:absolute;
+        margin-top: 100px;
+    }
+    .carshering {
+        font-size: 32px;
+    }
+    .need {
+        font-size: 32px;
+    }
+    .arenda {
+        font-size: 18px;
+    }
 }
