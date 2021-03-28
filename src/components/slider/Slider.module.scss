@@ -1,0 +1,106 @@
+.slider {
+    grid-area: slider;
+    background-color: #151B1F;
+    display:flex;
+    overFlow: hidden;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+}
+.slider_btn {
+    height: 100vh;
+    width: 64px;
+    align-items: center;
+    z-index: 3;
+    outline: none;
+    border-width: 0ch;
+    background-color: transparent;
+}
+.slider_btn:hover{
+    background-color: #0EC261;
+    opacity: 0.2;    
+    cursor: pointer
+}
+.slider_btn svg{
+    fill: #FFFFFF;
+}
+.slider_content{
+    width:100%;
+    height: 100vh;
+    position: absolute;    
+    z-index: 2;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding-bottom: 32px;
+}
+.slider_content_center{
+    padding-left: 96px;
+}
+.text_header{    
+    z-index: 2;
+    color: #FFFFFF;
+    font-family: 'Roboto-Medium';
+    font-size: 40px;  
+    line-height: 20px;
+}
+.slider_content p{ 
+    z-index: 2;
+    color: #EEEEEE;
+    font-family: 'Roboto-Light';
+    font-size: 24px;
+    line-height: 24px;
+}
+.slider_content_btn0{
+    height: 48px;
+    width: 164px;
+    font-size: 18px;
+    font-family: 'Roboto-Light';
+    border-radius: 5px;
+    background: linear-gradient(to right, #13493F, #0C7B1B);
+    color: #EEEEEE;
+}
+.slider_content_btn1{
+    @extend .slider_content_btn0;
+    background: linear-gradient(to right, #132949, #0C7B67);
+}
+.slider_content_btn2{
+    @extend .slider_content_btn0;
+    background: linear-gradient(to right, #493013, #7B0C3B);
+}
+.slider_content_btn3{
+    @extend .slider_content_btn0;
+    background: linear-gradient(to right, #281349, #720C7B);
+}
+.slider_content_dots {
+    display:flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+}
+.slider_content_dots_span{
+    padding: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #FFFFFF;
+}
+.slider_content_dots_span_active{
+    @extend .slider_content_dots_span;
+    background: #0EC261;
+}
+.slider_img {
+    position: absolute;
+    transition:ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    display:flex;
+    flex-direction:column;
+}
+.slider_img img{
+    width: 50vw;
+    height: auto;
+    z-index: 1;
+    overflow: hidden;
+}
