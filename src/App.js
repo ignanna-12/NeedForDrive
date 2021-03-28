@@ -1,13 +1,14 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.scss';
-import Slider from './components/slider/Slider';
-import StartScreen from './components/startScreen/StartScreen';
+import Start from './components/app-start/Start';
+import Order from './components/order/Order';
 
 function App() {
   return (
     <div className="app-wrapper">
-      <StartScreen />
-      <Slider />
+      <Route exact path="/" component={Start} />
+      <Route path="/Order/:location?/:model?/:add?" component={Order} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import SideBar from '../sideBar/SideBar';
 import Autocomplete from './autocomplete/Autocomplete';
 import City from './city/City';
@@ -26,7 +27,9 @@ const StartScreen = () => {
         </div>
         <HeroBlock />
         <div></div>
-        <button className={styles.start_btn}>Забронировать</button>
+        <NavLink to="/Order">
+          <button className={styles.start_btn}>Забронировать</button>
+        </NavLink>
         <Footer />
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SVG from 'react-inlinesvg';
 import Gamburger_button from '../../assets/icons/gamb.svg';
-import Cross from '../../assets/icons/cross.svg';
 import GamburgerMenu from '../gamburgerMenu/GamburgerMenu';
 import styles from './SideBar.module.scss';
 import Portal from '../portal/Portal';

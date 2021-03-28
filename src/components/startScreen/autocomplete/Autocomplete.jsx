@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import SVG from 'react-inlinesvg';
-import Location from '../../../assets/icons/Group.svg';
 import styles from './Autocomplete.module.scss';
 
-const Autocomplete = () => {
+const Autocomplete = ({ title, innerText }) => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -21,15 +19,18 @@ const Autocomplete = () => {
 
   return (
     <div className={styles.autocomplete}>
-      <SVG src={Location} />
+      {title}
       <div className="styles.autocontainer">
         <input
           className={styles.autocontainer_input}
           onClick={onClickInput}
-          placeholder="город"
+          placeholder={innerText}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <button className={styles.clear_button} onClick={(e) => setSearch('')}>
+          x
+        </button>
         {display && (
           <div>
             {cities
