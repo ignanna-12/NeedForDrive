@@ -1,7 +1,5 @@
 .hero {
     line-height: 0.3;
-    position:absolute;
-    margin-top: 225px;
 }
 .carshering {
     color: #121212;
@@ -21,24 +19,21 @@
 }
 @media (max-width: 1024px){
     .hero{
-        width: 100%;
-        position:absolute;
         margin-top: 125px;
     }
 }
 @media (max-width: 780px){
-    .hero{
-        width: 100%;
-        position:absolute;
-        margin-top: 100px;
-    }
     .carshering {
         font-size: 32px;
+        margin-left: 16px;
     }
     .need {
         font-size: 32px;
+        margin-left: 16px;
     }
     .arenda {
         font-size: 18px;
+        margin-left: 16px;
+        margin-right: 16px;
     }
 }

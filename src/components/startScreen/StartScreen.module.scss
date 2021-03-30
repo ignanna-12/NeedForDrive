@@ -32,8 +32,11 @@
     justify-content: space-between;
     align-items: baseline;
 }
+.hero_plus_btn{
+
+}
 .start_btn{
-    margin-top: 160px;
+    margin-top: 60px;
     height: 48px;
     width: 250px;
     font-size: 18px;
@@ -57,17 +60,8 @@
     .startScreen {
         width: 100%;
     }
-    .startScreen_info{
-        padding-left: 16px;        
-        padding-top: 16px;
-        padding-right: 16px;
-        padding-bottom: 0px;
-    }
     .top_row_logo_city{
         width: 100%;
-    }
-    .start_btn{
-        margin-top: 200px;
     }
 }
 @media (max-width: 780px){
@@ -84,11 +78,15 @@
         display:flex;
         flex-direction: column;
         justify-content: space-between;
-        padding-left: 5px;
+        padding-left: 0px;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
     }
     .top_row {
-        width:100%;
-        padding-right: 10px;
+        padding-right: 16px;
+        padding-left: 16px;
+        padding-top:16px;
         align-items: flex-start;
     }
     .sidebar_hidden_when_mobile{
@@ -100,9 +98,8 @@
     .top_row_logo_city{
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content:space-between;
         align-items: flex-end;
-        margin-right: 10px;
     }
     .start_btn{
         margin-top: 75px;

@@ -25,11 +25,12 @@ const StartScreen = () => {
             <City />
           </div>
         </div>
-        <HeroBlock />
-        <div></div>
-        <NavLink to="/Order">
-          <button className={styles.start_btn}>Забронировать</button>
-        </NavLink>
+        <div className={styles.hero_plus_btn}>
+          <HeroBlock />
+          <NavLink to="/Order">
+            <button className={styles.start_btn}>Забронировать</button>
+          </NavLink>
+        </div>
         <Footer />
       </div>
     </div>
