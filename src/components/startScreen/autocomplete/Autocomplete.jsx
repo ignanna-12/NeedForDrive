@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styles from './Autocomplete.module.scss';
 
-const Autocomplete = ({ title, innerText }) => {
+const Autocomplete = ({ title, innerText, list }) => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState('');
 
-  const cities = ['Ульяновск', 'Самара', 'Сочи', 'Уфа', 'Саранск'];
+  // const cities = ['Ульяновск', 'Самара', 'Сочи', 'Уфа', 'Саранск'];
 
-  const setCity = (city) => {
-    setSearch(city);
+  const setItem = (item) => {
+    setSearch(item);
     setDisplay(false);
   };
 
@@ -33,11 +33,11 @@ const Autocomplete = ({ title, innerText }) => {
         </button>
         {display && (
           <div>
-            {cities
+            {list
               .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
               .map((v, i) => {
                 return (
-                  <div className={styles.list} key={i} onClick={() => setCity(v)}>
+                  <div className={styles.list} key={i} onClick={() => setItem(v)}>
                     <span>{v}</span>
                   </div>
                 );

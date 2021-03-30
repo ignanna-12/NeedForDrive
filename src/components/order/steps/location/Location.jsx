@@ -1,15 +1,32 @@
 import React from 'react';
-import SVG from 'react-inlinesvg';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { requestCities } from '../../../../redux/city-reducer';
 import Autocomplete from '../../../startScreen/autocomplete/Autocomplete';
 import styles from './Location.module.scss';
 
-const Location = () => {
-  return (
-    <div className={styles.location}>
-      <Autocomplete title={'Город'} innerText={'Начните вводить город'} />
-      <Autocomplete title={'Пункт выдачи'} innerText={'Начните вводить пункт'} />
-    </div>
-  );
+class Location extends React.Component {
+  componentDidMount() {
+    this.props.requestCities();
+  }
+  render() {
+    return (
+      <div className={styles.location}>
+        <Autocomplete
+          title={'Город'}
+          innerText={'Начните вводить город'}
+          list={this.props.cities}
+        />
+        <Autocomplete title={'Пункт выдачи'} innerText={'Начните вводить пункт'} />
+      </div>
+    );
+  }
+}
+
+let mapStateToProps = (state) => {
+  return {
+    cities: state.citiesTable.cities,
+  };
 };
 
-export default Location;
+export default compose(connect(mapStateToProps, { requestCities }))(Location);
