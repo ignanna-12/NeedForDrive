@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+// import { setIndex } from '../../redux/city-reducer';
 import styles from './Autocomplete.module.scss';
 
-const Autocomplete = ({ title, innerText, list }) => {
+const Autocomplete = ({ title, innerText, list, active, onChange }) => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState('');
-
-  // const cities = ['Ульяновск', 'Самара', 'Сочи', 'Уфа', 'Саранск'];
 
   const setItem = (item) => {
     setSearch(item);
@@ -24,12 +23,13 @@ const Autocomplete = ({ title, innerText, list }) => {
         <input
           className={styles.autocontainer_input}
           onClick={onClickInput}
+          disabled={!active}
           placeholder={innerText}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button className={styles.clear_button} onClick={(e) => setSearch('')}>
-          x
+          х
         </button>
         {display && (
           <div>
@@ -37,7 +37,14 @@ const Autocomplete = ({ title, innerText, list }) => {
               .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
               .map((v, i) => {
                 return (
-                  <div className={styles.list} key={i} onClick={() => setItem(v)}>
+                  <div
+                    className={styles.list}
+                    key={i}
+                    onClick={() => {
+                      onChange(v);
+                      setItem(v);
+                    }}
+                  >
                     <span>{v}</span>
                   </div>
                 );

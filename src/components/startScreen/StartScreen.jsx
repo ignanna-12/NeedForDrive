@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SideBar from '../sideBar/SideBar';
-import Autocomplete from './autocomplete/Autocomplete';
+import Autocomplete from '../autocomplete/Autocomplete';
 import City from './city/City';
 import Footer from './footer/Footer';
 import HeroBlock from './heroBlock/HeroBlock';

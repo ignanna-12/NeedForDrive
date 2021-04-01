@@ -1,6 +1,7 @@
 {
   "name": "need-for-drive",
   "version": "0.1.0",
+  "proxy": "http://api-factory.simbirsoft1.com/api/",
   "homepage": "https://ignanna-12.github.io/NeedForDrive/",
   "private": true,
   "dependencies": {
