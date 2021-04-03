@@ -6,12 +6,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
+import { YMaps } from 'react-yandex-maps';
 
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <YMaps>
+          <App />
+        </YMaps>
       </Provider>
     </React.StrictMode>
   </BrowserRouter>,

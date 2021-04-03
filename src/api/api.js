@@ -16,8 +16,8 @@ export const getCities = () => {
   });
 };
 
-export const getPoints = (data_id) => {
-  return instance.get('db/point/' + { data_id }).then((response) => {
+export const getPoints = () => {
+  return instance.get('db/point/').then((response) => {
     return response.data;
   });
 };

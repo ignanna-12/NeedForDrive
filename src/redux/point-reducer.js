@@ -15,12 +15,14 @@ const pointsReducer = (state = initialState, action) => {
 };
 export const setPoints = (points) => ({ type: 'SET_POINTS', points });
 
-export const requestPoints = (data_id) => {
+export const requestPoints = (city) => {
   return async (dispatch) => {
-    let data = await getPoints(data_id);
+    let data = await getPoints();
     let point = [];
     for (var i in data.data) {
-      point.push(data.data[i].name);
+      if (data.data[i].name == { city }) {
+        point.push(data.data[i].adress);
+      }
     }
     dispatch(setPoints(point));
   };
