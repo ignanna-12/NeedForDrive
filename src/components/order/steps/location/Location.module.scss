@@ -4,5 +4,27 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 80px;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+.location_autocomplete{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;    
+    padding-top: 16px;
+}
+.map_block{
+    padding-top: 45px;
+}
+.map_block p{
+    color:#121212;
+    font-size: 14px;
+    font-family: 'Roboto-Light';
+}
+.map{
+    width: 736px;
+    height: 356px;
+    padding-top: 16px;
+
 }

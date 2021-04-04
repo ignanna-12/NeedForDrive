@@ -12,7 +12,11 @@ ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
       <Provider store={store}>
-        <YMaps>
+        <YMaps
+          query={{
+            apikey: 'c35b820f-e6ef-4e88-b934-2f7af84c28af',
+          }}
+        >
           <App />
         </YMaps>
       </Provider>

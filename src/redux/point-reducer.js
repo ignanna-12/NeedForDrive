@@ -20,8 +20,8 @@ export const requestPoints = (city) => {
     let data = await getPoints();
     let point = [];
     for (var i in data.data) {
-      if (data.data[i].name == { city }) {
-        point.push(data.data[i].adress);
+      if (data.data[i].cityId !== null && data.data[i].cityId.name == city) {
+        point.push(data.data[i].address);
       }
     }
     dispatch(setPoints(point));

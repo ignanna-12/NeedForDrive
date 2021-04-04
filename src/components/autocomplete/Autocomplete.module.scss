@@ -1,7 +1,7 @@
 .autocomplete {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;    
+    flex-direction: row;    
     color:#121212;
     font-size: 14px;
     font-family: 'Roboto-Light';
@@ -11,8 +11,11 @@
 .autocontainer{
     display: flex;
     flex-direction:column;
+    z-index:10;
+    background-color: #FFFFFF;
 }
 .autocontainer_input{
+    width: 225px;
     outline: none;
     outline-offset: none;
     border:none;
@@ -28,4 +31,7 @@
     background-color: transparent;
     cursor: pointer;
     margin-left: -15px;
+}
+.list{  
+    margin-left: 10px;
 }

@@ -9,6 +9,9 @@ const instance = axios.create({
     'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
   },
 });
+// const forMap = axios.create({
+//   baseUrl: 'https://geocode-maps.yandex.ru/1.x/?',
+// });
 
 export const getCities = () => {
   return instance.get('db/city').then((response) => {
@@ -21,3 +24,9 @@ export const getPoints = () => {
     return response.data;
   });
 };
+
+// export const getCoordinates = (address) => {
+//   return forMap.get({ address }).then((response) => {
+//     return response.data;
+//   });
+// };

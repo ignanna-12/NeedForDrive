@@ -69,7 +69,7 @@ const Order = () => {
           ) : (
             <Summary />
           )}
-          <UserChoise />
+          <UserChoise city={'Ульяновск'} address={'Нариманова, 42'} />
         </div>
       </div>
     </div>
