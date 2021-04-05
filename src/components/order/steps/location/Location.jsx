@@ -4,38 +4,41 @@ import { compose } from 'redux';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import SVG from 'react-inlinesvg';
 import { requestCities } from '../../../../redux/city-reducer';
-import { requestPoints } from '../../../../redux/point-reducer';
+import { requestPoints, filterPointsByCity } from '../../../../redux/point-reducer';
+import { getCoordinates } from '../../../../redux/map-reducer';
 import Autocomplete from '../../../autocomplete/Autocomplete';
 import Point from '../../../../assets/icons/Ellipse_1.svg';
 import styles from './Location.module.scss';
+import YandexMapComponent from './YandexMapComponent';
 
 class Location extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { city: '', ymaps: null };
+    this.state = {
+      city: '',
+      ymaps: null,
+      points: this.props.points,
+      coords: [],
+      address: 'Кинель, Овсянникова, 29',
+    };
   }
 
   componentDidMount() {
     this.props.requestCities();
-  }
-  componentDidUpdate() {
-    this.props.requestPoints(this.state.city);
+    this.props.requestPoints();
+    // {
+    //   for (var i in this.props.points) {
+    //     let addr = this.props.points[i].city + this.props.points[i].address;
+    //     this.state.coopds.push(this.props.getCoordinates(addr));
+    //   }
+    // }
   }
   render() {
     const onChangeInputCity = (value) => {
+      this.setState({ points: filterPointsByCity(this.props.points, value) });
       this.setState({ city: value });
     };
     const onChangeInputPoint = () => {};
-    // var myGeocoder = ymaps.geocode('Moscow');
-    // myGeocoder.then(
-    //   function (res) {
-    //     // Выведем в консоль данные, полученные в результате геокодирования объекта.
-    //     console.log('Все данные геообъекта: ', res.geoObjects.get(0).properties.getAll());
-    //   },
-    //   function (err) {
-    //     // Обработка ошибки.
-    //   }
-    // );
 
     return (
       <div className={styles.location}>
@@ -55,30 +58,42 @@ class Location extends React.Component {
             innerText={
               this.state.city == ''
                 ? 'Сначала выберите город'
-                : this.newMethod().props.points.length == 0
+                : this.state.points.length == 0
                 ? 'В этом городе нет пунктов'
                 : 'Начните вводить пункт'
             }
-            list={this.props.points}
+            list={this.state.points}
             onChange={onChangeInputPoint}
           />
         </div>
         <div className={styles.map_block}>
           <p>Выбрать на карте:</p>
-          <YMaps
-            version="2.1.77"
-            onApiAvaliable={(ymaps) => this.setState(ymaps)}
+          <YandexMapComponent checkedObjects={this.props.points} />
+          {/* <YMaps
             query={{
+              ns: 'use-load-option',
+              load: 'package.full',
               apikey: 'c35b820f-e6ef-4e88-b934-2f7af84c28af',
             }}
           >
             <Map
+              key={checkedObjects}
+              onLoad={ymaps => {
+                  ymaps.ready(() => {
+                    init(ymaps, myMap)
+                  });
+              }}
+              instanceRef={yaMap => {
+                if (yaMap) {
+                  myMap = yaMap;
+                }
+              }}
+              modules={['geolocation','geocode']}
               defaultState={{
-                center: [54.3282, 48.3866],
+                center: [],
                 zoom: 11,
               }}
               className={styles.map}
-              modules={['geocode']}
             >
               <Placemark
                 geometry={[54.3533559, 48.3702736]}
@@ -125,14 +140,10 @@ class Location extends React.Component {
                 }}
               />
             </Map>
-          </YMaps>
+          </YMaps> */}
         </div>
       </div>
     );
-  }
-
-  newMethod() {
-    return this;
   }
 }
 
@@ -142,6 +153,7 @@ let mapStateToProps = (state) => {
     id: state.citiesTable.id,
     index: state.citiesTable.index,
     points: state.pointsTable.points,
+    coords: state.coordinates.coordinates,
   };
 };
 

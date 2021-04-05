@@ -6,19 +6,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
-import { YMaps } from 'react-yandex-maps';
 
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
       <Provider store={store}>
-        <YMaps
-          query={{
-            apikey: 'c35b820f-e6ef-4e88-b934-2f7af84c28af',
-          }}
-        >
-          <App />
-        </YMaps>
+        <App />
       </Provider>
     </React.StrictMode>
   </BrowserRouter>,
