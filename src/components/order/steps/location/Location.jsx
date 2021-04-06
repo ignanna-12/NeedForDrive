@@ -68,7 +68,7 @@ class Location extends React.Component {
         </div>
         <div className={styles.map_block}>
           <p>Выбрать на карте:</p>
-          <YandexMapComponent checkedObjects={this.props.points} />
+          <YandexMapComponent checkedObjects={this.state.points} userCity={this.state.city} />
           {/* <YMaps
             query={{
               ns: 'use-load-option',

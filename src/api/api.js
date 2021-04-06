@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const instance = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? 'http://api-factory.simbirsoft1.com/api/' : '',
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://api-factory.simbirsoft1.com/api/' : '',
   headers: {
     'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
   },

@@ -1,24 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { YMaps, Map, Clusterer, Placemark } from 'react-yandex-maps';
 import styles from './YandexMapComponent.module.scss';
 import Point from '../../../../assets/icons/Ellipse_1.svg';
 
-const YandexMapComponent = ({ userCity, checkedObjects }) => {
+const YandexMapComponent = ({ checkedObjects }) => {
   let myMap;
-
-  // const [coordPoint, setCoordPoint] = useState([]);
-
-  // function requestCoordPoint(ymaps, address) {
-  //   ymaps
-  //     .geocode(address, {
-  //       results: 1,
-  //     })
-  //     .then(function (res) {
-  //       let firstGeoObject = res.geoObjects.get(0);
-  //       let coordPoint = firstGeoObject.geometry.getCoordinates();
-  //       setCoordPoint(coordPoint);
-  //     });
-  // }
 
   function myGeoCode(ymaps, myMap, address) {
     ymaps
@@ -38,7 +24,7 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
         //firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
 
         // Добавляем первый найденный геообъект на карту.
-        myMap.geoObjects.add(firstGeoObject);
+        //myMap.geoObjects.add(firstGeoObject);
         // Масштабируем карту на область видимости геообъекта.
         myMap.setBounds(bounds, {
           // Проверяем наличие тайлов на данном масштабе.
@@ -69,10 +55,8 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
   }
 
   function init(ymaps, myMap) {
-    myGeoCode(ymaps, myMap, userCity);
-    for (var i in checkedObjects) {
-      myGeoCode(ymaps, myMap, userCity + checkedObjects[i]);
-    }
+    myGeoCode(ymaps, myMap, 'Самара, ново-Садовая, 21');
+    myGeoCode(ymaps, myMap, 'Самара, московское шоссе, 77');
   }
 
   return (
