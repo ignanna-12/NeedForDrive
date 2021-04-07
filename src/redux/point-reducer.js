@@ -1,7 +1,14 @@
 import { getPoints } from '../api/api';
 
 let initialState = {
-  points: ['Street 1', 'Street 2', 'Street 3', 'Street 4', 'Street 5'],
+  points: [
+    'Ульяновск, Нариманова 1, корп.2',
+    'Ульяновск, Московское шоссе 34',
+    'Ульяновск, Гончарова 27',
+    'Ульяновск, Октябрьская улица, 30Б',
+    'Ульяновск, Гончарова, 21',
+    'Ульяновск, Московское шоссе, 92',
+  ],
 };
 
 const pointsReducer = (state = initialState, action) => {

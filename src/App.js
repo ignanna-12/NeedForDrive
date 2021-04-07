@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <Route exact path="/NeedForDrive/" component={Start} />
-      <Route path="/Order/:location?/:model?/:add?" component={Order} />
+      <Route path="/Order/:city?/:point?/:model?/:add?" component={Order} />
     </div>
   );
 }

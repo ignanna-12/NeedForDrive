@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
-import { YMaps, Map, Clusterer, Placemark } from 'react-yandex-maps';
+import React from 'react';
+import { YMaps, Map } from 'react-yandex-maps';
 import styles from './YandexMapComponent.module.scss';
-import Point from '../../../../assets/icons/Ellipse_1.svg';
 
 const YandexMapComponent = ({ userCity, checkedObjects }) => {
   let myMap;
-
-  // const [coordPoint, setCoordPoint] = useState([]);
-
-  // function requestCoordPoint(ymaps, address) {
-  //   ymaps
-  //     .geocode(address, {
-  //       results: 1,
-  //     })
-  //     .then(function (res) {
-  //       let firstGeoObject = res.geoObjects.get(0);
-  //       let coordPoint = firstGeoObject.geometry.getCoordinates();
-  //       setCoordPoint(coordPoint);
-  //     });
-  // }
+  function mapCenter(ymaps, myMap, city) {
+    ymaps
+      .geocode('Россия' + city, {
+        results: 1,
+      })
+      .then(function (res) {
+        let centerGeoObject = res.geoObjects.get(0);
+        let coords = centerGeoObject.geometry.getCoordinates();
+        let bounds = centerGeoObject.properties.get('boundedBy');
+        myMap.setCenter(coords);
+        myMap.setBounds(bounds);
+      });
+  }
 
   function myGeoCode(ymaps, myMap, address) {
     ymaps
@@ -26,24 +24,11 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
         results: 1,
       })
       .then(function (res) {
-        // Выбираем первый результат геокодирования.
         let firstGeoObject = res.geoObjects.get(0);
-        // Координаты геообъекта.
         let coords = firstGeoObject.geometry.getCoordinates();
-        // Область видимости геообъекта.
         let bounds = firstGeoObject.properties.get('boundedBy');
-
-        firstGeoObject.options.set('preset', 'islands#greenCircleIcon');
-        // Получаем строку с адресом и выводим в иконке геообъекта.
-        //firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
-
-        // Добавляем первый найденный геообъект на карту.
-        myMap.geoObjects.add(firstGeoObject);
-        // Масштабируем карту на область видимости геообъекта.
-        myMap.setBounds(bounds, {
-          // Проверяем наличие тайлов на данном масштабе.
-          checkZoomRange: true,
-        });
+        myMap.setBounds(bounds);
+        myMap.setZoom(12);
 
         let myPlacemark = new ymaps.Placemark(
           coords,
@@ -51,16 +36,10 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
           {
             preset: 'islands#greenCircleIcon',
           }
-          //   {
-          //     iconLayout: 'default#image',
-          //     //preset: 'islands#greenCircleIcon',
-          //     //iconColor: '#0EC261',
-          //     iconImageHref: { Point },
-          //     iconImageSize: [100, 140],
-          //   }
         );
 
         myPlacemark.events.add('click', function () {
+          myMap.setZoom(14, { duration: 10000 });
           alert(address);
         });
 
@@ -69,7 +48,10 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
   }
 
   function init(ymaps, myMap) {
-    myGeoCode(ymaps, myMap, userCity);
+    if (userCity == '') {
+      userCity = 'Ульяновск';
+    }
+    mapCenter(ymaps, myMap, userCity);
     for (var i in checkedObjects) {
       myGeoCode(ymaps, myMap, userCity + checkedObjects[i]);
     }
@@ -87,7 +69,7 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
         key={checkedObjects}
         defaultState={{
           center: [50.47, 38.47],
-          zoom: 9,
+          zoom: 12,
           controls: ['zoomControl', 'fullscreenControl'],
         }}
         modules={['geolocation', 'geocode']}
