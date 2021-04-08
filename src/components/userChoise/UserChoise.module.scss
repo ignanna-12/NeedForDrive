@@ -13,17 +13,27 @@
 }
 .point{
   width: 100%;
+  align-items: flex-end;
   margin-top: 30px;
   display:flex;
+  overflow: auto;
   flex-direction:row;
   justify-content: space-between;
   font-size: 14px;
   font-family: 'Roboto-Light';
 }
+.dots{  
+  border-bottom: 1px dotted #000;
+  flex: 1;
+}
+.address{
+  text-align:right;
+}
 .price{
   width: 100%;
   font-size: 16px;
   font-family: 'Roboto-Regular';
+  margin-top: 32px;
 }
 .price p{
   font-size: 18px;

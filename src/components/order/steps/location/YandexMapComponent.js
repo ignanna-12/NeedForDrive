@@ -2,7 +2,7 @@ import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
 import styles from './YandexMapComponent.module.scss';
 
-const YandexMapComponent = ({ userCity, checkedObjects }) => {
+const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint }) => {
   let myMap;
   function mapCenter(ymaps, myMap, city) {
     ymaps
@@ -39,8 +39,9 @@ const YandexMapComponent = ({ userCity, checkedObjects }) => {
         );
 
         myPlacemark.events.add('click', function () {
-          myMap.setZoom(14, { duration: 10000 });
-          alert(address);
+          myMap.setCenter(coords);
+          myMap.setZoom(14, { duration: 1000 });
+          onSelectPoint(address.slice(userCity.length));
         });
 
         myMap.geoObjects.add(myPlacemark);

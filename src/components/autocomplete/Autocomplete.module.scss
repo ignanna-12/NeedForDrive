@@ -11,7 +11,6 @@
 .autocontainer{
     display: flex;
     flex-direction:column;
-    z-index:10;
     background-color: #FFFFFF;
 }
 .autocontainer_input{
@@ -31,6 +30,11 @@
     background-color: transparent;
     cursor: pointer;
     margin-left: -15px;
+}
+.extended_block{
+    z-index:10;
+    position: absolute;
+    background: #FFFFFF;
 }
 .list{  
     margin-left: 10px;

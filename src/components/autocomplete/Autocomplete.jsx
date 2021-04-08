@@ -26,13 +26,21 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
           disabled={!active}
           placeholder={innerText}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
         />
-        <button className={styles.clear_button} onClick={(e) => setSearch('')}>
+        <button
+          className={styles.clear_button}
+          onClick={(e) => {
+            setSearch('');
+            onChange('');
+          }}
+        >
           х
         </button>
         {display && (
-          <div>
+          <div className={styles.extended_block}>
             {list
               .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
               .map((v, i) => {

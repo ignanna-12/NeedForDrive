@@ -7,6 +7,7 @@ import Footer from './footer/Footer';
 import HeroBlock from './heroBlock/HeroBlock';
 import Logo from './logo/Logo';
 import styles from './StartScreen.module.scss';
+import Button from '../button/Button';
 
 const StartScreen = () => {
   const startScreenRef = React.createRef();
@@ -22,14 +23,16 @@ const StartScreen = () => {
           </div>
           <div className={styles.top_row_logo_city}>
             <Logo />
-            <City />
+            <City userCity={'Ульяновск'} />
           </div>
         </div>
         <div className={styles.hero_plus_btn}>
           <HeroBlock />
-          <NavLink to="/Order">
-            <button className={styles.start_btn}>Забронировать</button>
-          </NavLink>
+          <div className={styles.for_width_btn}>
+            <NavLink to="/Order">
+              <Button innerText={'Забронировать'} />
+            </NavLink>
+          </div>
         </div>
         <Footer />
       </div>

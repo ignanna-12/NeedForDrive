@@ -32,28 +32,8 @@
     justify-content: space-between;
     align-items: baseline;
 }
-.hero_plus_btn{
-
-}
-.start_btn{
-    margin-top: 60px;
-    height: 48px;
-    width: 250px;
-    font-size: 18px;
-    font-family: 'Roboto-Medium';
-    border-radius: 8px;
-    background: linear-gradient(to right, #0EC261, #039F67);
-    color: #EEEEEE;
-    border: none;
-    cursor: pointer;
-}
-.start_btn:hover{
-    background: linear-gradient(to right, #0B934A, #026E47);
-}
-.start_btn:focus{
-    border: none;
-    outline: none;
-    background: linear-gradient(to right, #076432, #013C27);
+.for_width_btn{
+    width: 275px;
 }
 
 @media (max-width: 1024px){
@@ -101,10 +81,7 @@
         justify-content:space-between;
         align-items: flex-end;
     }
-    .start_btn{
-        margin-top: 75px;
-        height: 50px;
+    .for_width_btn{
         width: 100%;
-        border-radius: 0px;
     }
 }
