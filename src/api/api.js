@@ -18,3 +18,9 @@ export const getPoints = () => {
     return response.data;
   });
 };
+
+export const getCars = () => {
+  return instance.get('db/car/').then((response) => {
+    return response.data;
+  });
+};

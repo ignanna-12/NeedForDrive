@@ -3,7 +3,8 @@ import { Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { requestCities } from '../../redux/city-reducer';
-import { requestPoints, filterPointsByCity } from '../../redux/point-reducer';
+import { requestPoints } from '../../redux/point-reducer';
+import { requestCars } from '../../redux/car-reducer';
 import SVG from 'react-inlinesvg';
 import styles from './Order.module.scss';
 import SideBar from '../sideBar/SideBar';
@@ -28,6 +29,7 @@ class Order extends React.Component {
   componentDidMount() {
     this.props.requestCities();
     this.props.requestPoints();
+    this.props.requestCars();
   }
 
   render() {
@@ -106,7 +108,7 @@ class Order extends React.Component {
                 }}
               />
             ) : this.state.activePage == 1 ? (
-              <Model />
+              <Model cars={this.props.cars} />
             ) : this.state.activePage == 2 ? (
               <AddOptions />
             ) : (
@@ -145,10 +147,11 @@ class Order extends React.Component {
 let mapStateToProps = (state) => {
   return {
     cities: state.citiesTable.cities,
-    id: state.citiesTable.id,
-    index: state.citiesTable.index,
     points: state.pointsTable.points,
+    cars: state.carsTable.cars,
   };
 };
 
-export default compose(connect(mapStateToProps, { requestCities, requestPoints }))(Order);
+export default compose(connect(mapStateToProps, { requestCities, requestPoints, requestCars }))(
+  Order
+);
