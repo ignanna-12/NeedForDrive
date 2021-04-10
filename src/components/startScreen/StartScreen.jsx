@@ -29,7 +29,7 @@ const StartScreen = () => {
         <div className={styles.hero_plus_btn}>
           <HeroBlock />
           <div className={styles.for_width_btn}>
-            <NavLink to="/Order">
+            <NavLink to="/Order/0">
               <Button innerText={'Забронировать'} />
             </NavLink>
           </div>

@@ -4,8 +4,8 @@ import Autocomplete from '../../../autocomplete/Autocomplete';
 import styles from './Location.module.scss';
 import YandexMapComponent from './YandexMapComponent';
 
-const Location = ({ cities, points, onChangeCity, onChangePoint }) => {
-  const [userCity, setUserCity] = useState('');
+const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, userCity }) => {
+  const [selectedCity, setUserCity] = useState('');
   const [userPoints, setUserPoints] = useState(points);
   const [selectedPoint, setSelectedPoint] = useState('');
   const onChangeInputCity = (value) => {
@@ -15,8 +15,8 @@ const Location = ({ cities, points, onChangeCity, onChangePoint }) => {
     setSelectedPoint('');
   };
   const onChangeInputPoint = (value) => {
-    onChangePoint(value);
     setSelectedPoint(value);
+    onChangePoint(value);
   };
 
   return (
@@ -25,7 +25,7 @@ const Location = ({ cities, points, onChangeCity, onChangePoint }) => {
         <Autocomplete
           active={true}
           title={'Город'}
-          innerText={'Начните вводить город'}
+          innerText={userCity == '' ? 'Начните вводить город' : userCity}
           list={cities}
           onChange={onChangeInputCity}
         />
@@ -39,7 +39,7 @@ const Location = ({ cities, points, onChangeCity, onChangePoint }) => {
               ? 'Сначала выберите город'
               : userPoints.length == 0
               ? 'В этом городе нет пунктов'
-              : selectedPoint == ''
+              : userPoint == ''
               ? 'Начните вводить пункт'
               : selectedPoint
           }
@@ -53,6 +53,7 @@ const Location = ({ cities, points, onChangeCity, onChangePoint }) => {
           checkedObjects={userPoints}
           userCity={userCity}
           onSelectPoint={(e) => onChangeInputPoint(e)}
+          selectedPoint={selectedPoint}
         />
       </div>
     </div>

@@ -33,6 +33,18 @@ class Order extends React.Component {
   }
 
   render() {
+    const changeActivePage = (n) => {
+      this.setState({ activePage: n });
+      this.props.history.push({
+        pathname:
+          '/Order/' +
+          String(n) +
+          '/' +
+          this.props.match.params.city +
+          '/' +
+          this.props.match.params.point,
+      });
+    };
     return (
       <div className={styles.order_page}>
         <SideBar />
@@ -47,7 +59,7 @@ class Order extends React.Component {
                 this.state.activePage == 0 ? styles.links_button_active : styles.links_button
               }
               onClick={(e) => {
-                this.setState({ activePage: 0 });
+                changeActivePage(0);
               }}
             >
               Местоположение
@@ -59,7 +71,7 @@ class Order extends React.Component {
               }
               disabled={this.state.userCity == '' || this.state.userPoint == ''}
               onClick={(e) => {
-                this.setState({ activePage: 1 });
+                changeActivePage(1);
               }}
             >
               Модель
@@ -71,7 +83,7 @@ class Order extends React.Component {
               }
               disabled={true}
               onClick={(e) => {
-                this.setState({ activePage: 2 });
+                changeActivePage(2);
               }}
             >
               Дополнительно
@@ -83,33 +95,36 @@ class Order extends React.Component {
               }
               disabled={true}
               onClick={(e) => {
-                this.setState({ activePage: 3 });
+                changeActivePage(3);
               }}
             >
               Итого
             </button>
           </div>
           <div className={styles.order_settings}>
-            {this.state.activePage == 0 ? (
+            {this.props.match.params.step == 0 ? (
               <Location
                 cities={this.props.cities}
                 points={this.props.points}
                 onChangeCity={(e) => {
                   this.setState({ userCity: e });
                   this.props.history.push({
-                    pathname: '/Order/' + e,
+                    pathname: '/Order/' + this.state.activePage + '/' + e,
                   });
                 }}
+                userCity={this.props.match.params.city ? this.props.match.params.city : ''}
+                userPoint={this.props.match.params.point ? this.props.match.params.point : ''}
                 onChangePoint={(e) => {
                   this.setState({ userPoint: e });
                   this.props.history.push({
-                    pathname: '/Order/' + this.state.userCity + '/' + e,
+                    pathname:
+                      '/Order/' + this.state.activePage + '/' + this.state.userCity + '/' + e,
                   });
                 }}
               />
-            ) : this.state.activePage == 1 ? (
+            ) : this.props.match.params.step == 1 ? (
               <Model cars={this.props.cars} />
-            ) : this.state.activePage == 2 ? (
+            ) : this.props.match.params.step == 2 ? (
               <AddOptions />
             ) : (
               <Summary />
@@ -128,13 +143,13 @@ class Order extends React.Component {
               }
               disable_btn={
                 this.state.activePage == 0
-                  ? this.state.userCity == '' || this.state.userPoint == ''
+                  ? !(this.props.match.params.city && this.props.match.params.point)
                   : ''
               }
               onClick={(e) => {
                 this.state.activePage < 3
-                  ? this.setState({ activePage: this.state.activePage + 1 })
-                  : this.setState({ activePage: 3 });
+                  ? changeActivePage(this.state.activePage + 1)
+                  : changeActivePage(3);
               }}
             />
           </div>

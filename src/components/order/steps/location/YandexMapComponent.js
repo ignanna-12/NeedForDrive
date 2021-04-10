@@ -2,7 +2,7 @@ import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
 import styles from './YandexMapComponent.module.scss';
 
-const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint }) => {
+const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint, selectedPoint }) => {
   let myMap;
   function mapCenter(ymaps, myMap, city) {
     ymaps
@@ -49,12 +49,14 @@ const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint }) => {
   }
 
   function init(ymaps, myMap) {
-    if (userCity == '') {
-      userCity = 'Ульяновск';
-    }
-    mapCenter(ymaps, myMap, userCity);
-    for (var i in checkedObjects) {
-      myGeoCode(ymaps, myMap, userCity + checkedObjects[i]);
+    if (selectedPoint == '') {
+      mapCenter(ymaps, myMap, userCity);
+      for (var i in checkedObjects) {
+        myGeoCode(ymaps, myMap, userCity + checkedObjects[i]);
+      }
+    } else {
+      myGeoCode(ymaps, myMap, userCity + selectedPoint);
+      myMap.setZoom(14, { duration: 1000 });
     }
   }
 

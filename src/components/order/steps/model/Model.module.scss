@@ -1,4 +1,8 @@
 .model {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
-    height: 100%;
+    max-height:100%;
+    overflow-Y: auto;
 }

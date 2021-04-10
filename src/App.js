@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <Switch>
-        <Route path="/Order/:city?/:point?/:model?/:add?" component={Order} />
+        <Route path="/Order/:step?/:city?/:point?/:model?/:add?" component={Order} />
         <Route exact path="/" component={Start} />
       </Switch>
     </div>

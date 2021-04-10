@@ -28,7 +28,11 @@ export const requestCars = () => {
       elem.category = data.data[i].categoryId;
       elem.priceMax = data.data[i].priceMax;
       elem.priceMin = data.data[i].priceMin;
-      elem.image = data.data[i].thumbnail.path;
+      if (data.data[i].thumbnail.path.slice(0, 7) == '/files/') {
+        elem.image = 'https://api-factory.simbirsoft1.com' + data.data[i].thumbnail.path;
+      } else {
+        elem.image = data.data[i].thumbnail.path;
+      }
       elem.colors = data.data[i].colors;
       car.push(elem);
     }
