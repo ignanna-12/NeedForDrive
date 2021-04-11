@@ -1,0 +1,44 @@
+.cell {
+    width: 369px;
+    height: 224px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+}
+.cell:active{
+    border-color: #0EC261;
+}
+.cell:hover{
+    border-color: #999999;
+    cursor:pointer;
+}
+.model{
+    font-family: 'Roboto-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #121212;
+}
+.price{
+    font-family: 'Roboto-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #999999;
+}
+.car_image{
+    width: 256px;
+    height: 118px;
+    align-self: flex-end;
+}
+.car_image img{
+    object-fit:contain;
+    width:inherit;
+    height:inherit;
+}

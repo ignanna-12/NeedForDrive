@@ -1,0 +1,41 @@
+.autocomplete {
+    position: relative;
+    display: flex;
+    flex-direction: row;    
+    color:#121212;
+    font-size: 14px;
+    font-family: 'Roboto-Light';
+    padding-right: none;
+    margin-right: none;
+}
+.autocontainer{
+    display: flex;
+    flex-direction:column;
+    background-color: #FFFFFF;
+}
+.autocontainer_input{
+    width: 225px;
+    outline: none;
+    outline-offset: none;
+    border:none;
+    border-bottom: 1px solid #121212;
+    color:#121212;
+    font-size: 14px;
+    font-family: 'Roboto-Light';
+    margin-left: 10px;
+}
+.clear_button{
+    border:none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: -15px;
+}
+.extended_block{
+    z-index:10;
+    position: absolute;
+    background: #FFFFFF;
+}
+.list{  
+    margin-left: 10px;
+}

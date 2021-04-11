@@ -1,0 +1,20 @@
+.start_Screen {
+    height: 100vh;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas: 'start slider';
+  }
+  @media (max-width: 1440px){
+    .start_Screen {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      grid-template-areas: 'start slider';
+      }
+  }
+  @media (max-width: 1024px){
+    .start_Screen {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: 'start';
+      }
+  }

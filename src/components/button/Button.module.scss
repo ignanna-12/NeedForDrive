@@ -1,0 +1,31 @@
+.btn{
+    margin-top: 60px;
+    height: 48px;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Roboto-Medium';
+    border-radius: 8px;
+    background: linear-gradient(to right, #0EC261, #039F67);
+    color: #EEEEEE;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover{
+    background: linear-gradient(to right, #0B934A, #026E47);
+}
+.btn:focus{
+    border: none;
+    outline: none;
+    background: linear-gradient(to right, #076432, #013C27);
+}
+.btn:disabled{
+    background: #EEEEEE;
+}
+@media (max-width: 780px){
+    .btn{
+        margin-top: 75px;
+        height: 50px;
+        width: 100%;
+        border-radius: 0px;
+    }
+}
