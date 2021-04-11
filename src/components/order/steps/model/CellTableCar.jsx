@@ -3,9 +3,14 @@ import SVG from 'react-inlinesvg';
 import styles from './CellTableCar.module.scss';
 import defCar from '../../../../assets/images/car.jpg';
 
-const CellTableCar = ({ model, priceMin, priceMax, image }) => {
+const CellTableCar = ({ model, priceMin, priceMax, image, onChangeModel }) => {
   return (
-    <div className={styles.cell} onClick={(e) => {}}>
+    <div
+      className={styles.cell}
+      onClick={(e) => {
+        onChangeModel(model, priceMin, priceMax);
+      }}
+    >
       <div>
         <div className={styles.model}>{model ? model : 'Model'}</div>
         <div className={styles.price}>

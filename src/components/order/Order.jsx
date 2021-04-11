@@ -24,6 +24,9 @@ class Order extends React.Component {
       activePage: 0,
       userCity: this.props.match.params.city ? this.props.match.params.city : '',
       userPoint: this.props.match.params.point ? this.props.match.params.point : '',
+      userModel: this.props.match.params.model ? this.props.match.params.model : '',
+      userPriceMin: 0,
+      userPriceMax: 0,
     };
   }
   componentDidMount() {
@@ -38,11 +41,10 @@ class Order extends React.Component {
       this.props.history.push({
         pathname:
           '/Order/' +
-          String(n) +
-          '/' +
-          this.props.match.params.city +
-          '/' +
-          this.props.match.params.point,
+          n +
+          (this.props.match.params.city ? '/' + this.props.match.params.city : '') +
+          (this.props.match.params.point ? '/' + this.props.match.params.point : '') +
+          (this.props.match.params.model ? '/' + this.props.match.params.model : ''),
       });
     };
     return (
@@ -81,7 +83,7 @@ class Order extends React.Component {
               className={
                 this.state.activePage == 2 ? styles.links_button_active : styles.links_button
               }
-              disabled={true}
+              disabled={this.state.userModel == ''}
               onClick={(e) => {
                 changeActivePage(2);
               }}
@@ -123,7 +125,25 @@ class Order extends React.Component {
                 }}
               />
             ) : this.props.match.params.step == 1 ? (
-              <Model cars={this.props.cars} />
+              <Model
+                cars={this.props.cars}
+                onChangeModel={(model, priceMin, priceMax) => {
+                  this.setState({ userModel: model });
+                  this.setState({ userPriceMin: priceMin });
+                  this.setState({ userPriceMax: priceMax });
+                  this.props.history.push({
+                    pathname:
+                      '/Order/' +
+                      this.props.match.params.step +
+                      '/' +
+                      this.props.match.params.city +
+                      '/' +
+                      this.props.match.params.point +
+                      '/' +
+                      model,
+                  });
+                }}
+              />
             ) : this.props.match.params.step == 2 ? (
               <AddOptions />
             ) : (
@@ -132,18 +152,23 @@ class Order extends React.Component {
             <UserChoise
               city={this.props.match.params.city}
               address={this.props.match.params.point}
+              model={this.props.match.params.model}
+              priceMin={this.state.userPriceMin}
+              priceMax={this.state.userPriceMax}
               btnText={
-                this.state.activePage == 0
+                this.props.match.params.step == 0
                   ? 'Выбрать модель'
-                  : this.state.activePage == 1
+                  : this.props.match.params.step == 1
                   ? 'Дополнительно'
-                  : this.state.activePage == 2
+                  : this.props.match.params.step == 2
                   ? 'Итого'
                   : 'Заказать'
               }
               disable_btn={
-                this.state.activePage == 0
+                this.props.match.params.step == 0
                   ? !(this.props.match.params.city && this.props.match.params.point)
+                  : this.props.match.params.step == 1
+                  ? !this.props.match.params.model
                   : ''
               }
               onClick={(e) => {

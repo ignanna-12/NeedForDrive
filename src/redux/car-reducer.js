@@ -25,7 +25,7 @@ export const requestCars = () => {
     for (var i in data.data) {
       let elem = {};
       elem.name = data.data[i].name;
-      elem.category = data.data[i].categoryId;
+      elem.category = data.data[i].categoryId.name;
       elem.priceMax = data.data[i].priceMax;
       elem.priceMin = data.data[i].priceMin;
       if (data.data[i].thumbnail.path.slice(0, 7) == '/files/') {
