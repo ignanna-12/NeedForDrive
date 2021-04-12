@@ -25,6 +25,7 @@ class Order extends React.Component {
       userCity: this.props.match.params.city ? this.props.match.params.city : '',
       userPoint: this.props.match.params.point ? this.props.match.params.point : '',
       userModel: this.props.match.params.model ? this.props.match.params.model : '',
+      userModelColors: [',tksq', 'gfj'],
       userPriceMin: 0,
       userPriceMax: 0,
     };
@@ -127,10 +128,11 @@ class Order extends React.Component {
             ) : this.props.match.params.step == 1 ? (
               <Model
                 cars={this.props.cars}
-                onChangeModel={(model, priceMin, priceMax) => {
+                onChangeModel={(model, priceMin, priceMax, colors) => {
                   this.setState({ userModel: model });
                   this.setState({ userPriceMin: priceMin });
                   this.setState({ userPriceMax: priceMax });
+                  this.setState({ userModelColors: colors });
                   this.props.history.push({
                     pathname:
                       '/Order/' +
@@ -145,7 +147,7 @@ class Order extends React.Component {
                 }}
               />
             ) : this.props.match.params.step == 2 ? (
-              <AddOptions />
+              <AddOptions colors={this.state.userModelColors} />
             ) : (
               <Summary />
             )}

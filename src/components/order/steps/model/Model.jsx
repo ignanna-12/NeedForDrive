@@ -52,6 +52,7 @@ const Model = ({ cars, onChangeModel }) => {
             priceMax={c.priceMax}
             image={c.image}
             onChangeModel={onChangeModel}
+            colors={c.colors}
           />
         ))}
       </div>

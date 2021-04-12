@@ -1,5 +1,38 @@
 .add_options {
     width: 100%;
     height: 100%;
-    background-color: #1eee9e;
+}
+.radios{
+    margin-top: 32px;
+}
+.radios label{
+    cursor:pointer;
+    font-family: 'Roboto-Light';
+    font-size: 14px;
+    color:#999999;
+    margin-right: 16px;
+}
+.radios label:hover {
+    color:#121212;
+}
+.radios label:checked {
+    color:#121212;
+}
+.circle{
+    border: 1px solid #999999;
+    padding: 5px;
+    margin-right: 8px;
+    cursor: pointer;
+    width: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.circle:hover{
+    border: 1px solid #121212;
+}
+.circle:focus{   
+    width: 5px;
+    outline:none;
+    border: 3px solid #0EC261;
+    border-radius: 50%; 
 }

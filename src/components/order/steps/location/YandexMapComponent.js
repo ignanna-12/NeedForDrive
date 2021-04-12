@@ -55,6 +55,7 @@ const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint, selectedP
         myGeoCode(ymaps, myMap, userCity + checkedObjects[i]);
       }
     } else {
+      mapCenter(ymaps, myMap, userCity + selectedPoint);
       myGeoCode(ymaps, myMap, userCity + selectedPoint);
       myMap.setZoom(14, { duration: 1000 });
     }

@@ -5,17 +5,10 @@ import styles from './Location.module.scss';
 import YandexMapComponent from './YandexMapComponent';
 
 const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, userCity }) => {
-  const [selectedCity, setUserCity] = useState('');
-  const [userPoints, setUserPoints] = useState(points);
-  const [selectedPoint, setSelectedPoint] = useState('');
   const onChangeInputCity = (value) => {
-    setUserPoints(filterPointsByCity(points, value));
-    setUserCity(value);
     onChangeCity(value);
-    setSelectedPoint('');
   };
   const onChangeInputPoint = (value) => {
-    setSelectedPoint(value);
     onChangePoint(value);
   };
 
@@ -37,23 +30,23 @@ const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, user
           innerText={
             userCity == ''
               ? 'Сначала выберите город'
-              : userPoints.length == 0
+              : filterPointsByCity(points, userCity) == 0
               ? 'В этом городе нет пунктов'
               : userPoint == ''
               ? 'Начните вводить пункт'
-              : selectedPoint
+              : userPoint
           }
-          list={userPoints}
+          list={filterPointsByCity(points, userCity)}
           onChange={onChangeInputPoint}
         />
       </div>
       <div className={styles.map_block}>
         <p>Выбрать на карте:</p>
         <YandexMapComponent
-          checkedObjects={userPoints}
+          checkedObjects={filterPointsByCity(points, userCity)}
           userCity={userCity}
           onSelectPoint={(e) => onChangeInputPoint(e)}
-          selectedPoint={selectedPoint}
+          selectedPoint={userPoint}
         />
       </div>
     </div>
