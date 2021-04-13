@@ -1,9 +1,9 @@
 import React from 'react';
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import citiesReducer from './city-reducer';
-import pointsReducer from './point-reducer';
-import carsReduser from './car-reducer';
+import citiesReducer from './redusers/city.reducer';
+import pointsReducer from './redusers/point.reducer';
+import carsReduser from './redusers/car.reducer';
 
 let reducers = combineReducers({
   citiesTable: citiesReducer,

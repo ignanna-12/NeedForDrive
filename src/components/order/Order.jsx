@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { requestCities } from '../../redux/city-reducer';
-import { requestPoints } from '../../redux/point-reducer';
-import { requestCars } from '../../redux/car-reducer';
+import { requestCities } from '../../redux/thunk/city.thunk';
+import { requestPoints } from '../../redux/thunk/point.thunk';
+import { requestCars } from '../../redux/thunk/car.thunk';
 import SVG from 'react-inlinesvg';
 import styles from './Order.module.scss';
 import SideBar from '../sideBar/SideBar';
@@ -25,7 +25,7 @@ class Order extends React.Component {
       userCity: this.props.match.params.city ? this.props.match.params.city : '',
       userPoint: this.props.match.params.point ? this.props.match.params.point : '',
       userModel: this.props.match.params.model ? this.props.match.params.model : '',
-      userModelColors: [',tksq', 'gfj'],
+      userModelColors: [],
       userPriceMin: 0,
       userPriceMax: 0,
     };

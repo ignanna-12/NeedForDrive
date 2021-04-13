@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { filterPointsByCity } from '../../../../redux/point-reducer';
+import { filterPointsByCity } from '../../../../redux/thunk/point.thunk';
 import Autocomplete from '../../../autocomplete/Autocomplete';
 import styles from './Location.module.scss';
 import YandexMapComponent from './YandexMapComponent';
