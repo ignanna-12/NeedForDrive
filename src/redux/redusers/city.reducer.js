@@ -1,5 +1,5 @@
 let initialState = {
-  cities: [],
+  cities: ['Ульяновск', 'Москва', 'Самара', 'Кинель'],
   id: [],
   index: 0,
 };

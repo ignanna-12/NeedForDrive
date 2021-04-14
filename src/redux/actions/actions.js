@@ -3,3 +3,7 @@ export const setPoints = (points) => ({ type: 'SET_POINTS', points });
 export const setCities = (cities) => ({ type: 'SET_CITIES', cities });
 export const setId = (id) => ({ type: 'SET_ID', id });
 export const setIndex = (index) => ({ type: 'SET_INDEX', index });
+export const setUserCity = (city) => ({ type: 'SET_USER_CITY', city });
+export const setUserPoint = (point) => ({ type: 'SET_USER_POINT', point });
+export const setModel = (model) => ({ type: 'SET_MODEL', model });
+export const setUserColor = (color) => ({ type: 'SET_USER_COLOR', color });

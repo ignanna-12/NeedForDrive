@@ -1,0 +1,28 @@
+.links{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin-left: -20px;
+    
+}
+.links_button{
+    font-family: 'Roboto-Bold';
+    font-size: 14px;
+    color: #000000;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+.links_button:disabled{
+    color: #999999;
+    cursor: default;
+}
+.links_button_active{
+    @extend .links_button;
+    color: #0EC261;
+}

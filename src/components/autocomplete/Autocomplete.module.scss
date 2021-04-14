@@ -32,9 +32,12 @@
     margin-left: -15px;
 }
 .extended_block{
+    width: 225px;
     z-index:10;
     position: absolute;
     background: #FFFFFF;
+    cursor: pointer;
+    padding-left: 15px;
 }
 .list{  
     margin-left: 10px;

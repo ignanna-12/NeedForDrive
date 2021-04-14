@@ -186,14 +186,14 @@ class Order extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
-  return {
-    cities: state.citiesTable.cities,
-    points: state.pointsTable.points,
-    cars: state.carsTable.cars,
-  };
-};
+// let mapStateToProps = (state) => {
+//   return {
+//     cities: state.citiesTable.cities,
+//     points: state.pointsTable.points,
+//     cars: state.carsTable.cars,
+//   };
+// };
 
-export default compose(connect(mapStateToProps, { requestCities, requestPoints, requestCars }))(
-  Order
-);
+//export default compose(connect(mapStateToProps, { requestCities, requestPoints, requestCars }))(
+// Order
+//);
