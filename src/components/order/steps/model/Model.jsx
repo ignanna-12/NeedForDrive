@@ -1,24 +1,8 @@
 import React, { useState } from 'react';
-import SVG from 'react-inlinesvg';
 import CellTableCar from './CellTableCar';
 import styles from './Model.module.scss';
 
-const Model = ({ cars, onChangeModel }) => {
-  const [fiterCar, setFilterCar] = useState(cars);
-  const filterCars = (catName) => {
-    let filterCarWithCat = [];
-    for (var i in cars) {
-      if (cars[i].category == catName) {
-        filterCarWithCat.push(cars[i]);
-      }
-    }
-    setFilterCar(filterCarWithCat);
-  };
-  let categ = [];
-  for (var i in cars) {
-    categ.push(cars[i].category);
-  }
-  const categor = Array.from(new Set(categ));
+const Model = ({ cars, filterCar, onChangeModel, setFilterCar, categor, filterCars }) => {
   return (
     <div className={styles.model_page}>
       <div className={styles.radios}>
@@ -44,7 +28,7 @@ const Model = ({ cars, onChangeModel }) => {
         ))}
       </div>
       <div className={styles.model}>
-        {fiterCar.map((c, i) => (
+        {filterCar.map((c, i) => (
           <CellTableCar
             key={i}
             model={c.name}

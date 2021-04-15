@@ -1,11 +1,19 @@
-.links{
+.lines{
     margin-top: 40px;
+    margin-left: -64px;
+    border-top: #EEEEEE 1px solid;    
+    border-bottom: #EEEEEE 1px solid;
+    height: 32px;
+    margin-right: -64px;
+    display: flex;
+    align-items: center;
+}
+.links{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: baseline;
-    margin-left: -20px;
-    
+    margin-left: 40px;
+    align-items: center;
 }
 .links_button{
     font-family: 'Roboto-Bold';

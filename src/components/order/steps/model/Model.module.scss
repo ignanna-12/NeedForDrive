@@ -3,6 +3,7 @@
     flex-direction:column;
     width: 100%;
     max-height:100%;
+    padding-right: 32px;
 }
 .model {
     margin-top: 48px;
@@ -16,6 +17,9 @@
 .radios{
     margin-top: 32px;
 }
+.radios:focus {
+    color:#121212;
+}
 .radios label{
     cursor:pointer;
     font-family: 'Roboto-Light';
@@ -26,7 +30,7 @@
 .radios label:hover {
     color:#121212;
 }
-.radios label:checked {
+.radios label:focus {
     color:#121212;
 }
 .circle{
@@ -42,6 +46,13 @@
     border: 1px solid #121212;
 }
 .circle:focus{   
+    width: 5px;
+    outline:none;
+    border: 3px solid #0EC261;
+    border-radius: 50%; 
+}
+.circle_visited{   
+    @extend .circle;
     width: 5px;
     outline:none;
     border: 3px solid #0EC261;

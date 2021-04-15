@@ -1,11 +1,13 @@
+import { PointTypes } from '../constants';
+
 let initialState = {
   points: [],
 };
 
 const pointsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_POINTS': {
-      return { ...state, points: action.points };
+    case PointTypes.SET_POINTS: {
+      return { ...state, points: action.payload };
     }
     default:
       return state;

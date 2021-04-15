@@ -1,3 +1,5 @@
+import { CarTypes } from '../constants';
+
 let initialState = {
   cars: [
     { name: 'Лада', priceMin: '100', priceMax: '500', image: '' },
@@ -7,8 +9,8 @@ let initialState = {
 
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_CARS': {
-      return { ...state, cars: action.cars };
+    case CarTypes.SET_CARS: {
+      return { ...state, cars: action.payload };
     }
     default:
       return state;

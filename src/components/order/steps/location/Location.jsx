@@ -14,31 +14,33 @@ const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, user
 
   return (
     <div className={styles.location}>
-      <div className={styles.location_autocomplete}>
-        <Autocomplete
-          active={true}
-          title={'Город'}
-          innerText={userCity == '' ? 'Начните вводить город' : userCity}
-          list={cities}
-          onChange={onChangeInputCity}
-        />
-      </div>
-      <div className={styles.location_autocomplete}>
-        <Autocomplete
-          active={userCity !== ''}
-          title={'Пункт выдачи'}
-          innerText={
-            userCity == ''
-              ? 'Сначала выберите город'
-              : filterPointsByCity(points, userCity) == 0
-              ? 'В этом городе нет пунктов'
-              : userPoint == ''
-              ? 'Начните вводить пункт'
-              : userPoint
-          }
-          list={filterPointsByCity(points, userCity)}
-          onChange={onChangeInputPoint}
-        />
+      <div className={styles.selectors}>
+        <div className={styles.location_autocomplete}>
+          <Autocomplete
+            active={true}
+            title={'Город'}
+            innerText={userCity == '' ? 'Начните вводить город' : userCity}
+            list={cities}
+            onChange={onChangeInputCity}
+          />
+        </div>
+        <div className={styles.location_autocomplete}>
+          <Autocomplete
+            active={userCity !== ''}
+            title={'Пункт выдачи'}
+            innerText={
+              userCity == ''
+                ? 'Сначала выберите город'
+                : filterPointsByCity(points, userCity) == 0
+                ? 'В этом городе нет пунктов'
+                : userPoint == ''
+                ? 'Начните вводить пункт'
+                : userPoint
+            }
+            list={filterPointsByCity(points, userCity)}
+            onChange={onChangeInputPoint}
+          />
+        </div>
       </div>
       <div className={styles.map_block}>
         <p>Выбрать на карте:</p>

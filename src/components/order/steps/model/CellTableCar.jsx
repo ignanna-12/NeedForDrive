@@ -1,11 +1,10 @@
 import React from 'react';
-import SVG from 'react-inlinesvg';
 import styles from './CellTableCar.module.scss';
 import defCar from '../../../../assets/images/car.jpg';
 
 const CellTableCar = ({ model, priceMin, priceMax, image, colors, onChangeModel }) => {
   return (
-    <div
+    <button
       className={styles.cell}
       onClick={(e) => {
         onChangeModel(model, priceMin, priceMax, colors);
@@ -20,7 +19,7 @@ const CellTableCar = ({ model, priceMin, priceMax, image, colors, onChangeModel 
       <div className={styles.car_image}>
         <img src={image ? image : defCar} />
       </div>
-    </div>
+    </button>
   );
 };
 

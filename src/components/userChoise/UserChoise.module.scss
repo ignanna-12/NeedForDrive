@@ -11,6 +11,12 @@
   font-family: 'Roboto-Medium';
   align-content: right;
 }
+.visible{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+}
 .point{
   width: 100%;
   align-items: flex-end;

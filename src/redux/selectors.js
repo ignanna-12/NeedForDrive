@@ -1,0 +1,9 @@
+export const userCitySel = (state) => state.orderTable.userCity;
+export const userPointSel = (state) => state.orderTable.userPoint;
+export const citiesSel = (state) => state.citiesTable.cities;
+export const pointsSel = (state) => state.pointsTable.points;
+export const carsSel = (state) => state.carsTable.cars;
+export const userModelSel = (state) => state.orderTable.model;
+export const userColorSel = (state) => state.orderTable.userColor;
+export const userPriceMinSel = (state) => state.orderTable.priceMin;
+export const userPriceMaxSel = (state) => state.orderTable.priceMax;

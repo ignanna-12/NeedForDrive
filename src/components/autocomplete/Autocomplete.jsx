@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-// import { setIndex } from '../../redux/city-reducer';
 import styles from './Autocomplete.module.scss';
+import SVG from 'react-inlinesvg';
+import littleCrest from '../../assets/icons/littleCrest.svg';
 
 const Autocomplete = ({ title, innerText, list, active, onChange }) => {
   const [display, setDisplay] = useState(false);
@@ -37,7 +38,7 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
             onChange('');
           }}
         >
-          х
+          <SVG src={littleCrest} />
         </button>
         {display && (
           <div className={styles.extended_block}>

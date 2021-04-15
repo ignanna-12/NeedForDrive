@@ -8,13 +8,18 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 16px;
-}
-.cell:active{
-    border-color: #0EC261;
+    background-color: #FFFFFF;
+    outline: none;
 }
 .cell:hover{
     border-color: #999999;
     cursor:pointer;
+}
+.cell:active{
+    border-color: #0EC261;
+}
+.cell:focus{
+    border-color: #0EC261;
 }
 .model{
     font-family: 'Roboto-Regular';

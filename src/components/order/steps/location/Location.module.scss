@@ -6,6 +6,11 @@
     align-items: flex-start;
     padding-top: 40px;
 }
+.selectors{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
 .location_autocomplete{
     display: flex;
     flex-direction: column;
