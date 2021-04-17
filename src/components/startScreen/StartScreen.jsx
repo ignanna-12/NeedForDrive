@@ -1,13 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SideBar from '../sideBar/SideBar';
-import Autocomplete from '../autocomplete/Autocomplete';
 import City from './city/City';
 import Footer from './footer/Footer';
 import HeroBlock from './heroBlock/HeroBlock';
 import Logo from './logo/Logo';
 import styles from './StartScreen.module.scss';
-import Button from '../button/Button';
+import Button from '../common/button/Button';
 
 const StartScreen = () => {
   const startScreenRef = React.createRef();

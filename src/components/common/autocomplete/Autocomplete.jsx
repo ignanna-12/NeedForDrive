@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Autocomplete.module.scss';
 import SVG from 'react-inlinesvg';
-import littleCrest from '../../assets/icons/littleCrest.svg';
+import littleCrest from '../../../assets/icons/littleCrest.svg';
 
 const Autocomplete = ({ title, innerText, list, active, onChange }) => {
   const [display, setDisplay] = useState(false);
@@ -22,17 +22,18 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
       {title}
       <div className="styles.autocontainer">
         <input
-          className={styles.autocontainer_input}
+          className={
+            list.length > 0 ? styles.autocontainer_input : styles.autocontainer_input_blocked
+          }
           onClick={onClickInput}
           disabled={!active}
           placeholder={innerText}
-          value={search}
           onChange={(e) => {
             setSearch(e.target.value);
           }}
         />
         <button
-          className={styles.clear_button}
+          className={search == '' ? styles.display_none : styles.clear_button}
           onClick={(e) => {
             setSearch('');
             onChange('');

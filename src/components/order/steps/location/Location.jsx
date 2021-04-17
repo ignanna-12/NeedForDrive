@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { filterPointsByCity } from '../../../../redux/thunk/point.thunk';
-import Autocomplete from '../../../autocomplete/Autocomplete';
+import Autocomplete from '../../../common/autocomplete/Autocomplete';
 import styles from './Location.module.scss';
 import YandexMapComponent from './YandexMapComponent';
 
 const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, userCity }) => {
-  const onChangeInputCity = (value) => {
+  const changeCity = (value) => {
     onChangeCity(value);
-  };
-  const onChangeInputPoint = (value) => {
-    onChangePoint(value);
   };
 
   return (
@@ -21,7 +18,7 @@ const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, user
             title={'Город'}
             innerText={userCity == '' ? 'Начните вводить город' : userCity}
             list={cities}
-            onChange={onChangeInputCity}
+            onChange={changeCity}
           />
         </div>
         <div className={styles.location_autocomplete}>
@@ -34,11 +31,11 @@ const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, user
                 : filterPointsByCity(points, userCity) == 0
                 ? 'В этом городе нет пунктов'
                 : userPoint == ''
-                ? 'Начните вводить пункт'
+                ? 'Начните вводить пункт...'
                 : userPoint
             }
             list={filterPointsByCity(points, userCity)}
-            onChange={onChangeInputPoint}
+            onChange={onChangePoint}
           />
         </div>
       </div>
@@ -47,8 +44,8 @@ const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, user
         <YandexMapComponent
           checkedObjects={filterPointsByCity(points, userCity)}
           userCity={userCity}
-          onSelectPoint={(e) => onChangeInputPoint(e)}
           selectedPoint={userPoint}
+          onSelectPoint={(e) => onChangePoint(e)}
         />
       </div>
     </div>

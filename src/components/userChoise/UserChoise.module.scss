@@ -4,12 +4,16 @@
   display:flex;
   flex-direction: column;
   align-items: flex-end;
+  border-left: #EEEEEE 1px solid;
+  padding-left: 32px;
+  margin-top: 32px;
 }
 .header{
   width: 100%;
   font-size: 18px;
   font-family: 'Roboto-Medium';
-  align-content: right;
+  display: flex;
+  justify-content: flex-end;
 }
 .visible{
   display: flex;

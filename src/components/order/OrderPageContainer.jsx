@@ -22,7 +22,7 @@ import {
   userModelSel,
   userPriceMinSel,
   userPriceMaxSel,
-} from '../../redux/selectors';
+} from '../../redux/selectors/selectors';
 
 const OrderPageContainer = () => {
   useEffect(() => {
@@ -47,6 +47,7 @@ const OrderPageContainer = () => {
 
   const changeCity = (city) => {
     dispatch(setUserCity(city));
+    dispatch(setUserPoint(''));
   };
   const changePoint = (point) => {
     dispatch(setUserPoint(point));

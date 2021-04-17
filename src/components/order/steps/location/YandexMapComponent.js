@@ -1,5 +1,5 @@
-import React from 'react';
-import { YMaps, Map } from 'react-yandex-maps';
+import React, { useState } from 'react';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import styles from './YandexMapComponent.module.scss';
 
 const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint, selectedPoint }) => {
@@ -47,8 +47,7 @@ const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint, selectedP
         myMap.geoObjects.add(myPlacemark);
       });
   }
-
-  function init(ymaps, myMap) {
+  const isSelectedPoint = (ymaps, myMap, selectedPoint, userCity) => {
     if (selectedPoint == '') {
       mapCenter(ymaps, myMap, userCity);
       for (var i in checkedObjects) {
@@ -59,6 +58,10 @@ const YandexMapComponent = ({ userCity, checkedObjects, onSelectPoint, selectedP
       myGeoCode(ymaps, myMap, userCity + selectedPoint);
       myMap.setZoom(14, { duration: 1000 });
     }
+  };
+
+  function init(ymaps, myMap) {
+    isSelectedPoint(ymaps, myMap, selectedPoint, userCity);
   }
 
   return (

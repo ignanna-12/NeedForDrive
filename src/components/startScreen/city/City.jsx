@@ -7,7 +7,7 @@ const City = ({ userCity }) => {
   return (
     <div className={styles.loco}>
       <SVG src={Loco} />
-      <div className={styles.city}>{userCity == '' ? 'Ульяновск' : userCity}</div>
+      <div className={styles.city}>{userCity}</div>
     </div>
   );
 };

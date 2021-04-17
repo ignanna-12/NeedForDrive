@@ -13,6 +13,7 @@
     flex-direction:column;
     background-color: #FFFFFF;
     cursor: pointer;
+    position: absolute;
 }
 .autocontainer_input{
     width: 225px;
@@ -41,6 +42,17 @@
     cursor: pointer;
     padding-left: 15px;
 }
-.list{  
-    margin-left: 10px;
+.list span:hover{
+    font-weight:bold;
+}
+.display_none{
+    @extend .clear_button
+}
+.display_none SVG path{
+    fill:#FFFFFF;
+}
+.autocontainer_input_blocked{
+    @extend .autocontainer_input;
+    background-color: #EEEEEE;
+    cursor: default;
 }
