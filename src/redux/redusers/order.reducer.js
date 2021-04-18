@@ -4,9 +4,10 @@ let initialState = {
   userCity: '',
   userPoint: '',
   model: '',
-  userColor: [],
+  modelColor: [],
   priceMin: '',
   priceMax: '',
+  userColor: '',
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -20,14 +21,17 @@ const orderReducer = (state = initialState, action) => {
     case OrderTypes.SET_MODEL: {
       return { ...state, model: action.payload };
     }
-    case OrderTypes.SET_USER_COLOR: {
-      return { ...state, userColor: action.payload };
+    case OrderTypes.SET_MODEL_COLOR: {
+      return { ...state, modelColor: action.payload };
     }
     case OrderTypes.SET_PRICE_MIN: {
       return { ...state, priceMin: action.payload };
     }
     case OrderTypes.SET_PRICE_MAX: {
       return { ...state, priceMax: action.payload };
+    }
+    case OrderTypes.SET_USER_COLOR: {
+      return { ...state, userColor: action.payload };
     }
     default:
       return state;

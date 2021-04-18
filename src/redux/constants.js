@@ -2,9 +2,10 @@ export const OrderTypes = {
   SET_USER_CITY: 'Order/setUserCity',
   SET_USER_POINT: 'Order/setUserPoint',
   SET_MODEL: 'Order/setModel',
-  SET_USER_COLOR: 'Order/setUserColors',
+  SET_MODEL_COLOR: 'Order/setModelColors',
   SET_PRICE_MIN: 'Order/setPriceMin',
   SET_PRICE_MAX: 'Order/setPriceMax',
+  SET_USER_COLOR: 'Order/setUserColors',
 };
 
 export const CityTypes = {

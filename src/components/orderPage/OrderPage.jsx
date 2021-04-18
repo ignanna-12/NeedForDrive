@@ -10,6 +10,7 @@ import {
   setUserPoint,
   setPriceMin,
   setPriceMax,
+  setModelColor,
 } from '../../redux/actions/actions';
 import {
   userCitySel,
@@ -17,10 +18,11 @@ import {
   pointsSel,
   userPointSel,
   carsSel,
-  userColorSel,
+  modelColorSel,
   userModelSel,
   userPriceMinSel,
   userPriceMaxSel,
+  userColorSel,
 } from '../../redux/selectors/selectors';
 import styles from './OrderPage.module.scss';
 import SideBar from '../sideBar/SideBar';
@@ -46,9 +48,10 @@ const OrderPage = () => {
   const points = useSelector(pointsSel);
   const cars = useSelector(carsSel);
   const userModel = useSelector(userModelSel);
-  const userColor = useSelector(userColorSel);
+  const modelColor = useSelector(modelColorSel);
   const userPriceMin = useSelector(userPriceMinSel);
   const userPriceMax = useSelector(userPriceMaxSel);
+  const userColor = useSelector(userColorSel);
 
   const [activePage, setActivePage] = useState(0);
 
@@ -63,11 +66,13 @@ const OrderPage = () => {
   };
   const changeModel = (model, priceMin, priceMax, colors) => {
     dispatch(setModel(model));
-    dispatch(setUserColor(colors));
+    dispatch(setModelColor(colors));
     dispatch(setPriceMin(priceMin));
     dispatch(setPriceMax(priceMax));
   };
-
+  const changeColor = (color) => {
+    dispatch(setUserColor(color));
+  };
   return (
     <div className={styles.order_page}>
       <SideBar />
@@ -96,7 +101,7 @@ const OrderPage = () => {
           ) : activePage == 1 ? (
             <ModelContainer cars={cars} onChangeModel={changeModel} />
           ) : activePage == 2 ? (
-            <AddOptions colors={userColor} />
+            <AddOptions colors={modelColor} onChangeColor={changeColor} />
           ) : (
             <Summary />
           )}
@@ -106,6 +111,7 @@ const OrderPage = () => {
             model={userModel}
             priceMin={userPriceMin}
             priceMax={userPriceMax}
+            color={userColor}
             btnText={
               activePage == 0
                 ? 'Выбрать модель'

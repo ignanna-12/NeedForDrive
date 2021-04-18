@@ -1,10 +1,18 @@
 .radios{
-    margin-top: 32px;
+    margin-top: 16px;
     display:flex;
     flex-direction: row;
+    margin-left: -5px;
+}
+.radios_vert{
+    @extend .radios;
+    flex-direction: column;
 }
 .radio {
 	margin-bottom: 10px;
+}
+.display_none{
+    display: none;
 }
 .radio input[type=radio] {
     -webkit-appearance: none;
