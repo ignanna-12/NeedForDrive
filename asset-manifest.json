@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/NeedForDrive/static/css/main.3e4a44bc.chunk.css",
-    "main.js": "/NeedForDrive/static/js/main.ccfffaeb.chunk.js",
-    "main.js.map": "/NeedForDrive/static/js/main.ccfffaeb.chunk.js.map",
-    "runtime-main.js": "/NeedForDrive/static/js/runtime-main.32dc1f1f.js",
-    "runtime-main.js.map": "/NeedForDrive/static/js/runtime-main.32dc1f1f.js.map",
-    "static/js/2.7dc41a91.chunk.js": "/NeedForDrive/static/js/2.7dc41a91.chunk.js",
-    "static/js/2.7dc41a91.chunk.js.map": "/NeedForDrive/static/js/2.7dc41a91.chunk.js.map",
-    "static/js/3.6aad5979.chunk.js": "/NeedForDrive/static/js/3.6aad5979.chunk.js",
-    "static/js/3.6aad5979.chunk.js.map": "/NeedForDrive/static/js/3.6aad5979.chunk.js.map",
+    "main.css": "/NeedForDrive/static/css/main.6f8cc8a6.chunk.css",
+    "main.js": "/NeedForDrive/static/js/main.593f98aa.chunk.js",
+    "main.js.map": "/NeedForDrive/static/js/main.593f98aa.chunk.js.map",
+    "runtime-main.js": "/NeedForDrive/static/js/runtime-main.b4223a86.js",
+    "runtime-main.js.map": "/NeedForDrive/static/js/runtime-main.b4223a86.js.map",
+    "static/css/2.a85da11d.chunk.css": "/NeedForDrive/static/css/2.a85da11d.chunk.css",
+    "static/js/2.bca710ae.chunk.js": "/NeedForDrive/static/js/2.bca710ae.chunk.js",
+    "static/js/2.bca710ae.chunk.js.map": "/NeedForDrive/static/js/2.bca710ae.chunk.js.map",
     "index.html": "/NeedForDrive/index.html",
-    "static/css/main.3e4a44bc.chunk.css.map": "/NeedForDrive/static/css/main.3e4a44bc.chunk.css.map",
-    "static/js/2.7dc41a91.chunk.js.LICENSE.txt": "/NeedForDrive/static/js/2.7dc41a91.chunk.js.LICENSE.txt",
+    "static/css/2.a85da11d.chunk.css.map": "/NeedForDrive/static/css/2.a85da11d.chunk.css.map",
+    "static/css/main.6f8cc8a6.chunk.css.map": "/NeedForDrive/static/css/main.6f8cc8a6.chunk.css.map",
+    "static/js/2.bca710ae.chunk.js.LICENSE.txt": "/NeedForDrive/static/js/2.bca710ae.chunk.js.LICENSE.txt",
     "static/media/-keyboard-arrow-left_90113.4b5c9b42.svg": "/NeedForDrive/static/media/-keyboard-arrow-left_90113.4b5c9b42.svg",
     "static/media/-keyboard-arrow-right_90294.b1e36b13.svg": "/NeedForDrive/static/media/-keyboard-arrow-right_90294.b1e36b13.svg",
     "static/media/Facebook_white.01c0ca6a.svg": "/NeedForDrive/static/media/Facebook_white.01c0ca6a.svg",
@@ -27,9 +27,10 @@
     "static/media/littleCrest.13854ee1.svg": "/NeedForDrive/static/media/littleCrest.13854ee1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.32dc1f1f.js",
-    "static/js/2.7dc41a91.chunk.js",
-    "static/css/main.3e4a44bc.chunk.css",
-    "static/js/main.ccfffaeb.chunk.js"
+    "static/js/runtime-main.b4223a86.js",
+    "static/css/2.a85da11d.chunk.css",
+    "static/js/2.bca710ae.chunk.js",
+    "static/css/main.6f8cc8a6.chunk.css",
+    "static/js/main.593f98aa.chunk.js"
   ]
 }
