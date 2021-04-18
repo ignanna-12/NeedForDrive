@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { filterPointsByCity } from '../../../../redux/thunk/point.thunk';
 import Autocomplete from '../../../common/autocomplete/Autocomplete';
 import styles from './Location.module.scss';

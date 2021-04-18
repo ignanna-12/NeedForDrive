@@ -52,3 +52,14 @@
 .none_display{
   display: none;
 }
+@media (max-width: 1024px){
+  .user_choise{
+    width: 60%;
+  }
+}
+@media (max-width: 780px){
+  .user_choise{
+      width: 100%;
+      padding-right: 16px;
+  }
+}

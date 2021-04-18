@@ -41,9 +41,10 @@
     background: #FFFFFF;
     cursor: pointer;
     padding-left: 15px;
+    line-height: 24px;
 }
 .list span:hover{
-    font-weight:bold;
+    color: #0EC261;
 }
 .display_none{
     @extend .clear_button

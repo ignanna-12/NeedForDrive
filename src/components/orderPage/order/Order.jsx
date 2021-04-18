@@ -1,17 +1,8 @@
 import React from 'react';
-import Button from '../common/button/Button';
-import styles from './UserChoise.module.scss';
+import Button from '../../common/button/Button';
+import styles from './Order.module.scss';
 
-const UserChoise = ({
-  city,
-  address,
-  model,
-  priceMin,
-  priceMax,
-  btnText,
-  onClick,
-  disable_btn,
-}) => (
+const Order = ({ city, address, model, priceMin, priceMax, btnText, onClick, disable_btn }) => (
   <div className={styles.user_choise}>
     <div className={styles.header}>Ваш заказ:</div>
     <div className={city ? styles.visible : styles.none_display}>
@@ -39,4 +30,4 @@ const UserChoise = ({
   </div>
 );
 
-export default UserChoise;
+export default Order;

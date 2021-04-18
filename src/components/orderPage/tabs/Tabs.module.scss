@@ -34,3 +34,9 @@
     @extend .links_button;
     color: #0EC261;
 }
+@media (max-width: 780px){
+    .links{
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+}

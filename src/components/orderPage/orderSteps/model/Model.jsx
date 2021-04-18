@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Radios from '../../../common/radios/Radios';
 import CellTableCar from './CellTableCar';
 import styles from './Model.module.scss';
@@ -17,28 +17,6 @@ const Model = ({ cars, filterCar, onChangeModel, setFilterCar, categor, filterCa
         list={categor}
         holeList={cars}
       />
-      <div className={styles.radios}>
-        <label
-          value="Все модели"
-          onClick={(e) => {
-            setFilterCar(cars);
-          }}
-        >
-          <button className={styles.circle} />
-          <span>Все модели</span>
-        </label>
-        {categor.map((cat, i) => (
-          <label
-            key={i}
-            onClick={(e) => {
-              filterCars(cat);
-            }}
-          >
-            <button className={styles.circle} />
-            <span>{cat}</span>
-          </label>
-        ))}
-      </div>
       <div className={styles.model}>
         {filterCar.map((c, i) => (
           <CellTableCar
