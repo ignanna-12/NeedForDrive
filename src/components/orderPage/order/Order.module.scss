@@ -6,7 +6,6 @@
   align-items: flex-end;
   border-left: #EEEEEE 1px solid;
   padding-left: 32px;
-  margin-top: 32px;
 }
 .header{
   width: 100%;
@@ -14,6 +13,7 @@
   font-family: 'Roboto-Medium';
   display: flex;
   justify-content: flex-end;
+  margin-top: 32px;
 }
 .visible{
   display: flex;

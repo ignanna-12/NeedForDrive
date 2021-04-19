@@ -11,3 +11,5 @@ export const setModelColor = (colors) => ({ type: OrderTypes.SET_MODEL_COLOR, pa
 export const setPriceMin = (price) => ({ type: OrderTypes.SET_PRICE_MIN, payload: price });
 export const setPriceMax = (price) => ({ type: OrderTypes.SET_PRICE_MAX, payload: price });
 export const setUserColor = (color) => ({ type: OrderTypes.SET_USER_COLOR, payload: color });
+export const setPeriod = (period) => ({ type: OrderTypes.SET_PERIOD, payload: period });
+export const setPrice = (price) => ({ type: OrderTypes.SET_PERIOD, payload: price });

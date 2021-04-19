@@ -11,6 +11,7 @@ import {
   setPriceMin,
   setPriceMax,
   setModelColor,
+  setPrice,
 } from '../../redux/actions/actions';
 import {
   userCitySel,
@@ -69,6 +70,8 @@ const OrderPage = () => {
     dispatch(setModelColor(colors));
     dispatch(setPriceMin(priceMin));
     dispatch(setPriceMax(priceMax));
+    let x = parseInt((parseInt(priceMax) + parseInt(priceMin)) / 2);
+    dispatch(setPrice(x.toString));
   };
   const changeColor = (color) => {
     dispatch(setUserColor(color));

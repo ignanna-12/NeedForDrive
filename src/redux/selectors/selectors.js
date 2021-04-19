@@ -8,3 +8,5 @@ export const modelColorSel = (state) => state.orderTable.modelColor;
 export const userPriceMinSel = (state) => state.orderTable.priceMin;
 export const userPriceMaxSel = (state) => state.orderTable.priceMax;
 export const userColorSel = (state) => state.orderTable.userColor;
+export const periodSel = (state) => state.orderTable.period;
+export const priceSel = (state) => state.orderTable.price;

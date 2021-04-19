@@ -35,13 +35,15 @@
     margin-left: -15px;
 }
 .extended_block{
-    width: 225px;
+    width: 215px;
     z-index:10;
     position: absolute;
     background: #FFFFFF;
     cursor: pointer;
     padding-left: 15px;
     line-height: 24px;
+    margin-left: 10px;
+    border: 1px solid #999999;
 }
 .list span:hover{
     color: #0EC261;
@@ -54,6 +56,5 @@
 }
 .autocontainer_input_blocked{
     @extend .autocontainer_input;
-    background-color: #EEEEEE;
     cursor: default;
 }

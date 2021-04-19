@@ -11,10 +11,19 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
     setSearch(item);
     setDisplay(false);
   };
-
   const onClickInput = () => {
     setSearch('');
     setDisplay(!display);
+  };
+  const handleBlur = (e) => {
+    if (
+      !(
+        e.currentTarget.classList.contains('styles.extended_block') ||
+        e.currentTarget.classList.contains('styles.list')
+      )
+    ) {
+      setDisplay(false);
+    }
   };
 
   return (
@@ -42,12 +51,13 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
           <SVG src={littleCrest} />
         </button>
         {display && (
-          <div className={styles.extended_block}>
+          <div className={styles.extended_block} tabIndex="0" onBlur={(e) => setDisplay(false)}>
             {list
               .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
               .map((v, i) => {
                 return (
                   <div
+                    id={'a'}
                     className={styles.list}
                     key={i}
                     onClick={() => {
@@ -55,7 +65,7 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
                       setItem(v);
                     }}
                   >
-                    <span>{v}</span>
+                    <span className={styles.span}>{v}</span>
                   </div>
                 );
               })}

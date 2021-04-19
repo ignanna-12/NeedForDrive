@@ -5,7 +5,7 @@ import styles from './City.module.scss';
 
 const City = ({ userCity }) => {
   return (
-    <div className={styles.loco}>
+    <div className={userCity == '' ? styles.display_none : styles.loco}>
       <SVG src={Loco} />
       <div className={styles.city}>{userCity}</div>
     </div>

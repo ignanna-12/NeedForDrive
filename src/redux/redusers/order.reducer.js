@@ -8,6 +8,8 @@ let initialState = {
   priceMin: '',
   priceMax: '',
   userColor: '',
+  period: '',
+  price: '',
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -32,6 +34,12 @@ const orderReducer = (state = initialState, action) => {
     }
     case OrderTypes.SET_USER_COLOR: {
       return { ...state, userColor: action.payload };
+    }
+    case OrderTypes.SET_PERIOD: {
+      return { ...state, period: action.payload };
+    }
+    case OrderTypes.SET_PRICE: {
+      return { ...state, price: action.payload };
     }
     default:
       return state;

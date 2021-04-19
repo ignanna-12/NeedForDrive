@@ -34,6 +34,15 @@
     @extend .links_button;
     color: #0EC261;
 }
+@media (max-width: 1024px){
+    .lines{
+        margin-left: -32px;
+    }
+    .links{
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+}
 @media (max-width: 780px){
     .links{
         flex-wrap: wrap;

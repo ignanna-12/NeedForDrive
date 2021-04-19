@@ -6,6 +6,8 @@ export const OrderTypes = {
   SET_PRICE_MIN: 'Order/setPriceMin',
   SET_PRICE_MAX: 'Order/setPriceMax',
   SET_USER_COLOR: 'Order/setUserColors',
+  SET_PERIOD: 'Order/setPeriod',
+  SET_PRICE: 'Order/setPrice',
 };
 
 export const CityTypes = {
