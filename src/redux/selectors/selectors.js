@@ -1,7 +1,10 @@
 export const userCitySel = (state) => state.orderTable.userCity;
 export const userPointSel = (state) => state.orderTable.userPoint;
 export const citiesSel = (state) => state.citiesTable.cities;
+export const citiesIdSel = (state) => state.citiesTable.id;
+export const userCityIdSel = (state) => state.orderTable.userCityId;
 export const pointsSel = (state) => state.pointsTable.points;
+export const userPointIdSel = (state) => state.orderTable.userPointId;
 export const carsSel = (state) => state.carsTable.cars;
 export const userModelSel = (state) => state.orderTable.model;
 export const modelColorSel = (state) => state.orderTable.modelColor;

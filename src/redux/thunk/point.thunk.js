@@ -10,6 +10,7 @@ export const requestPoints = () => {
         let elem = {};
         elem.city = data.data[i].cityId.name;
         elem.address = data.data[i].address;
+        elem.id = data.data[i].id;
         point.push(elem);
       }
     }

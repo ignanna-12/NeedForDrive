@@ -37,30 +37,30 @@ const Order = ({
           <div className={styles.dots}></div>
           <div className={styles.address}>{model}</div>
         </div>
-        <div className={color ? styles.visible : styles.none_display}>
-          <div className={styles.point}>
-            <div>Цвет</div>
-            <div className={styles.dots}></div>
-            <div className={styles.address}>{color}</div>
-          </div>
+      </div>
+      <div className={color ? styles.visible : styles.none_display}>
+        <div className={styles.point}>
+          <div>Цвет</div>
+          <div className={styles.dots}></div>
+          <div className={styles.address}>{color}</div>
         </div>
-        <div className={period ? styles.visible : styles.none_display}>
-          <div className={styles.point}>
-            <div>Длительность аренды</div>
-            <div className={styles.dots}></div>
-            <div className={styles.address}>{period}</div>
-          </div>
+      </div>
+      <div className={color && period ? styles.visible : styles.none_display}>
+        <div className={styles.point}>
+          <div>Длительность аренды</div>
+          <div className={styles.dots}></div>
+          <div className={styles.address}>{period}</div>
         </div>
-        <div className={styles.price}>
-          <b>Цена:</b>{' '}
-          {color ? (
-            <p>{price}</p>
-          ) : (
-            <p>
-              от {priceMin} до {priceMax} Р{' '}
-            </p>
-          )}
-        </div>
+      </div>
+      <div className={model ? styles.price : styles.none_display}>
+        <b>Цена:</b>{' '}
+        {color ? (
+          <p>{price}</p>
+        ) : (
+          <p>
+            от {priceMin} до {priceMax} Р{' '}
+          </p>
+        )}
       </div>
       <Button innerText={btnText} onClick={onClick} disabled={disable_btn} />
     </div>

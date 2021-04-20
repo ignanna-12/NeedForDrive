@@ -5,7 +5,9 @@ export const setPoints = (points) => ({ type: PointTypes.SET_POINTS, payload: po
 export const setCities = (cities) => ({ type: CityTypes.SET_CITIES, payload: cities });
 export const setId = (id) => ({ type: CityTypes.SET_ID, payload: id });
 export const setUserCity = (city) => ({ type: OrderTypes.SET_USER_CITY, payload: city });
+export const setUserCityId = (id) => ({ type: OrderTypes.SET_USER_CITY_ID, payload: id });
 export const setUserPoint = (point) => ({ type: OrderTypes.SET_USER_POINT, payload: point });
+export const setUserPointId = (id) => ({ type: OrderTypes.SET_USER_POINT_ID, payload: id });
 export const setModel = (model) => ({ type: OrderTypes.SET_MODEL, payload: model });
 export const setModelColor = (colors) => ({ type: OrderTypes.SET_MODEL_COLOR, payload: colors });
 export const setPriceMin = (price) => ({ type: OrderTypes.SET_PRICE_MIN, payload: price });

@@ -8,6 +8,8 @@ export const OrderTypes = {
   SET_USER_COLOR: 'Order/setUserColors',
   SET_PERIOD: 'Order/setPeriod',
   SET_PRICE: 'Order/setPrice',
+  SET_USER_CITY_ID: 'Order/setUserCityId',
+  SET_USER_POINT_ID: 'Order/setUserPointId',
 };
 
 export const CityTypes = {

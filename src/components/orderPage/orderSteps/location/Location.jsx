@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserCityId } from '../../../../redux/actions/actions';
+import { citiesIdSel, userCityIdSel } from '../../../../redux/selectors/selectors';
 import { filterPointsByCity } from '../../../../redux/thunk/point.thunk';
 import Autocomplete from '../../../common/autocomplete/Autocomplete';
 import styles from './Location.module.scss';
@@ -8,7 +11,6 @@ const Location = ({ cities, points, onChangeCity, onChangePoint, userPoint, user
   const changeCity = (value) => {
     onChangeCity(value);
   };
-
   return (
     <div className={styles.location}>
       <div className={styles.selectors}>

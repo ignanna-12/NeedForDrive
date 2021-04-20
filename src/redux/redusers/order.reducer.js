@@ -2,14 +2,23 @@ import { OrderTypes } from '../constants';
 
 let initialState = {
   userCity: '',
+  userCityId: '',
   userPoint: '',
+  userPointId: '',
   model: '',
+  carId: '',
   modelColor: [],
+  dateFrom: 0,
+  dateTo: 0,
+  rateId: {},
   priceMin: '',
   priceMax: '',
   userColor: '',
   period: '',
-  price: '',
+  price: 0,
+  isFullTank: false,
+  isNeedChildChair: false,
+  isRightWheel: false,
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -17,8 +26,14 @@ const orderReducer = (state = initialState, action) => {
     case OrderTypes.SET_USER_CITY: {
       return { ...state, userCity: action.payload };
     }
+    case OrderTypes.SET_USER_CITY_ID: {
+      return { ...state, userCityId: action.payload };
+    }
     case OrderTypes.SET_USER_POINT: {
       return { ...state, userPoint: action.payload };
+    }
+    case OrderTypes.SET_USER_POINT_ID: {
+      return { ...state, userPointId: action.payload };
     }
     case OrderTypes.SET_MODEL: {
       return { ...state, model: action.payload };

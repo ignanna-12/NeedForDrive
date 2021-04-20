@@ -12,6 +12,8 @@ import {
   setPriceMax,
   setModelColor,
   setPrice,
+  setUserCityId,
+  setUserPointId,
 } from '../../redux/actions/actions';
 import {
   userCitySel,
@@ -24,6 +26,8 @@ import {
   userPriceMinSel,
   userPriceMaxSel,
   userColorSel,
+  citiesIdSel,
+  userPointIdSel,
 } from '../../redux/selectors/selectors';
 import styles from './OrderPage.module.scss';
 import SideBar from '../sideBar/SideBar';
@@ -44,6 +48,7 @@ const OrderPage = () => {
   }, []);
 
   const userCity = useSelector(userCitySel);
+  const citiesId = useSelector(citiesIdSel);
   const userPoint = useSelector(userPointSel);
   const cities = useSelector(citiesSel);
   const points = useSelector(pointsSel);
@@ -53,6 +58,7 @@ const OrderPage = () => {
   const userPriceMin = useSelector(userPriceMinSel);
   const userPriceMax = useSelector(userPriceMaxSel);
   const userColor = useSelector(userColorSel);
+  const userPointId = useSelector(userPointIdSel);
 
   const [activePage, setActivePage] = useState(0);
 
@@ -61,17 +67,21 @@ const OrderPage = () => {
   const changeCity = (city) => {
     dispatch(setUserCity(city));
     dispatch(setUserPoint(''));
+    dispatch(setUserCityId(citiesId[cities.indexOf(city)]));
   };
   const changePoint = (point) => {
     dispatch(setUserPoint(point));
+    for (var i in points) {
+      if (points[i].address == point) {
+        dispatch(setUserPointId(points[i].id));
+      }
+    }
   };
   const changeModel = (model, priceMin, priceMax, colors) => {
     dispatch(setModel(model));
     dispatch(setModelColor(colors));
     dispatch(setPriceMin(priceMin));
     dispatch(setPriceMax(priceMax));
-    let x = parseInt((parseInt(priceMax) + parseInt(priceMin)) / 2);
-    dispatch(setPrice(x.toString));
   };
   const changeColor = (color) => {
     dispatch(setUserColor(color));
@@ -104,7 +114,11 @@ const OrderPage = () => {
           ) : activePage == 1 ? (
             <ModelContainer cars={cars} onChangeModel={changeModel} />
           ) : activePage == 2 ? (
-            <AddOptions colors={modelColor} onChangeColor={changeColor} />
+            <AddOptions
+              colors={modelColor}
+              onChangeColor={changeColor}
+              userPriceMin={userPriceMin}
+            />
           ) : (
             <Summary />
           )}
