@@ -8,6 +8,7 @@ export const requestCars = () => {
     for (var i in data.data) {
       let elem = {};
       elem.name = data.data[i].name;
+      elem.id = data.data[i].id;
       elem.category = data.data[i].categoryId.name;
       elem.priceMax = data.data[i].priceMax;
       elem.priceMin = data.data[i].priceMin;

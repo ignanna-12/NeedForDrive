@@ -51,7 +51,7 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
           <SVG src={littleCrest} />
         </button>
         {display && (
-          <div className={styles.extended_block} tabIndex="0" onBlur={(e) => setDisplay(false)}>
+          <div className={styles.extended_block} tabIndex="0" onBlur={(e) => handleBlur}>
             {list
               .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
               .map((v, i) => {

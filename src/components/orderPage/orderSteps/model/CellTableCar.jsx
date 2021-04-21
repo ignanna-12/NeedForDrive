@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './CellTableCar.module.scss';
 import defCar from '../../../../assets/images/car.jpg';
 
-const CellTableCar = ({ model, priceMin, priceMax, image, colors, onChangeModel }) => {
+const CellTableCar = ({ model, priceMin, priceMax, image, colors, onChangeModel, id }) => {
   return (
     <button
       className={styles.cell}
       onClick={(e) => {
-        onChangeModel(model, priceMin, priceMax, colors);
+        onChangeModel(model, priceMin, priceMax, colors, id);
       }}
     >
       <div>

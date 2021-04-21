@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  setCarId,
+  setModel,
+  setModelColor,
+  setPriceMax,
+  setPriceMin,
+} from '../../../../redux/actions/actions';
 import Model from './Model';
 
-const ModelContainer = ({ cars, onChangeModel }) => {
+const ModelContainer = ({ cars }) => {
+  const dispatch = useDispatch();
+
+  const changeModel = (model, priceMin, priceMax, colors, id) => {
+    dispatch(setModel(model));
+    dispatch(setCarId(id));
+    dispatch(setModelColor(colors));
+    dispatch(setPriceMin(priceMin));
+    dispatch(setPriceMax(priceMax));
+  };
   const [fiterCar, setFilterCar] = useState(cars);
   const filterCars = (catName) => {
     let filterCarWithCat = [];
@@ -21,7 +38,7 @@ const ModelContainer = ({ cars, onChangeModel }) => {
     <Model
       cars={cars}
       filterCar={fiterCar}
-      onChangeModel={onChangeModel}
+      onChangeModel={changeModel}
       setFilterCar={setFilterCar}
       categor={categor}
       filterCars={filterCars}

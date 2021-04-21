@@ -10,7 +10,9 @@ let initialState = {
   modelColor: [],
   dateFrom: 0,
   dateTo: 0,
-  rateId: {},
+  rates: [],
+  rateName: '',
+  rateId: '',
   priceMin: '',
   priceMax: '',
   userColor: '',
@@ -38,6 +40,9 @@ const orderReducer = (state = initialState, action) => {
     case OrderTypes.SET_MODEL: {
       return { ...state, model: action.payload };
     }
+    case OrderTypes.SET_CAR_ID: {
+      return { ...state, carId: action.payload };
+    }
     case OrderTypes.SET_MODEL_COLOR: {
       return { ...state, modelColor: action.payload };
     }
@@ -53,8 +58,32 @@ const orderReducer = (state = initialState, action) => {
     case OrderTypes.SET_PERIOD: {
       return { ...state, period: action.payload };
     }
+    case OrderTypes.SET_RATES: {
+      return { ...state, rates: action.payload };
+    }
+    case OrderTypes.SET_RATE_ID: {
+      return { ...state, rateId: action.payload };
+    }
+    case OrderTypes.SET_RATE_NAME: {
+      return { ...state, rateName: action.payload };
+    }
+    case OrderTypes.SET_DATE_FROM: {
+      return { ...state, dateFrom: action.payload };
+    }
+    case OrderTypes.SET_DATE_TO: {
+      return { ...state, dateTo: action.payload };
+    }
     case OrderTypes.SET_PRICE: {
       return { ...state, price: action.payload };
+    }
+    case OrderTypes.SET_TANK: {
+      return { ...state, isFullTank: action.payload };
+    }
+    case OrderTypes.SET_CHAIR: {
+      return { ...state, isNeedChildChair: action.payload };
+    }
+    case OrderTypes.SET_WHEEL: {
+      return { ...state, isRightWheel: action.payload };
     }
     default:
       return state;

@@ -24,3 +24,9 @@ export const getCars = () => {
     return response.data;
   });
 };
+
+export const getRate = () => {
+  return instance.get('db/rate/').then((response) => {
+    return response.data;
+  });
+};

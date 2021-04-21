@@ -3,18 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestCities } from '../../redux/thunk/city.thunk';
 import { requestPoints } from '../../redux/thunk/point.thunk';
 import { requestCars } from '../../redux/thunk/car.thunk';
-import {
-  setModel,
-  setUserCity,
-  setUserColor,
-  setUserPoint,
-  setPriceMin,
-  setPriceMax,
-  setModelColor,
-  setPrice,
-  setUserCityId,
-  setUserPointId,
-} from '../../redux/actions/actions';
+import { requestRate } from '../../redux/thunk/rate.thunk';
 import {
   userCitySel,
   citiesSel,
@@ -26,66 +15,43 @@ import {
   userPriceMinSel,
   userPriceMaxSel,
   userColorSel,
-  citiesIdSel,
-  userPointIdSel,
+  ratesSel,
 } from '../../redux/selectors/selectors';
 import styles from './OrderPage.module.scss';
 import SideBar from '../sideBar/SideBar';
 import Logo from '../startScreen/logo/Logo';
 import City from '../startScreen/city/City';
-import Location from './orderSteps/location/Location';
-import AddOptions from './orderSteps/addOptions/AddOptions';
 import Summary from './orderSteps/summary/Summary';
 import Tabs from './tabs/Tabs';
 import ModelContainer from './orderSteps/model/ModelContainer';
 import Order from './order/Order';
+import LocationContainer from './orderSteps/location/LocationContainer';
+import AddOptionsContainer from './orderSteps/addOptions/AddOptionsContainer';
 
 const OrderPage = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(requestCities());
     dispatch(requestPoints());
     dispatch(requestCars());
+    dispatch(requestRate());
   }, []);
 
-  const userCity = useSelector(userCitySel);
-  const citiesId = useSelector(citiesIdSel);
-  const userPoint = useSelector(userPointSel);
   const cities = useSelector(citiesSel);
   const points = useSelector(pointsSel);
+  const rates = useSelector(ratesSel);
+  const userCity = useSelector(userCitySel);
+  const userPoint = useSelector(userPointSel);
   const cars = useSelector(carsSel);
   const userModel = useSelector(userModelSel);
   const modelColor = useSelector(modelColorSel);
   const userPriceMin = useSelector(userPriceMinSel);
   const userPriceMax = useSelector(userPriceMaxSel);
   const userColor = useSelector(userColorSel);
-  const userPointId = useSelector(userPointIdSel);
 
   const [activePage, setActivePage] = useState(0);
 
-  const dispatch = useDispatch();
-
-  const changeCity = (city) => {
-    dispatch(setUserCity(city));
-    dispatch(setUserPoint(''));
-    dispatch(setUserCityId(citiesId[cities.indexOf(city)]));
-  };
-  const changePoint = (point) => {
-    dispatch(setUserPoint(point));
-    for (var i in points) {
-      if (points[i].address == point) {
-        dispatch(setUserPointId(points[i].id));
-      }
-    }
-  };
-  const changeModel = (model, priceMin, priceMax, colors) => {
-    dispatch(setModel(model));
-    dispatch(setModelColor(colors));
-    dispatch(setPriceMin(priceMin));
-    dispatch(setPriceMax(priceMax));
-  };
-  const changeColor = (color) => {
-    dispatch(setUserColor(color));
-  };
   return (
     <div className={styles.order_page}>
       <SideBar />
@@ -103,22 +69,11 @@ const OrderPage = () => {
         />
         <div className={styles.order_settings}>
           {activePage == 0 ? (
-            <Location
-              cities={cities}
-              points={points}
-              onChangeCity={changeCity}
-              userCity={userCity}
-              userPoint={userPoint}
-              onChangePoint={changePoint}
-            />
+            <LocationContainer cities={cities} points={points} />
           ) : activePage == 1 ? (
-            <ModelContainer cars={cars} onChangeModel={changeModel} />
+            <ModelContainer cars={cars} />
           ) : activePage == 2 ? (
-            <AddOptions
-              colors={modelColor}
-              onChangeColor={changeColor}
-              userPriceMin={userPriceMin}
-            />
+            <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
           ) : (
             <Summary />
           )}

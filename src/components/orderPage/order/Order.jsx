@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { periodSel, priceSel } from '../../../redux/selectors/selectors';
+import { periodSel, priceSel, rateNameSel } from '../../../redux/selectors/selectors';
 import Button from '../../common/button/Button';
 import styles from './Order.module.scss';
 
@@ -17,6 +17,7 @@ const Order = ({
 }) => {
   const period = useSelector(periodSel);
   const price = useSelector(priceSel);
+  const rateName = useSelector(rateNameSel);
   return (
     <div className={styles.user_choise}>
       <div className={styles.header}>Ваш заказ:</div>
@@ -45,20 +46,28 @@ const Order = ({
           <div className={styles.address}>{color}</div>
         </div>
       </div>
-      <div className={color && period ? styles.visible : styles.none_display}>
+      <div className={period ? styles.visible : styles.none_display}>
         <div className={styles.point}>
           <div>Длительность аренды</div>
           <div className={styles.dots}></div>
           <div className={styles.address}>{period}</div>
         </div>
       </div>
+      <div className={rateName ? styles.visible : styles.none_display}>
+        <div className={styles.point}>
+          <div>Тариф</div>
+          <div className={styles.dots}></div>
+          <div className={styles.address}>{rateName}</div>
+        </div>
+      </div>
       <div className={model ? styles.price : styles.none_display}>
-        <b>Цена:</b>{' '}
-        {color ? (
-          <p>{price}</p>
+        {price ? (
+          <p>
+            <b>Цена:</b> {price} ₽
+          </p>
         ) : (
           <p>
-            от {priceMin} до {priceMax} Р{' '}
+            <b>Цена:</b> от {priceMin} до {priceMax} ₽
           </p>
         )}
       </div>
