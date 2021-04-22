@@ -17,6 +17,16 @@ import {
   userColorSel,
   ratesSel,
   priceSel,
+  userCityIdSel,
+  userPointIdSel,
+  carIdSel,
+  dateFromSel,
+  dateToSel,
+  rateIdSel,
+  tankSel,
+  chairSel,
+  wheelSel,
+  orderIdSel,
 } from '../../redux/selectors/selectors';
 import styles from './OrderPage.module.scss';
 import SideBar from '../sideBar/SideBar';
@@ -28,6 +38,8 @@ import ModelContainer from './orderSteps/model/ModelContainer';
 import Order from './order/Order';
 import LocationContainer from './orderSteps/location/LocationContainer';
 import AddOptionsContainer from './orderSteps/addOptions/AddOptionsContainer';
+import { sendOrder } from '../../redux/thunk/order.thunk';
+import Confirmation from './confirmation/Confirmation';
 
 const OrderPage = () => {
   const dispatch = useDispatch();
@@ -51,8 +63,38 @@ const OrderPage = () => {
   const userPriceMax = useSelector(userPriceMaxSel);
   const userColor = useSelector(userColorSel);
   const price = useSelector(priceSel);
+  const userCityId = useSelector(userCityIdSel);
+  const userPointId = useSelector(userPointIdSel);
+  const carId = useSelector(carIdSel);
+  const dateFrom = useSelector(dateFromSel);
+  const dateTo = useSelector(dateToSel);
+  const rateId = useSelector(rateIdSel);
+  const tank = useSelector(tankSel);
+  const chair = useSelector(chairSel);
+  const wheel = useSelector(wheelSel);
+  const orderId = useSelector(orderIdSel);
 
   const [activePage, setActivePage] = useState(0);
+  const [visibleTabs, setVisibleTabs] = useState(true);
+
+  const makeOrder = () => {
+    dispatch(
+      sendOrder(
+        userCityId,
+        userPointId,
+        carId,
+        userColor,
+        dateFrom,
+        dateTo,
+        rateId,
+        price,
+        tank,
+        chair,
+        wheel
+      )
+    );
+    setVisibleTabs(false);
+  };
 
   return (
     <div className={styles.order_page}>
@@ -62,14 +104,18 @@ const OrderPage = () => {
           <Logo />
           <City userCity={userCity} />
         </div>
-        <Tabs
-          userCity={userCity}
-          changeActivePage={(e) => setActivePage(e)}
-          activePage={activePage}
-          userPoint={userPoint}
-          model={userModel}
-          price={price}
-        />
+        {visibleTabs ? (
+          <Tabs
+            userCity={userCity}
+            changeActivePage={(e) => setActivePage(e)}
+            activePage={activePage}
+            userPoint={userPoint}
+            model={userModel}
+            price={price}
+          />
+        ) : (
+          <Confirmation orderId={orderId} />
+        )}
         <div className={styles.order_settings}>
           {activePage == 0 ? (
             <LocationContainer cities={cities} points={points} />
@@ -100,7 +146,7 @@ const OrderPage = () => {
               activePage == 0 ? !(userCity && userPoint) : activePage == 1 ? !userModel : ''
             }
             onClick={(e) => {
-              activePage < 3 ? setActivePage(activePage + 1) : setActivePage(3);
+              activePage < 3 ? setActivePage(activePage + 1) : makeOrder();
             }}
           />
         </div>

@@ -30,3 +30,36 @@ export const getRate = () => {
     return response.data;
   });
 };
+
+export const postOrder = (
+  userCityId,
+  userPointId,
+  carId,
+  userColor,
+  dateFrom,
+  dateTo,
+  rateId,
+  price,
+  tank,
+  chair,
+  wheel
+) => {
+  return instance
+    .post('db/order/', {
+      orderStatusId: '5e26a191099b810b946c5d89',
+      cityId: userCityId,
+      pointId: userPointId,
+      carId: carId,
+      color: userColor,
+      dateFrom: dateFrom,
+      dateTo: dateTo,
+      rateId: rateId,
+      price: price,
+      isFullTank: tank,
+      isNeedChildChair: chair,
+      isRightWheel: wheel,
+    })
+    .then((response) => {
+      return response.data;
+    });
+};

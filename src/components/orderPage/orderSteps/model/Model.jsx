@@ -28,6 +28,7 @@ const Model = ({ cars, filterCar, onChangeModel, setFilterCar, categor, filterCa
             onChangeModel={onChangeModel}
             colors={c.colors}
             id={c.id}
+            number={c.number}
           />
         ))}
       </div>

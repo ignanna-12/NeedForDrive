@@ -3,6 +3,8 @@ export const OrderTypes = {
   SET_USER_POINT: 'Order/setUserPoint',
   SET_MODEL: 'Order/setModel',
   SET_MODEL_COLOR: 'Order/setModelColors',
+  SET_MODEL_NUMBER: 'Order/setModelNumber',
+  SET_MODEL_IMAGE: 'Order/setModelImage',
   SET_PRICE_MIN: 'Order/setPriceMin',
   SET_PRICE_MAX: 'Order/setPriceMax',
   SET_USER_COLOR: 'Order/setUserColors',
@@ -20,6 +22,7 @@ export const OrderTypes = {
   SET_TANK: 'Order/setTank',
   SET_CHAIR: 'Order/setChair',
   SET_WHEEL: 'Order/setWheel',
+  SET_ORDER_ID: 'Order/setOrderId',
 };
 
 export const CityTypes = {

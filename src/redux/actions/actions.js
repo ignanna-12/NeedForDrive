@@ -11,6 +11,8 @@ export const setUserPointId = (id) => ({ type: OrderTypes.SET_USER_POINT_ID, pay
 export const setModel = (model) => ({ type: OrderTypes.SET_MODEL, payload: model });
 export const setCarId = (id) => ({ type: OrderTypes.SET_CAR_ID, payload: id });
 export const setModelColor = (colors) => ({ type: OrderTypes.SET_MODEL_COLOR, payload: colors });
+export const setModelNumber = (number) => ({ type: OrderTypes.SET_MODEL_NUMBER, payload: number });
+export const setModelImage = (image) => ({ type: OrderTypes.SET_MODEL_IMAGE, payload: image });
 export const setPriceMin = (price) => ({ type: OrderTypes.SET_PRICE_MIN, payload: price });
 export const setPriceMax = (price) => ({ type: OrderTypes.SET_PRICE_MAX, payload: price });
 export const setUserColor = (color) => ({ type: OrderTypes.SET_USER_COLOR, payload: color });
@@ -25,3 +27,4 @@ export const setDateTo = (date) => ({ type: OrderTypes.SET_DATE_TO, payload: dat
 export const setTank = (tank) => ({ type: OrderTypes.SET_TANK, payload: tank });
 export const setChair = (chair) => ({ type: OrderTypes.SET_CHAIR, payload: chair });
 export const setWheel = (wheel) => ({ type: OrderTypes.SET_WHEEL, payload: wheel });
+export const setOrderId = (id) => ({ type: OrderTypes.SET_ORDER_ID, payload: id });

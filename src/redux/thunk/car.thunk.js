@@ -18,6 +18,7 @@ export const requestCars = () => {
         elem.image = data.data[i].thumbnail.path;
       }
       elem.colors = data.data[i].colors;
+      elem.number = data.data[i].number;
       car.push(elem);
     }
     dispatch(setCars(car));

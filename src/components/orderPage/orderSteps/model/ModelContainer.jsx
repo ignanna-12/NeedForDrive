@@ -4,6 +4,8 @@ import {
   setCarId,
   setModel,
   setModelColor,
+  setModelImage,
+  setModelNumber,
   setPriceMax,
   setPriceMin,
 } from '../../../../redux/actions/actions';
@@ -12,12 +14,14 @@ import Model from './Model';
 const ModelContainer = ({ cars }) => {
   const dispatch = useDispatch();
 
-  const changeModel = (model, priceMin, priceMax, colors, id) => {
+  const changeModel = (model, priceMin, priceMax, colors, id, number, image) => {
     dispatch(setModel(model));
     dispatch(setCarId(id));
     dispatch(setModelColor(colors));
     dispatch(setPriceMin(priceMin));
     dispatch(setPriceMax(priceMax));
+    dispatch(setModelNumber(number));
+    dispatch(setModelImage(image));
   };
   const [fiterCar, setFilterCar] = useState(cars);
   const filterCars = (catName) => {

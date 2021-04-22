@@ -8,8 +8,10 @@ let initialState = {
   model: '',
   carId: '',
   modelColor: [],
-  dateFrom: 0,
-  dateTo: 0,
+  modelNumber: '',
+  modelImage: '',
+  dateFrom: +new Date(),
+  dateTo: '',
   rates: [],
   rateName: '',
   rateId: '',
@@ -22,6 +24,7 @@ let initialState = {
   chair: false,
   wheel: false,
   rate: {},
+  orderId: '',
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -46,6 +49,12 @@ const orderReducer = (state = initialState, action) => {
     }
     case OrderTypes.SET_MODEL_COLOR: {
       return { ...state, modelColor: action.payload };
+    }
+    case OrderTypes.SET_MODEL_IMAGE: {
+      return { ...state, modelImage: action.payload };
+    }
+    case OrderTypes.SET_MODEL_NUMBER: {
+      return { ...state, modelNumber: action.payload };
     }
     case OrderTypes.SET_PRICE_MIN: {
       return { ...state, priceMin: action.payload };
@@ -88,6 +97,9 @@ const orderReducer = (state = initialState, action) => {
     }
     case OrderTypes.SET_WHEEL: {
       return { ...state, wheel: action.payload };
+    }
+    case OrderTypes.SET_ORDER_ID: {
+      return { ...state, orderId: action.payload };
     }
     default:
       return state;
