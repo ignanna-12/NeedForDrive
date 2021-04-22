@@ -12,13 +12,14 @@ export const OrderTypes = {
   SET_USER_POINT_ID: 'Order/setUserPointId',
   SET_CAR_ID: 'Order/setCarId',
   SET_RATES: 'Order/setRates',
+  SET_RATE: 'Order/setRate',
   SET_RATE_ID: 'Order/setRateId',
   SET_RATE_NAME: 'Order/setRateName',
   SET_DATE_FROM: 'Order/setDateFrom',
   SET_DATE_TO: 'Order/setDateTo',
-  SET_TANK: 'Order/setCarId',
-  SET_CHAIR: 'Order/setCarId',
-  SET_WHEEL: 'Order/setCarId',
+  SET_TANK: 'Order/setTank',
+  SET_CHAIR: 'Order/setChair',
+  SET_WHEEL: 'Order/setWheel',
 };
 
 export const CityTypes = {

@@ -18,9 +18,10 @@ let initialState = {
   userColor: '',
   period: '',
   price: 0,
-  isFullTank: false,
-  isNeedChildChair: false,
-  isRightWheel: false,
+  tank: false,
+  chair: false,
+  wheel: false,
+  rate: {},
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -61,6 +62,9 @@ const orderReducer = (state = initialState, action) => {
     case OrderTypes.SET_RATES: {
       return { ...state, rates: action.payload };
     }
+    case OrderTypes.SET_RATE: {
+      return { ...state, rate: action.payload };
+    }
     case OrderTypes.SET_RATE_ID: {
       return { ...state, rateId: action.payload };
     }
@@ -77,13 +81,13 @@ const orderReducer = (state = initialState, action) => {
       return { ...state, price: action.payload };
     }
     case OrderTypes.SET_TANK: {
-      return { ...state, isFullTank: action.payload };
+      return { ...state, tank: action.payload };
     }
     case OrderTypes.SET_CHAIR: {
-      return { ...state, isNeedChildChair: action.payload };
+      return { ...state, chair: action.payload };
     }
     case OrderTypes.SET_WHEEL: {
-      return { ...state, isRightWheel: action.payload };
+      return { ...state, wheel: action.payload };
     }
     default:
       return state;

@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import Radios from '../../../common/radios/Radios';
-import DatePicker from 'react-datepicker';
-import styles from './AddOptions.module.scss';
+import React, { useEffect, useMemo, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  setDateFrom,
-  setDateTo,
+  setChair,
   setPeriod,
   setPrice,
   setRateId,
   setRateName,
+  setTank,
   setUserColor,
+  setWheel,
 } from '../../../../redux/actions/actions';
 import {
   chairSel,
-  rateNameSel,
-  ratesSel,
   tankSel,
   userPriceMinSel,
   wheelSel,
 } from '../../../../redux/selectors/selectors';
-import { requestRate } from '../../../../redux/thunk/rate.thunk';
+import AddOptions from './AddOptions';
 
 const AddOptionsContainer = ({ colors, rates }) => {
   const dispatch = useDispatch();
@@ -34,7 +30,6 @@ const AddOptionsContainer = ({ colors, rates }) => {
   const [endDate, setEndDate] = useState();
   const [hours, setHours] = useState(0);
   const [tax, setTax] = useState(0);
-  const [price, setPrice] = useState(1);
 
   const changeColor = (color) => {
     dispatch(setUserColor(color));
@@ -49,19 +44,13 @@ const AddOptionsContainer = ({ colors, rates }) => {
     }
   };
   const taxChange = (v) => {
-    for (var i in rates) {
-      if (i.name == v) {
-        dispatch(setRateId(i.id));
-        dispatch(setRateName(i.name));
-        setPrice(parseInt(i.price));
-      }
-    }
+    dispatch(setRateName(v));
     if (v == 'Поминутно') {
-      setTax(Math.ceil(price * hours * 60));
+      setTax(Math.ceil(7 * hours * 60));
     } else if (v == 'На сутки') {
-      setTax(price * Math.ceil(hours / 24));
+      setTax(1999 * Math.ceil(hours / 24));
     } else {
-      setTax(price * Math.ceil(hours / 168));
+      setTax(7500 * Math.ceil(hours / 168));
     }
   };
   const calcPrice = (tax, tank, chair, wheel, userPriceMin) => {
@@ -77,78 +66,48 @@ const AddOptionsContainer = ({ colors, rates }) => {
     if (wheel) {
       wheelN = 1600;
     }
-    if (tax + tank + chair + wheel < userPriceMin) {
-      dispatch(setPrice(userPriceMin));
-    } else {
-      dispatch(setPrice(tax + tankN + chairN + wheelN));
+    if (tax) {
+      if (tax + tank + chair + wheel < userPriceMin) {
+        dispatch(setPrice(userPriceMin));
+      } else {
+        dispatch(setPrice(tax + tankN + chairN + wheelN));
+      }
     }
+  };
+  const changeTank = (tank) => {
+    dispatch(setTank(!tank));
+  };
+  const changeChair = (chair) => {
+    dispatch(setChair(!chair));
+  };
+  const changeWheel = (wheel) => {
+    dispatch(setWheel(!wheel));
   };
   useEffect(() => {
     calcPeriod(startDate, endDate);
   }, [startDate, endDate]);
 
   useEffect(() => {
-    calcPrice(tax, tank, chair, wheel, userPriceMin);
+    if (tax) {
+      calcPrice(tax, tank, chair, wheel, userPriceMin);
+    }
   }, [tax, tank, chair, wheel, userPriceMin]);
 
   return (
-    <div className={styles.add_options}>
-      <div className={styles.title}>Цвет</div>
-      <Radios
-        setDefaultValue={(e) => {
-          changeColor('Любой');
-        }}
-        selectedValue={(v) => {
-          changeColor(v);
-        }}
-        defaultText={'Любой'}
-        list={colors}
-      />
-      <div className={styles.title}>Дата аренды</div>
-      <div className={styles.picks}>
-        <div className={styles.withPick}>
-          <p>С</p>
-          <DatePicker
-            className={styles.datapick}
-            selected={startDate}
-            onChange={(date) => {
-              setStartDate(date);
-              calcPeriod(startDate, endDate);
-              dispatch(setDateFrom(date));
-            }}
-            showTimeSelect
-            dateFormat="dd.MM.yy hh:mm"
-            isClearable
-            minDate={new Date()}
-          />
-        </div>
-        <div className={styles.withPick}>
-          <p>По</p>
-          <DatePicker
-            className={styles.datapick}
-            selected={endDate}
-            onChange={(date) => {
-              setEndDate(date);
-              calcPeriod(startDate, endDate);
-              dispatch(setDateTo(date));
-            }}
-            showTimeSelect
-            dateFormat="dd.MM.yy hh:mm"
-            isClearable
-            placeholderText="Введите дату и время"
-            minDate={new Date()}
-          />
-        </div>
-      </div>
-      <div className={styles.title}>Тариф</div>
-      <Radios
-        selectedValue={(v) => {
-          taxChange(v);
-        }}
-        list={rates.map((i) => i.name)}
-        vert={true}
-      />
-    </div>
+    <AddOptions
+      colors={colors}
+      rates={rates}
+      changeColor={changeColor}
+      startDate={startDate}
+      setStartDate={setStartDate}
+      calcPeriod={calcPeriod}
+      endDate={endDate}
+      setEndDate={setEndDate}
+      taxChange={taxChange}
+      changeTank={changeTank}
+      changeChair={changeChair}
+      changeWheel={changeWheel}
+    />
   );
 };
 

@@ -16,6 +16,7 @@ import {
   userPriceMaxSel,
   userColorSel,
   ratesSel,
+  priceSel,
 } from '../../redux/selectors/selectors';
 import styles from './OrderPage.module.scss';
 import SideBar from '../sideBar/SideBar';
@@ -49,6 +50,7 @@ const OrderPage = () => {
   const userPriceMin = useSelector(userPriceMinSel);
   const userPriceMax = useSelector(userPriceMaxSel);
   const userColor = useSelector(userColorSel);
+  const price = useSelector(priceSel);
 
   const [activePage, setActivePage] = useState(0);
 
@@ -66,6 +68,7 @@ const OrderPage = () => {
           activePage={activePage}
           userPoint={userPoint}
           model={userModel}
+          price={price}
         />
         <div className={styles.order_settings}>
           {activePage == 0 ? (

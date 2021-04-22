@@ -17,6 +17,7 @@ export const setUserColor = (color) => ({ type: OrderTypes.SET_USER_COLOR, paylo
 export const setPeriod = (period) => ({ type: OrderTypes.SET_PERIOD, payload: period });
 export const setPrice = (price) => ({ type: OrderTypes.SET_PRICE, payload: price });
 export const setRates = (rates) => ({ type: OrderTypes.SET_RATES, payload: rates });
+export const setRate = (rate) => ({ type: OrderTypes.SET_RATE, payload: rate });
 export const setRateId = (id) => ({ type: OrderTypes.SET_RATE_ID, payload: id });
 export const setRateName = (name) => ({ type: OrderTypes.SET_RATE_NAME, payload: name });
 export const setDateFrom = (date) => ({ type: OrderTypes.SET_DATE_FROM, payload: date });

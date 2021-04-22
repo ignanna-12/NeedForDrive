@@ -1,8 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { periodSel, priceSel, rateNameSel } from '../../../redux/selectors/selectors';
+import {
+  chairSel,
+  periodSel,
+  priceSel,
+  rateNameSel,
+  tankSel,
+  wheelSel,
+} from '../../../redux/selectors/selectors';
 import Button from '../../common/button/Button';
 import styles from './Order.module.scss';
+import OrderItem from './OrderItem';
 
 const Order = ({
   city,
@@ -18,48 +26,21 @@ const Order = ({
   const period = useSelector(periodSel);
   const price = useSelector(priceSel);
   const rateName = useSelector(rateNameSel);
+  const tank = useSelector(tankSel);
+  const chair = useSelector(chairSel);
+  const wheel = useSelector(wheelSel);
+
   return (
     <div className={styles.user_choise}>
       <div className={styles.header}>Ваш заказ:</div>
-      <div className={city ? styles.visible : styles.none_display}>
-        <div className={styles.point}>
-          <div>Пункт выдачи</div>
-          <div className={styles.dots}></div>
-          <div className={styles.address}>
-            {city}
-            <br></br>
-            {address}
-          </div>
-        </div>
-      </div>
-      <div className={model ? styles.visible : styles.none_display}>
-        <div className={styles.point}>
-          <div>Модель</div>
-          <div className={styles.dots}></div>
-          <div className={styles.address}>{model}</div>
-        </div>
-      </div>
-      <div className={color ? styles.visible : styles.none_display}>
-        <div className={styles.point}>
-          <div>Цвет</div>
-          <div className={styles.dots}></div>
-          <div className={styles.address}>{color}</div>
-        </div>
-      </div>
-      <div className={period ? styles.visible : styles.none_display}>
-        <div className={styles.point}>
-          <div>Длительность аренды</div>
-          <div className={styles.dots}></div>
-          <div className={styles.address}>{period}</div>
-        </div>
-      </div>
-      <div className={rateName ? styles.visible : styles.none_display}>
-        <div className={styles.point}>
-          <div>Тариф</div>
-          <div className={styles.dots}></div>
-          <div className={styles.address}>{rateName}</div>
-        </div>
-      </div>
+      <OrderItem title={'Пункт выдачи'} value={city} text={city} addtext={address} />
+      <OrderItem title={'Модель'} value={model} text={model} />
+      <OrderItem title={'Цвет'} value={color} text={color} />
+      <OrderItem title={'Длительность аренды'} value={period} text={period} />
+      <OrderItem title={'Тариф'} value={rateName} text={rateName} />
+      <OrderItem title={'Полный бак'} value={tank} text={'Да'} />
+      <OrderItem title={'Детское кресло'} value={chair} text={'Да'} />
+      <OrderItem title={'Правый руль'} value={wheel} text={'Да'} />
       <div className={model ? styles.price : styles.none_display}>
         {price ? (
           <p>

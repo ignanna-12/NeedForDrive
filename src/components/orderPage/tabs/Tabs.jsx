@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg';
 import Vector from '../../../assets/icons/Vector.svg';
 import styles from './Tabs.module.scss';
 
-const Tabs = ({ userCity, userPoint, model, changeActivePage, activePage }) => {
+const Tabs = ({ userCity, userPoint, model, changeActivePage, activePage, price }) => {
   return (
     <div className={styles.lines}>
       <div className={styles.links}>
@@ -38,7 +38,7 @@ const Tabs = ({ userCity, userPoint, model, changeActivePage, activePage }) => {
         <SVG src={Vector} />
         <button
           className={activePage == 3 ? styles.links_button_active : styles.links_button}
-          disabled={true}
+          disabled={price == 0}
           onClick={() => {
             changeActivePage(3);
           }}

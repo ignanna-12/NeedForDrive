@@ -1,58 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Radios from '../../../common/radios/Radios';
 import DatePicker from 'react-datepicker';
 import styles from './AddOptions.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPeriod, setPrice } from '../../../../redux/actions/actions';
-import { priceSel } from '../../../../redux/selectors/selectors';
+import { setDateFrom, setDateTo } from '../../../../redux/actions/actions';
+import { useDispatch } from 'react-redux';
+import Checkbox from '../../../common/checkbox/Checkbox';
 
-const AddOptions = ({ colors, onChangeColor, userPriceMin }) => {
+const AddOptions = ({
+  colors,
+  changeColor,
+  startDate,
+  setStartDate,
+  calcPeriod,
+  endDate,
+  setEndDate,
+  taxChange,
+  rates,
+  changeTank,
+  changeChair,
+  changeWheel,
+}) => {
   const dispatch = useDispatch();
-  const price = useSelector(priceSel);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState();
-  const [taxName, setTaxName] = useState('На сутки, 1999 ₽/сутки');
-  const [hours, setHours] = useState(0);
-  const calcPeriod = (startDate, endDate) => {
-    if (endDate) {
-      const x = parseInt((endDate.getTime() - startDate.getTime()) / (3600 * 1000));
-      let day = parseInt(x / 24);
-      let h = x % 24;
-      dispatch(setPeriod(day + 'д ' + h + 'ч'));
-      setHours(x);
-    }
-  };
-  const calcPrice = (taxName, hours, tank, chair, wheel, userPriceMin) => {
-    const tax = () => {
-      if (taxName == 'Поминутно, 7₽/мин') {
-        tax = 7 * hours * 60;
-      }
-      if (taxName == 'На сутки, 1999 ₽/сутки') {
-        tax = 1999 * Math.ceil(hours / 24);
-      } else {
-        tax = 7500 * Math.ceil(hours / 24 / 7);
-      }
-    };
-    if (tax + tank + chair + wheel < userPriceMin) {
-      dispatch(setPrice(userPriceMin));
-    } else {
-      dispatch(setPrice(tax + tank + chair + wheel));
-    }
-  };
-  useEffect(() => {
-    calcPeriod(startDate, endDate);
-  }, [startDate, endDate]);
-
   return (
     <div className={styles.add_options}>
       <div className={styles.title}>Цвет</div>
       <Radios
         setDefaultValue={(e) => {
-          onChangeColor('Любой');
+          changeColor('Любой');
         }}
         selectedValue={(v) => {
-          onChangeColor(v);
+          changeColor(v);
         }}
         defaultText={'Любой'}
         list={colors}
@@ -67,6 +45,7 @@ const AddOptions = ({ colors, onChangeColor, userPriceMin }) => {
             onChange={(date) => {
               setStartDate(date);
               calcPeriod(startDate, endDate);
+              dispatch(setDateFrom(date));
             }}
             showTimeSelect
             dateFormat="dd.MM.yy hh:mm"
@@ -82,6 +61,7 @@ const AddOptions = ({ colors, onChangeColor, userPriceMin }) => {
             onChange={(date) => {
               setEndDate(date);
               calcPeriod(startDate, endDate);
+              dispatch(setDateTo(date));
             }}
             showTimeSelect
             dateFormat="dd.MM.yy hh:mm"
@@ -94,11 +74,15 @@ const AddOptions = ({ colors, onChangeColor, userPriceMin }) => {
       <div className={styles.title}>Тариф</div>
       <Radios
         selectedValue={(v) => {
-          setTaxName(v);
+          taxChange(v);
         }}
-        list={['Поминутно, 7₽/мин', 'На сутки, 1999 ₽/сутки', 'Недельный плюс, 7500 ₽/7 дней']}
+        list={rates.map((i) => i.name)}
         vert={true}
       />
+      <div className={styles.title}>Доп.услуги</div>
+      <Checkbox onClick={changeTank} label={'Полный бак, 500р'} />
+      <Checkbox onClick={changeChair} label={'Детское кресло, 200р'} />
+      <Checkbox onClick={changeWheel} label={'Правый руль, 1600р'} />
     </div>
   );
 };

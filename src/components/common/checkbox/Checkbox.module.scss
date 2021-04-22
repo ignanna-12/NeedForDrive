@@ -1,0 +1,32 @@
+.box {
+    margin-top: 16px;
+	margin-bottom: 10px;
+}
+.box input[type=checkbox] {
+    -webkit-appearance: none;
+      -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #999999;
+    margin-right: 8px;
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    vertical-align: top;
+}
+.box label {
+    cursor:pointer;
+    font-family: 'Roboto-Light';
+    font-size: 14px;
+    color:#999999;
+    margin-right: 16px;
+}
+.box input[type=checkbox]:checked {
+    border: 1px solid #0EC261;
+    background-image: url('../../../assets/images/Vector.png');
+}
+.box label:hover {
+    color:#121212;
+}
+.box input[type=checkbox]:checked+label{
+    color:#121212;
+}
