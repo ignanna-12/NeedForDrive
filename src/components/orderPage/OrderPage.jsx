@@ -140,7 +140,9 @@ const OrderPage = () => {
                 ? 'Дополнительно'
                 : activePage == 2
                 ? 'Итого'
-                : 'Заказать'
+                : visibleTabs
+                ? 'Заказать'
+                : 'Отменить'
             }
             disable_btn={
               activePage == 0 ? !(userCity && userPoint) : activePage == 1 ? !userModel : ''
