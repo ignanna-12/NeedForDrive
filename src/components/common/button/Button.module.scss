@@ -10,6 +10,10 @@
     border: none;
     cursor: pointer;
 }
+.btn_red {
+    @extend .btn;
+    background: linear-gradient(to right, #493013, #7B0C3B);
+}
 .btn:hover{
     background: linear-gradient(to right, #0B934A, #026E47);
 }

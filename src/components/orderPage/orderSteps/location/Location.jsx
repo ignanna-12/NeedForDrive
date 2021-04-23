@@ -1,15 +1,25 @@
 import React from 'react';
 import { filterPointsByCity } from '../../../../redux/thunk/point.thunk';
-import Autocomplete from '../../../common/autocomplete/Autocomplete';
+import AutocompleteOfMine from '../../../common/autocomplete/AutocompleteOfMine';
 import styles from './Location.module.scss';
 import YandexMapComponent from './YandexMapComponent';
+import Autocomplete from 'react-autocomplete';
 
 const Location = ({ cities, points, userCity, userPoint, changeCity, changePoint }) => {
   return (
     <div className={styles.location}>
       <div className={styles.selectors}>
         <div className={styles.location_autocomplete}>
-          <Autocomplete
+          {/* <Autocomplete
+            items={cities}
+            renderItem={(cities, isHighlighted) => (
+              <div style={{ color: isHighlighted ? '#0EC261' : 'black' }}>{cities}</div>
+            )}
+            value={userCity}
+            onChange={(e) => (value = e.target.value)}
+            onSelect={(value) => changeCity(value)}
+          /> */}
+          <AutocompleteOfMine
             active={true}
             title={'Город'}
             innerText={userCity == '' ? 'Начните вводить город' : userCity}
@@ -18,7 +28,7 @@ const Location = ({ cities, points, userCity, userPoint, changeCity, changePoint
           />
         </div>
         <div className={styles.location_autocomplete}>
-          <Autocomplete
+          <AutocompleteOfMine
             active={userCity !== ''}
             title={'Пункт выдачи'}
             innerText={

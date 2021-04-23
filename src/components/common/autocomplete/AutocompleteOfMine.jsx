@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Autocomplete.module.scss';
+import styles from './AutocompleteOfMine.module.scss';
 import SVG from 'react-inlinesvg';
 import littleCrest from '../../../assets/icons/littleCrest.svg';
 
-const Autocomplete = ({ title, innerText, list, active, onChange }) => {
+const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -76,4 +76,4 @@ const Autocomplete = ({ title, innerText, list, active, onChange }) => {
   );
 };
 
-export default Autocomplete;
+export default AutocompleteOfMine;
