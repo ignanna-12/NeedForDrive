@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './AutocompleteOfMine.module.scss';
 import SVG from 'react-inlinesvg';
 import littleCrest from '../../../assets/icons/littleCrest.svg';
@@ -6,6 +6,7 @@ import littleCrest from '../../../assets/icons/littleCrest.svg';
 const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState('');
+  const wrapperRef = useRef(null);
 
   const setItem = (item) => {
     setSearch(item);
@@ -16,18 +17,25 @@ const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
     setDisplay(!display);
   };
   const handleBlur = (e) => {
-    if (
-      !(
-        e.currentTarget.classList.contains('styles.extended_block') ||
-        e.currentTarget.classList.contains('styles.list')
-      )
-    ) {
+    if (e.target.id != 'ououou') {
+      setDisplay(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  const handleClickOutside = (e) => {
+    const { current: wrap } = wrapperRef;
+    if (wrap && !wrap.contains(e.target)) {
       setDisplay(false);
     }
   };
 
   return (
-    <div className={styles.autocomplete}>
+    <div ref={wrapperRef} className={styles.autocomplete}>
       {title}
       <div className="styles.autocontainer">
         <input
@@ -37,6 +45,7 @@ const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
           onClick={onClickInput}
           disabled={!active}
           placeholder={innerText}
+          value={search}
           onChange={(e) => {
             setSearch(e.target.value);
           }}
@@ -51,19 +60,19 @@ const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
           <SVG src={littleCrest} />
         </button>
         {display && (
-          <div className={styles.extended_block} tabIndex="0" onBlur={(e) => handleBlur}>
+          <div className={styles.extended_block}>
             {list
               .filter((el) => el.toLowerCase().startsWith(search.toLowerCase()))
               .map((v, i) => {
                 return (
                   <div
-                    id={'a'}
                     className={styles.list}
                     key={i}
                     onClick={() => {
                       onChange(v);
                       setItem(v);
                     }}
+                    tabIndex="0"
                   >
                     <span className={styles.span}>{v}</span>
                   </div>
