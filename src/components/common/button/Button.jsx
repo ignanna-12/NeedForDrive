@@ -1,13 +1,9 @@
 import React from 'react';
 import styles from './Button.module.scss';
 
-const Button = ({ innerText, onClick, disabled, cl }) => {
+const Button = ({ innerText, onClick, disabled, isRed }) => {
   return (
-    <button
-      className={cl == 'green' ? styles.btn_red : styles.btn}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button className={isRed ? styles.btn_red : styles.btn} onClick={onClick} disabled={disabled}>
       {innerText}
     </button>
   );

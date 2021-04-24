@@ -74,13 +74,13 @@ const AddOptionsContainer = ({ colors, rates }) => {
       }
     }
   };
-  const changeTank = (tank) => {
+  const changeTank = () => {
     dispatch(setTank(!tank));
   };
-  const changeChair = (chair) => {
+  const changeChair = () => {
     dispatch(setChair(!chair));
   };
-  const changeWheel = (wheel) => {
+  const changeWheel = () => {
     dispatch(setWheel(!wheel));
   };
   useEffect(() => {

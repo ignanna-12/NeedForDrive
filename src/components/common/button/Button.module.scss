@@ -10,13 +10,6 @@
     border: none;
     cursor: pointer;
 }
-.btn_red {
-    @extend .btn;
-    background: linear-gradient(to right, #493013, #7B0C3B);
-}
-.btn:hover{
-    background: linear-gradient(to right, #0B934A, #026E47);
-}
 .btn:focus{
     border: none;
     outline: none;
@@ -24,6 +17,18 @@
 }
 .btn:disabled{
     background: #EEEEEE;
+}
+.btn_red {
+    @extend .btn;
+    background: linear-gradient(to right, #493013, #7B0C3B);
+}
+.btn_red:hover{
+    background: linear-gradient(to right, #3B2D12, #720B37);
+}
+.btn_red:focus{
+    border: none;
+    outline: none;
+    background: linear-gradient(to right, #302A10, #600A30);
 }
 @media (max-width: 780px){
     .btn{

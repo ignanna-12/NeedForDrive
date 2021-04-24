@@ -52,7 +52,12 @@ const Order = ({
           </p>
         )}
       </div>
-      <Button innerText={btnText} onClick={onClick} disabled={disable_btn} />
+      <Button
+        innerText={btnText}
+        onClick={onClick}
+        disabled={disable_btn}
+        isRed={btnText == 'Отменить'}
+      />
     </div>
   );
 };

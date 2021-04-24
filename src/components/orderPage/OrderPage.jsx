@@ -126,6 +126,9 @@ const OrderPage = () => {
           ) : (
             <Summary />
           )}
+          {/* <button className={styles.sidebar_menu_button_up} onClick={() => setToggle(!toggle)}>
+            <SVG src={Gamburger_button} />
+        </button> */}
           <Order
             city={userCity}
             address={userPoint}
@@ -145,7 +148,13 @@ const OrderPage = () => {
                 : 'Отменить'
             }
             disable_btn={
-              activePage == 0 ? !(userCity && userPoint) : activePage == 1 ? !userModel : ''
+              activePage == 0
+                ? !(userCity && userPoint)
+                : activePage == 1
+                ? !userModel
+                : activePage == 2
+                ? !price
+                : ''
             }
             onClick={(e) => {
               activePage < 3 ? setActivePage(activePage + 1) : makeOrder();

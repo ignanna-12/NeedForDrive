@@ -52,7 +52,7 @@ const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
         />
         <button
           className={search == '' ? styles.display_none : styles.clear_button}
-          onClick={(e) => {
+          onClick={() => {
             setSearch('');
             onChange('');
           }}
