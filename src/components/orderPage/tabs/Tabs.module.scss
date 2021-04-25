@@ -44,6 +44,9 @@
     }
 }
 @media (max-width: 780px){
+    .lines{
+        width: fit-content;
+    }
     .links{
         flex-wrap: wrap;
         justify-content: left;

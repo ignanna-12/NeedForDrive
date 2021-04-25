@@ -40,6 +40,7 @@ import LocationContainer from './orderSteps/location/LocationContainer';
 import AddOptionsContainer from './orderSteps/addOptions/AddOptionsContainer';
 import { sendOrder } from '../../redux/thunk/order.thunk';
 import Confirmation from './confirmation/Confirmation';
+import Button from '../common/button/Button';
 
 const OrderPage = () => {
   const dispatch = useDispatch();
@@ -76,6 +77,24 @@ const OrderPage = () => {
 
   const [activePage, setActivePage] = useState(0);
   const [visibleTabs, setVisibleTabs] = useState(true);
+  const [pageWhenMobile, setPageWhenMobile] = useState(false);
+
+  const changePageWhenMobile = () => {
+    setPageWhenMobile(!pageWhenMobile);
+    if (activePage == 0 && !pageWhenMobile && userCity && userPoint) {
+      setActivePage(1);
+    }
+    if (activePage == 1 && !pageWhenMobile && userModel) {
+      setActivePage(2);
+    }
+    if (activePage == 2 && !pageWhenMobile && price) {
+      setActivePage(3);
+    }
+    if (activePage == 3 && !pageWhenMobile) {
+      setPageWhenMobile(!pageWhenMobile);
+      makeOrder();
+    }
+  };
 
   const makeOrder = () => {
     dispatch(
@@ -116,19 +135,7 @@ const OrderPage = () => {
         ) : (
           <Confirmation orderId={orderId} />
         )}
-        <div className={styles.order_settings}>
-          {activePage == 0 ? (
-            <LocationContainer cities={cities} points={points} />
-          ) : activePage == 1 ? (
-            <ModelContainer cars={cars} />
-          ) : activePage == 2 ? (
-            <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
-          ) : (
-            <Summary />
-          )}
-          {/* <button className={styles.sidebar_menu_button_up} onClick={() => setToggle(!toggle)}>
-            <SVG src={Gamburger_button} />
-        </button> */}
+        {pageWhenMobile && (
           <Order
             city={userCity}
             address={userPoint}
@@ -136,30 +143,59 @@ const OrderPage = () => {
             priceMin={userPriceMin}
             priceMax={userPriceMax}
             color={userColor}
-            btnText={
-              activePage == 0
-                ? 'Выбрать модель'
-                : activePage == 1
-                ? 'Дополнительно'
-                : activePage == 2
-                ? 'Итого'
-                : visibleTabs
-                ? 'Заказать'
-                : 'Отменить'
-            }
-            disable_btn={
-              activePage == 0
-                ? !(userCity && userPoint)
-                : activePage == 1
-                ? !userModel
-                : activePage == 2
-                ? !price
-                : ''
-            }
-            onClick={(e) => {
-              activePage < 3 ? setActivePage(activePage + 1) : makeOrder();
-            }}
           />
+        )}
+        <div className={styles.order_settings}>
+          {activePage == 0 && !pageWhenMobile ? (
+            <LocationContainer cities={cities} points={points} />
+          ) : activePage == 1 && !pageWhenMobile ? (
+            <ModelContainer cars={cars} />
+          ) : activePage == 2 && !pageWhenMobile ? (
+            <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
+          ) : (
+            !pageWhenMobile && <Summary />
+          )}
+          <div className={styles.display_order_when_mobile}>
+            <Button
+              innerText={pageWhenMobile ? 'Продолжить' : price ? 'Заказать' : 'Детали заказа'}
+              onClick={() => {
+                changePageWhenMobile();
+              }}
+            />
+          </div>
+          <div className={styles.display_order}>
+            <Order
+              city={userCity}
+              address={userPoint}
+              model={userModel}
+              priceMin={userPriceMin}
+              priceMax={userPriceMax}
+              color={userColor}
+              btnText={
+                activePage == 0
+                  ? 'Выбрать модель'
+                  : activePage == 1
+                  ? 'Дополнительно'
+                  : activePage == 2
+                  ? 'Итого'
+                  : visibleTabs
+                  ? 'Заказать'
+                  : 'Отменить'
+              }
+              disable_btn={
+                activePage == 0
+                  ? !(userCity && userPoint)
+                  : activePage == 1
+                  ? !userModel
+                  : activePage == 2
+                  ? !price
+                  : ''
+              }
+              onClick={(e) => {
+                activePage < 3 ? setActivePage(activePage + 1) : makeOrder();
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -28,6 +28,12 @@
     width: 100%;
     height: 90%;
 }
+.display_order {
+    display:contents;
+}
+.display_order_when_mobile {
+    display: none;
+}
 @media (max-width: 1024px){
     .order_page{
         height: 100%;
@@ -49,16 +55,22 @@
         padding-right: 16px;        
         justify-content: left;
     }
-    .info{
-        width: 100%;        
-        padding-left: 32px;
+    .info{    
+        justify-content: space-between; 
+        max-height: 100%;      
+        padding-left: -10px;
         padding-top: 16px;
-        padding-right: 32px;
+        padding-right: 0px;
         padding-bottom: 16px;
     }
     .order_settings{
         flex-direction: column;
-        width: 100%;
-        height: 50%;
+        height: auto;
+    }    
+    .display_order {
+        display: none;
+    }    
+    .display_order_when_mobile {
+        display: flex;
     }
 }

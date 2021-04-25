@@ -52,12 +52,14 @@ const Order = ({
           </p>
         )}
       </div>
-      <Button
-        innerText={btnText}
-        onClick={onClick}
-        disabled={disable_btn}
-        isRed={btnText == 'Отменить'}
-      />
+      <div className={styles.for_mobile}>
+        <Button
+          innerText={btnText}
+          onClick={onClick}
+          disabled={disable_btn}
+          isRed={btnText == 'Отменить'}
+        />
+      </div>
     </div>
   );
 };

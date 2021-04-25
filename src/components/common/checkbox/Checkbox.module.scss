@@ -2,9 +2,13 @@
     margin-top: 16px;
 	margin-bottom: 10px;
 }
+.box SVG{
+    position: absolute;
+    margin-left: -18px;
+    margin-top: 3px;
+}
 .box input[type=checkbox] {
-    -webkit-appearance: none;
-      -moz-appearance: none;
+    position: relative;
     appearance: none;
     border: 1px solid #999999;
     margin-right: 8px;
@@ -22,7 +26,7 @@
 }
 .box input[type=checkbox]:checked {
     border: 1px solid #0EC261;
-    background-image: url('../../../assets/images/Vector.png');
+    // background-image: url('../../../assets/images/Vector.png');
 }
 .box label:hover {
     color:#121212;
