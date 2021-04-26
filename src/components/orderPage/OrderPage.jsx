@@ -39,11 +39,15 @@ import Order from './order/Order';
 import LocationContainer from './orderSteps/location/LocationContainer';
 import AddOptionsContainer from './orderSteps/addOptions/AddOptionsContainer';
 import { sendOrder } from '../../redux/thunk/order.thunk';
-import Confirmation from './confirmation/Confirmation';
+import ConfirmationSuccess from './confirmationSuccess/ConfirmationSuccess';
 import Button from '../common/button/Button';
+import Confirmation from './confirmation/Confirmation';
 
 const OrderPage = () => {
   const dispatch = useDispatch();
+  {if (window.localStorage.getItem('orderId') != null){
+    
+  };
 
   useEffect(() => {
     dispatch(requestCities());
@@ -78,9 +82,9 @@ const OrderPage = () => {
   const [activePage, setActivePage] = useState(0);
   const [visibleTabs, setVisibleTabs] = useState(true);
   const [pageWhenMobile, setPageWhenMobile] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   const changePageWhenMobile = () => {
-    setPageWhenMobile(!pageWhenMobile);
     if (activePage == 0 && !pageWhenMobile && userCity && userPoint) {
       setActivePage(1);
     }
@@ -91,7 +95,6 @@ const OrderPage = () => {
       setActivePage(3);
     }
     if (activePage == 3 && !pageWhenMobile) {
-      setPageWhenMobile(!pageWhenMobile);
       makeOrder();
     }
   };
@@ -117,6 +120,19 @@ const OrderPage = () => {
 
   return (
     <div className={styles.order_page}>
+      <div className={toggle ? styles.display_visible : styles.display_none}>
+        {toggle && (
+          <Confirmation
+            onClick={() => {
+              setToggle(false);
+            }}
+            otherOnClick={() => {
+              setToggle(false);
+              makeOrder();
+            }}
+          />
+        )}
+      </div>
       <SideBar />
       <div className={styles.info}>
         <div className={styles.top_row}>
@@ -133,7 +149,7 @@ const OrderPage = () => {
             price={price}
           />
         ) : (
-          <Confirmation orderId={orderId} />
+          <ConfirmationSuccess orderId={orderId} />
         )}
         {pageWhenMobile && (
           <Order
@@ -153,13 +169,41 @@ const OrderPage = () => {
           ) : activePage == 2 && !pageWhenMobile ? (
             <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
           ) : (
-            !pageWhenMobile && <Summary />
+            activePage == 3 && !pageWhenMobile && <Summary />
           )}
           <div className={styles.display_order_when_mobile}>
+            <div className={pageWhenMobile ? styles.display_none : styles.display_visible}>
+              <Button
+                innerText={
+                  activePage == 0
+                    ? 'Выбрать модель'
+                    : activePage == 1
+                    ? 'Дополнительно'
+                    : activePage == 2
+                    ? 'Итого'
+                    : visibleTabs
+                    ? 'Заказать'
+                    : 'Отменить'
+                }
+                disabled={
+                  activePage == 0
+                    ? !(userCity && userPoint)
+                    : activePage == 1
+                    ? !userModel
+                    : activePage == 2
+                    ? !price
+                    : ''
+                }
+                onClick={() => {
+                  changePageWhenMobile();
+                }}
+                isRed={orderId}
+              />
+            </div>
             <Button
-              innerText={pageWhenMobile ? 'Продолжить' : price ? 'Заказать' : 'Детали заказа'}
+              innerText={pageWhenMobile ? 'Продолжить' : 'Детали заказа'}
               onClick={() => {
-                changePageWhenMobile();
+                setPageWhenMobile(!pageWhenMobile);
               }}
             />
           </div>
@@ -192,7 +236,7 @@ const OrderPage = () => {
                   : ''
               }
               onClick={(e) => {
-                activePage < 3 ? setActivePage(activePage + 1) : makeOrder();
+                activePage < 3 ? setActivePage(activePage + 1) : setToggle(true);
               }}
             />
           </div>

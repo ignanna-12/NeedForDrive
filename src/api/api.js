@@ -63,3 +63,9 @@ export const postOrder = (
       return response.data;
     });
 };
+
+export const getOrder = (orderId) => {
+  return instance.get('db/order/' + orderId).then((response) => {
+    return response.data;
+  });
+};
