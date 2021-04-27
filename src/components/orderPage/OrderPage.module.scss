@@ -4,77 +4,67 @@
     background-color: #FFFFFF;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 .info{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding-left: 64px;
-    padding-top: 32px;
-    padding-right: 64px;
-    padding-bottom: 32px;
 }
 .top_row{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 32px;
+    margin-left: 4%;
+    margin-right: 2%;
 }
 .order_settings{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 90%;
+    height: 100%;
+}
+.orderContent {
+    margin-left: 4%;
+    margin-right: 4%;
+    flex-basis: 65%;
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 .display_order {
-    display:contents;
+    width: 100%;
+    flex-basis: 35%;
 }
 .display_order_when_mobile {
     display: none;
 }
 @media (max-width: 1024px){
     .order_page{
-        height: 100%;
-        width: 100%;
-        padding-right: 16px;        
-        justify-content: left;
     }
     .info{  
-        max-height: 100%;      
-        padding-left: 16px;
-        padding-top: 16px;
-        padding-right: 32px;
-        padding-bottom: 16px;
     }
 }
 @media (max-width: 780px){
     .top_row {
-        width: 100%;
     }
-    .info{ 
-        max-height: 100%;      
-        padding-left: 0px;
-        padding-top: 32px;
-        padding-right: 0px;
-        padding-bottom: 16px; 
-        margin-right: 15px;
+    .info{  
     }
     .order_settings{
-        flex-direction: column;
-        max-height:min-content;
-        height: 60%;
-    }    
+        display: inline;
+        height: 80%;
+    }
+    .orderContent {
+        height: 80%;
+    }
     .display_order {
         display: none;
     }    
     .display_order_when_mobile {
+        width: 90%;
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
-        justify-content: space-evenly;
-        vertical-align: bottom;
+        align-items: center;
+        position:fixed;
+        margin-right: 4%;
+        bottom: 32px;
     }
     .display_none {
         display: none;
@@ -83,19 +73,5 @@
         display: flex;
         width: 100%;
         margin-right: 5px;
-    }
-    .details_order{
-        border: solid 3px #0EC261;
-        font-family: 'Roboto-Bold';
-        color: #0EC261;
-        height: 100px;
-    }
-    .details_order:hover {
-        border: solid 3px #06692a;
-        color: #06692a;
-    }
-    .details_order:active {
-        background-color: #0EC261;
-        color: #FFFFFF;
     }
 }

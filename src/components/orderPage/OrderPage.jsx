@@ -38,22 +38,25 @@ import ModelContainer from './orderSteps/model/ModelContainer';
 import Order from './order/Order';
 import LocationContainer from './orderSteps/location/LocationContainer';
 import AddOptionsContainer from './orderSteps/addOptions/AddOptionsContainer';
-import { sendOrder } from '../../redux/thunk/order.thunk';
+import { requestOrder, sendOrder } from '../../redux/thunk/order.thunk';
 import ConfirmationSuccess from './confirmationSuccess/ConfirmationSuccess';
 import Button from '../common/button/Button';
 import Confirmation from './confirmation/Confirmation';
+import { setOrderId } from '../../redux/actions/actions';
 
 const OrderPage = () => {
   const dispatch = useDispatch();
-  {if (window.localStorage.getItem('orderId') != null){
-    
-  };
 
   useEffect(() => {
     dispatch(requestCities());
     dispatch(requestPoints());
     dispatch(requestCars());
     dispatch(requestRate());
+    {
+      if (window.localStorage.getItem('orderId') != null) {
+        dispatch(requestOrder(window.localStorage.getItem('orderId')));
+      }
+    }
   }, []);
 
   const cities = useSelector(citiesSel);
@@ -83,6 +86,22 @@ const OrderPage = () => {
   const [visibleTabs, setVisibleTabs] = useState(true);
   const [pageWhenMobile, setPageWhenMobile] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const [orderCanc, setOrderCanc] = useState(false);
+
+  const buttonFunction = () => {
+    if (activePage < 3) {
+      setActivePage(activePage + 1);
+    }
+    if (activePage == 3 && !toggle && !orderId) {
+      setToggle(true);
+    }
+    if (activePage == 3 && !toggle && orderId) {
+      dispatch(setOrderId(''));
+      setOrderCanc(true);
+      localStorage.setItem('orderId', '');
+      window.history.pushState(window.location.href, null, '/NeedForDrive#/OrderPage/');
+    }
+  };
 
   const changePageWhenMobile = () => {
     if (activePage == 0 && !pageWhenMobile && userCity && userPoint) {
@@ -120,19 +139,17 @@ const OrderPage = () => {
 
   return (
     <div className={styles.order_page}>
-      <div className={toggle ? styles.display_visible : styles.display_none}>
-        {toggle && (
-          <Confirmation
-            onClick={() => {
-              setToggle(false);
-            }}
-            otherOnClick={() => {
-              setToggle(false);
-              makeOrder();
-            }}
-          />
-        )}
-      </div>
+      {toggle && (
+        <Confirmation
+          onClick={() => {
+            setToggle(false);
+          }}
+          otherOnClick={() => {
+            setToggle(false);
+            makeOrder();
+          }}
+        />
+      )}
       <SideBar />
       <div className={styles.info}>
         <div className={styles.top_row}>
@@ -151,6 +168,7 @@ const OrderPage = () => {
         ) : (
           <ConfirmationSuccess orderId={orderId} />
         )}
+        <div className={toggle ? styles.display_visible : styles.display_none}></div>
         {pageWhenMobile && (
           <Order
             city={userCity}
@@ -162,15 +180,17 @@ const OrderPage = () => {
           />
         )}
         <div className={styles.order_settings}>
-          {activePage == 0 && !pageWhenMobile ? (
-            <LocationContainer cities={cities} points={points} />
-          ) : activePage == 1 && !pageWhenMobile ? (
-            <ModelContainer cars={cars} />
-          ) : activePage == 2 && !pageWhenMobile ? (
-            <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
-          ) : (
-            activePage == 3 && !pageWhenMobile && <Summary />
-          )}
+          <div className={styles.orderContent}>
+            {activePage == 0 && !pageWhenMobile ? (
+              <LocationContainer cities={cities} points={points} />
+            ) : activePage == 1 && !pageWhenMobile ? (
+              <ModelContainer cars={cars} />
+            ) : activePage == 2 && !pageWhenMobile ? (
+              <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
+            ) : (
+              activePage == 3 && !pageWhenMobile && <Summary orderCanc={orderCanc} />
+            )}
+          </div>
           <div className={styles.display_order_when_mobile}>
             <div className={pageWhenMobile ? styles.display_none : styles.display_visible}>
               <Button
@@ -236,7 +256,7 @@ const OrderPage = () => {
                   : ''
               }
               onClick={(e) => {
-                activePage < 3 ? setActivePage(activePage + 1) : setToggle(true);
+                buttonFunction();
               }}
             />
           </div>

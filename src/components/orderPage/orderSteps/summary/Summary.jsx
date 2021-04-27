@@ -10,7 +10,7 @@ import {
 } from '../../../../redux/selectors/selectors';
 import styles from './Summary.module.scss';
 
-const Summary = () => {
+const Summary = (orderCanc) => {
   const model = useSelector(userModelSel);
   const modelNumber = useSelector(modelNumberSel);
   const modelImage = useSelector(modelImageSel);
@@ -29,6 +29,7 @@ const Summary = () => {
     <div className={styles.summary}>
       <div className={styles.info}>
         <div className={orderId ? styles.confirm : styles.display_none}>Ваш заказ подтвержден</div>
+        <div className={!orderCanc ? styles.confirm : styles.display_none}>Ваш заказ отменен</div>
         <div className={styles.model}>{model}</div>
         <div className={modelNumber ? styles.number : styles.display_none}>{modelNumber}</div>
         <div className={tank ? styles.string : styles.display_none}>

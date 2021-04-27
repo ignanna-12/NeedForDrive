@@ -1,19 +1,21 @@
 .lines{
     margin-top: 40px;
-    margin-left: -64px;
     border-top: #EEEEEE 1px solid;    
     border-bottom: #EEEEEE 1px solid;
     height: 32px;
-    margin-right: -64px;
     display: flex;
     align-items: center;
 }
 .links{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    margin-left: 40px;
     align-items: center;
+    margin-left: 4%;
+    :first-child{
+        margin-left: 0px;
+    }
 }
 .links_button{
     font-family: 'Roboto-Bold';
@@ -25,6 +27,7 @@
     cursor: pointer;
     margin-right: 16px;
     margin-left: 16px;
+    padding: 0;
 }
 .links_button:disabled{
     color: #999999;
@@ -35,20 +38,10 @@
     color: #0EC261;
 }
 @media (max-width: 1024px){
-    .lines{
-        margin-left: -32px;
-    }
-    .links{
-        flex-wrap: wrap;
-        justify-content: left;
-    }
 }
 @media (max-width: 780px){
     .lines{
-        width: 100%;
     }
     .links{
-        flex-wrap: wrap;
-        justify-content: left;
     }
 }

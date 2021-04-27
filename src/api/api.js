@@ -69,3 +69,9 @@ export const getOrder = (orderId) => {
     return response.data;
   });
 };
+
+export const deleteOrder = (orderId) => {
+  return instance.get('db/order/' + orderId).then((response) => {
+    return response.data;
+  });
+};

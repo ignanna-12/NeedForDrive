@@ -16,8 +16,12 @@
     font-size: 24px;
 }
 .buttons{
+    margin-top: 32px;
     display:flex;
     flex-direction: row;
     width: 400px;
-    justify-content: space-around;
+    justify-content: space-between;
+    :first-child{
+        margin-right: 16px;
+    }
 }
