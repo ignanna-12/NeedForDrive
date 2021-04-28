@@ -42,7 +42,25 @@ import { requestOrder, sendOrder } from '../../redux/thunk/order.thunk';
 import ConfirmationSuccess from './confirmationSuccess/ConfirmationSuccess';
 import Button from '../common/button/Button';
 import Confirmation from './confirmation/Confirmation';
-import { setOrderId } from '../../redux/actions/actions';
+import {
+  setCarId,
+  setChair,
+  setDateFrom,
+  setDateTo,
+  setModel,
+  setModelColor,
+  setModelImage,
+  setOrderId,
+  setPrice,
+  setPriceMax,
+  setPriceMin,
+  setTank,
+  setUserCity,
+  setUserCityId,
+  setUserPoint,
+  setUserPointId,
+  setWheel,
+} from '../../redux/actions/actions';
 
 const OrderPage = () => {
   const dispatch = useDispatch();
@@ -52,11 +70,11 @@ const OrderPage = () => {
     dispatch(requestPoints());
     dispatch(requestCars());
     dispatch(requestRate());
-    {
-      if (window.localStorage.getItem('orderId') != null) {
-        dispatch(requestOrder(window.localStorage.getItem('orderId')));
-      }
-    }
+    // {
+    //   if (window.localStorage.getItem('orderId') != null) {
+    //     dispatch(requestOrder(window.localStorage.getItem('orderId')));
+    //   }
+    // }
   }, []);
 
   const cities = useSelector(citiesSel);
@@ -100,6 +118,23 @@ const OrderPage = () => {
       setOrderCanc(true);
       localStorage.setItem('orderId', '');
       window.history.pushState(window.location.href, null, '/NeedForDrive#/OrderPage/');
+      setVisibleTabs(true);
+      dispatch(setUserCity(''));
+      dispatch(setUserCityId(''));
+      dispatch(setUserPoint(''));
+      dispatch(setUserPointId(''));
+      dispatch(setModel(''));
+      dispatch(setCarId(''));
+      dispatch(setPriceMin(''));
+      dispatch(setPriceMax(''));
+      dispatch(setModelImage(''));
+      dispatch(setModelColor(''));
+      dispatch(setDateFrom(''));
+      dispatch(setDateTo(''));
+      dispatch(setPrice(''));
+      dispatch(setTank(''));
+      dispatch(setChair(''));
+      dispatch(setWheel(''));
     }
   };
 
@@ -113,8 +148,31 @@ const OrderPage = () => {
     if (activePage == 2 && !pageWhenMobile && price) {
       setActivePage(3);
     }
-    if (activePage == 3 && !pageWhenMobile) {
-      makeOrder();
+    if (activePage == 3 && !pageWhenMobile && !toggle && !orderId) {
+      setToggle(true);
+    }
+    if (activePage == 3 && !pageWhenMobile && !toggle && orderId) {
+      dispatch(setOrderId(''));
+      setOrderCanc(true);
+      localStorage.setItem('orderId', '');
+      window.history.pushState(window.location.href, null, '/NeedForDrive#/OrderPage/');
+      setVisibleTabs(true);
+      dispatch(setUserCity(''));
+      dispatch(setUserCityId(''));
+      dispatch(setUserPoint(''));
+      dispatch(setUserPointId(''));
+      dispatch(setModel(''));
+      dispatch(setCarId(''));
+      dispatch(setPriceMin(''));
+      dispatch(setPriceMax(''));
+      dispatch(setModelImage(''));
+      dispatch(setModelColor(''));
+      dispatch(setDateFrom(''));
+      dispatch(setDateTo(''));
+      dispatch(setPrice(''));
+      dispatch(setTank(''));
+      dispatch(setChair(''));
+      dispatch(setWheel(''));
     }
   };
 
@@ -166,7 +224,7 @@ const OrderPage = () => {
             price={price}
           />
         ) : (
-          <ConfirmationSuccess orderId={orderId} />
+          !orderCanc && <ConfirmationSuccess orderId={orderId} />
         )}
         <div className={toggle ? styles.display_visible : styles.display_none}></div>
         {pageWhenMobile && (
