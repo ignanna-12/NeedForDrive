@@ -39,9 +39,16 @@
 }
 @media (max-width: 1024px){
 }
-@media (max-width: 780px){
+@media (max-width: 900px){
     .lines{
+        margin-top: 10px;
     }
     .links{
+        margin-left: 16px;
+    }
+    .links_button{
+        font-size: 12px;
+        margin-right: 8px;
+        margin-left: 8px;
     }
 }

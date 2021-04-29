@@ -32,8 +32,17 @@
   margin-top: 60px;
   width: 100%;
 }
-@media (max-width: 780px){
+@media (max-width: 1440px){
   .user_choise{
+    padding-left: 32px;
+  }
+}
+
+@media (max-width: 900px){
+  .user_choise{
+    max-height:100%;
+    overflow-Y: auto;
+    width: 100%;
   }
   .header{
     justify-content: flex-start;

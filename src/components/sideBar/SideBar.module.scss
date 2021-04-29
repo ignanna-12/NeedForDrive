@@ -53,7 +53,7 @@
         width: 80px;
     }  
 }
-@media (max-width: 780px){
+@media (max-width: 900px){
     .sidebar {
         width:32px;
         height: 32px;
@@ -74,6 +74,7 @@
         margin-left: 0px;
         width: 32px;
         z-index:7;
+        padding: 0;
     }
     .sidebar_menu_button_up SVG path{
         fill:#151B1F;

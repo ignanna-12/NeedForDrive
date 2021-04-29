@@ -36,3 +36,12 @@
     font-family: 'Roboto-Light';
     margin-top: 32px;
 }
+@media (max-width: 900px){
+    .title {
+        margin-top: 0;
+    }
+    .add_options {
+        max-height:100%;
+        overflow-Y: auto;
+    }
+}

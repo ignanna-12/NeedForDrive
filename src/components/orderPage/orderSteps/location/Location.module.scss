@@ -27,3 +27,12 @@
     font-size: 14px;
     font-family: 'Roboto-Light';
 }
+@media (max-width: 900px){
+    .location {
+        padding-top: 0;
+    }
+    .map_block{
+        padding-top: 15px;
+        width: 100%;
+    }
+}

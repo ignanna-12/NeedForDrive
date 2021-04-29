@@ -8,6 +8,7 @@
     color: #FFFFFF;
     border: none;
     cursor: pointer;
+    padding:0;
 }
 .btn:focus{
     border: none;
@@ -28,9 +29,4 @@
     border: none;
     outline: none;
     background: linear-gradient(to right, #302A10, #600A30);
-}
-@media (max-width: 780px){
-    .btn{
-        margin-right: 4%;
-    }
 }

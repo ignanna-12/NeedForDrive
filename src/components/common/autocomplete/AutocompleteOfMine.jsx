@@ -16,11 +16,6 @@ const AutocompleteOfMine = ({ title, innerText, list, active, onChange }) => {
     setSearch('');
     setDisplay(!display);
   };
-  const handleBlur = (e) => {
-    if (e.target.id != 'ououou') {
-      setDisplay(false);
-    }
-  };
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {

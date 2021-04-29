@@ -42,25 +42,7 @@ import { requestOrder, sendOrder } from '../../redux/thunk/order.thunk';
 import ConfirmationSuccess from './confirmationSuccess/ConfirmationSuccess';
 import Button from '../common/button/Button';
 import Confirmation from './confirmation/Confirmation';
-import {
-  setCarId,
-  setChair,
-  setDateFrom,
-  setDateTo,
-  setModel,
-  setModelColor,
-  setModelImage,
-  setOrderId,
-  setPrice,
-  setPriceMax,
-  setPriceMin,
-  setTank,
-  setUserCity,
-  setUserCityId,
-  setUserPoint,
-  setUserPointId,
-  setWheel,
-} from '../../redux/actions/actions';
+import { setOrderId, setUserCity } from '../../redux/actions/actions';
 
 const OrderPage = () => {
   const dispatch = useDispatch();
@@ -70,11 +52,11 @@ const OrderPage = () => {
     dispatch(requestPoints());
     dispatch(requestCars());
     dispatch(requestRate());
-    // {
-    //   if (window.localStorage.getItem('orderId') != null) {
-    //     dispatch(requestOrder(window.localStorage.getItem('orderId')));
-    //   }
-    // }
+    {
+      if (window.localStorage.getItem('orderId') != null) {
+        dispatch(requestOrder(window.localStorage.getItem('orderId')));
+      }
+    }
   }, []);
 
   const cities = useSelector(citiesSel);
@@ -104,7 +86,6 @@ const OrderPage = () => {
   const [visibleTabs, setVisibleTabs] = useState(true);
   const [pageWhenMobile, setPageWhenMobile] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const [orderCanc, setOrderCanc] = useState(false);
 
   const buttonFunction = () => {
     if (activePage < 3) {
@@ -115,26 +96,11 @@ const OrderPage = () => {
     }
     if (activePage == 3 && !toggle && orderId) {
       dispatch(setOrderId(''));
-      setOrderCanc(true);
       localStorage.setItem('orderId', '');
       window.history.pushState(window.location.href, null, '/NeedForDrive#/OrderPage/');
       setVisibleTabs(true);
       dispatch(setUserCity(''));
-      dispatch(setUserCityId(''));
-      dispatch(setUserPoint(''));
-      dispatch(setUserPointId(''));
-      dispatch(setModel(''));
-      dispatch(setCarId(''));
-      dispatch(setPriceMin(''));
-      dispatch(setPriceMax(''));
-      dispatch(setModelImage(''));
-      dispatch(setModelColor(''));
-      dispatch(setDateFrom(''));
-      dispatch(setDateTo(''));
-      dispatch(setPrice(''));
-      dispatch(setTank(''));
-      dispatch(setChair(''));
-      dispatch(setWheel(''));
+      setActivePage(0);
     }
   };
 
@@ -153,26 +119,11 @@ const OrderPage = () => {
     }
     if (activePage == 3 && !pageWhenMobile && !toggle && orderId) {
       dispatch(setOrderId(''));
-      setOrderCanc(true);
       localStorage.setItem('orderId', '');
       window.history.pushState(window.location.href, null, '/NeedForDrive#/OrderPage/');
       setVisibleTabs(true);
       dispatch(setUserCity(''));
-      dispatch(setUserCityId(''));
-      dispatch(setUserPoint(''));
-      dispatch(setUserPointId(''));
-      dispatch(setModel(''));
-      dispatch(setCarId(''));
-      dispatch(setPriceMin(''));
-      dispatch(setPriceMax(''));
-      dispatch(setModelImage(''));
-      dispatch(setModelColor(''));
-      dispatch(setDateFrom(''));
-      dispatch(setDateTo(''));
-      dispatch(setPrice(''));
-      dispatch(setTank(''));
-      dispatch(setChair(''));
-      dispatch(setWheel(''));
+      setActivePage(0);
     }
   };
 
@@ -208,8 +159,13 @@ const OrderPage = () => {
           }}
         />
       )}
-      <SideBar />
+      <div className={styles.sidebar_hidden_when_mobile}>
+        <SideBar />
+      </div>
       <div className={styles.info}>
+        <div className={styles.sidebar_for_mobile}>
+          <SideBar />
+        </div>
         <div className={styles.top_row}>
           <Logo />
           <City userCity={userCity} />
@@ -224,19 +180,20 @@ const OrderPage = () => {
             price={price}
           />
         ) : (
-          !orderCanc && <ConfirmationSuccess orderId={orderId} />
+          <ConfirmationSuccess orderId={orderId} />
         )}
-        <div className={toggle ? styles.display_visible : styles.display_none}></div>
-        {pageWhenMobile && (
-          <Order
-            city={userCity}
-            address={userPoint}
-            model={userModel}
-            priceMin={userPriceMin}
-            priceMax={userPriceMax}
-            color={userColor}
-          />
-        )}
+        <div className={!toggle ? styles.display_visible : styles.display_none}>
+          {pageWhenMobile && (
+            <Order
+              city={userCity}
+              address={userPoint}
+              model={userModel}
+              priceMin={userPriceMin}
+              priceMax={userPriceMax}
+              color={userColor}
+            />
+          )}
+        </div>
         <div className={styles.order_settings}>
           <div className={styles.orderContent}>
             {activePage == 0 && !pageWhenMobile ? (
@@ -246,44 +203,46 @@ const OrderPage = () => {
             ) : activePage == 2 && !pageWhenMobile ? (
               <AddOptionsContainer colors={modelColor} userPriceMin={userPriceMin} rates={rates} />
             ) : (
-              activePage == 3 && !pageWhenMobile && <Summary orderCanc={orderCanc} />
+              activePage == 3 && !pageWhenMobile && <Summary />
             )}
           </div>
-          <div className={styles.display_order_when_mobile}>
-            <div className={pageWhenMobile ? styles.display_none : styles.display_visible}>
+          <div className={styles.buttonInCenter}>
+            <div className={styles.display_order_when_mobile}>
+              <div className={pageWhenMobile ? styles.display_none : styles.display_visible}>
+                <Button
+                  innerText={
+                    activePage == 0
+                      ? 'Выбрать модель'
+                      : activePage == 1
+                      ? 'Дополнительно'
+                      : activePage == 2
+                      ? 'Итого'
+                      : visibleTabs
+                      ? 'Заказать'
+                      : 'Отменить'
+                  }
+                  disabled={
+                    activePage == 0
+                      ? !(userCity && userPoint)
+                      : activePage == 1
+                      ? !userModel
+                      : activePage == 2
+                      ? !price
+                      : ''
+                  }
+                  onClick={() => {
+                    changePageWhenMobile();
+                  }}
+                  isRed={!visibleTabs}
+                />
+              </div>
               <Button
-                innerText={
-                  activePage == 0
-                    ? 'Выбрать модель'
-                    : activePage == 1
-                    ? 'Дополнительно'
-                    : activePage == 2
-                    ? 'Итого'
-                    : visibleTabs
-                    ? 'Заказать'
-                    : 'Отменить'
-                }
-                disabled={
-                  activePage == 0
-                    ? !(userCity && userPoint)
-                    : activePage == 1
-                    ? !userModel
-                    : activePage == 2
-                    ? !price
-                    : ''
-                }
+                innerText={pageWhenMobile ? 'Продолжить' : 'Детали заказа'}
                 onClick={() => {
-                  changePageWhenMobile();
+                  setPageWhenMobile(!pageWhenMobile);
                 }}
-                isRed={orderId}
               />
             </div>
-            <Button
-              innerText={pageWhenMobile ? 'Продолжить' : 'Детали заказа'}
-              onClick={() => {
-                setPageWhenMobile(!pageWhenMobile);
-              }}
-            />
           </div>
           <div className={styles.display_order}>
             <Order
@@ -313,7 +272,7 @@ const OrderPage = () => {
                   ? !price
                   : ''
               }
-              onClick={(e) => {
+              onClick={() => {
                 buttonFunction();
               }}
             />

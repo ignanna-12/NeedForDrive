@@ -30,31 +30,112 @@ let initialState = {
 const orderReducer = (state = initialState, action) => {
   switch (action.type) {
     case OrderTypes.SET_USER_CITY: {
-      return { ...state, userCity: action.payload };
+      return {
+        ...state,
+        userCity: action.payload,
+        userCityId: '',
+        userPoint: '',
+        userPointId: '',
+        model: '',
+        carId: '',
+        modelNumber: '',
+        modelImage: '',
+        dateFrom: +new Date(),
+        dateTo: '',
+        rateName: '',
+        rateId: '',
+        priceMin: '',
+        priceMax: '',
+        userColor: '',
+        period: '',
+        price: 0,
+        tank: false,
+        chair: false,
+        wheel: false,
+        orderId: '',
+      };
     }
     case OrderTypes.SET_USER_CITY_ID: {
-      return { ...state, userCityId: action.payload };
+      return {
+        ...state,
+        userCityId: action.payload,
+      };
     }
     case OrderTypes.SET_USER_POINT: {
-      return { ...state, userPoint: action.payload };
+      return {
+        ...state,
+        userPoint: action.payload,
+        userPointId: '',
+        model: '',
+        carId: '',
+        modelNumber: '',
+        modelImage: '',
+        dateFrom: +new Date(),
+        dateTo: '',
+        rateName: '',
+        rateId: '',
+        priceMin: '',
+        priceMax: '',
+        userColor: '',
+        period: '',
+        price: 0,
+        tank: false,
+        chair: false,
+        wheel: false,
+        orderId: '',
+      };
     }
     case OrderTypes.SET_USER_POINT_ID: {
-      return { ...state, userPointId: action.payload };
+      return {
+        ...state,
+        userPointId: action.payload,
+      };
     }
     case OrderTypes.SET_MODEL: {
-      return { ...state, model: action.payload };
+      return {
+        ...state,
+        model: action.payload,
+        carId: '',
+        modelNumber: '',
+        modelImage: '',
+        dateFrom: +new Date(),
+        dateTo: '',
+        rateName: '',
+        rateId: '',
+        priceMin: '',
+        priceMax: '',
+        userColor: '',
+        period: '',
+        price: 0,
+        tank: false,
+        chair: false,
+        wheel: false,
+        orderId: '',
+      };
     }
     case OrderTypes.SET_CAR_ID: {
-      return { ...state, carId: action.payload };
+      return {
+        ...state,
+        carId: action.payload,
+      };
     }
     case OrderTypes.SET_MODEL_COLOR: {
-      return { ...state, modelColor: action.payload };
+      return {
+        ...state,
+        modelColor: action.payload,
+      };
     }
     case OrderTypes.SET_MODEL_IMAGE: {
-      return { ...state, modelImage: action.payload };
+      return {
+        ...state,
+        modelImage: action.payload,
+      };
     }
     case OrderTypes.SET_MODEL_NUMBER: {
-      return { ...state, modelNumber: action.payload };
+      return {
+        ...state,
+        modelNumber: action.payload,
+      };
     }
     case OrderTypes.SET_PRICE_MIN: {
       return { ...state, priceMin: action.payload };
@@ -63,7 +144,10 @@ const orderReducer = (state = initialState, action) => {
       return { ...state, priceMax: action.payload };
     }
     case OrderTypes.SET_USER_COLOR: {
-      return { ...state, userColor: action.payload };
+      return {
+        ...state,
+        userColor: action.payload,
+      };
     }
     case OrderTypes.SET_PERIOD: {
       return { ...state, period: action.payload };
@@ -72,13 +156,20 @@ const orderReducer = (state = initialState, action) => {
       return { ...state, rates: action.payload };
     }
     case OrderTypes.SET_RATE: {
-      return { ...state, rate: action.payload };
+      return {
+        ...state,
+        rate: action.payload,
+        rateId: '',
+        period: '',
+        price: 0,
+        orderId: '',
+      };
     }
     case OrderTypes.SET_RATE_ID: {
       return { ...state, rateId: action.payload };
     }
     case OrderTypes.SET_RATE_NAME: {
-      return { ...state, rateName: action.payload };
+      return { ...state, rateName: action.payload, rateId: '', period: '', price: 0, orderId: '' };
     }
     case OrderTypes.SET_DATE_FROM: {
       return { ...state, dateFrom: action.payload };
