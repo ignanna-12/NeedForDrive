@@ -163,12 +163,14 @@ const OrderPage = () => {
         <SideBar />
       </div>
       <div className={styles.info}>
-        <div className={styles.sidebar_for_mobile}>
-          <SideBar />
-        </div>
         <div className={styles.top_row}>
-          <Logo />
-          <City userCity={userCity} />
+          <div className={styles.sidebar_for_mobile}>
+            <SideBar />
+          </div>
+          <div className={styles.top_row_logo_city}>
+            <Logo />
+            <City userCity={userCity} />
+          </div>
         </div>
         {visibleTabs ? (
           <Tabs

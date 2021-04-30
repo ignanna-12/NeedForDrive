@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import styles from './Radios.module.scss';
 
-const Radios = ({ setDefaultValue, selectedValue, defaultText, list, holeList, vert }) => {
-  const [checked, setChecked] = useState(defaultText);
+const Radios = ({
+  setDefaultValue,
+  selectedValue,
+  defaultText,
+  list,
+  holeList,
+  vert,
+  checkedBefore,
+}) => {
+  const [checked, setChecked] = useState(checkedBefore ? checkedBefore : defaultText);
   return (
     <div className={vert ? styles.radios_vert : styles.radios}>
       <div

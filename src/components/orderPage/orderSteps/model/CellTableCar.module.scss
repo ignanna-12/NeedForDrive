@@ -48,7 +48,8 @@
     height:inherit;
 }
 
-@media (max-width: 1024px){
-    .cell {
+@media (max-width: 900px){
+    .cell {        
+    width: 90%;
     }
 }

@@ -18,6 +18,13 @@
     margin-left: 4%;
     margin-right: 2%;
 }
+.top_row_logo_city{    
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
 .sidebar_for_mobile{
     display: none;
 }
@@ -49,12 +56,19 @@
     .top_row {
         margin-left: 16px;        
         margin-right: 16px;
+        margin: 8px;
     }  
     .sidebar_hidden_when_mobile{
         display:none;
     }
     .sidebar_for_mobile{
         display: flex;
+    }    
+    .top_row_logo_city{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        align-items: flex-end;
     }
     .order_settings{
         display: flex;
@@ -82,7 +96,6 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        padding-right: 16px;
     }
     .display_none {
         display: none;

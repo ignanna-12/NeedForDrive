@@ -20,13 +20,18 @@ const AddOptions = ({
   changeTank,
   changeChair,
   changeWheel,
+  tank,
+  chair,
+  wheel,
+  userColor,
+  rateName,
 }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.add_options}>
       <div className={styles.title}>Цвет</div>
       <Radios
-        setDefaultValue={(e) => {
+        setDefaultValue={() => {
           changeColor('Любой');
         }}
         selectedValue={(v) => {
@@ -34,6 +39,7 @@ const AddOptions = ({
         }}
         defaultText={'Любой'}
         list={colors}
+        checkedBefore={userColor}
       />
       <div className={styles.title}>Дата аренды</div>
       <div className={styles.picks}>
@@ -43,7 +49,6 @@ const AddOptions = ({
             className={styles.datapick}
             selected={startDate}
             onChange={(date) => {
-              setStartDate(date);
               calcPeriod(startDate, endDate);
               dispatch(setDateFrom(date));
             }}
@@ -59,7 +64,6 @@ const AddOptions = ({
             className={styles.datapick}
             selected={endDate}
             onChange={(date) => {
-              setEndDate(date);
               calcPeriod(startDate, endDate);
               dispatch(setDateTo(date));
             }}
@@ -78,11 +82,12 @@ const AddOptions = ({
         }}
         list={rates.map((i) => i.name)}
         vert={true}
+        checkedBefore={rateName}
       />
       <div className={styles.title}>Доп.услуги</div>
-      <Checkbox onClick={changeTank} label={'Полный бак, 500р'} />
-      <Checkbox onClick={changeChair} label={'Детское кресло, 200р'} />
-      <Checkbox onClick={changeWheel} label={'Правый руль, 1600р'} />
+      <Checkbox onClick={changeTank} label={'Полный бак, 500р'} checkedBefore={tank} />
+      <Checkbox onClick={changeChair} label={'Детское кресло, 200р'} checkedBefore={chair} />
+      <Checkbox onClick={changeWheel} label={'Правый руль, 1600р'} checkedBefore={wheel} />
     </div>
   );
 };

@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setChair,
   setPeriod,
   setPrice,
-  setRateId,
   setRateName,
   setTank,
   setUserColor,
@@ -13,7 +12,11 @@ import {
 } from '../../../../redux/actions/actions';
 import {
   chairSel,
+  dateFromSel,
+  dateToSel,
+  rateNameSel,
   tankSel,
+  userColorSel,
   userPriceMinSel,
   wheelSel,
 } from '../../../../redux/selectors/selectors';
@@ -26,6 +29,10 @@ const AddOptionsContainer = ({ colors, rates }) => {
   const chair = useSelector(chairSel);
   const wheel = useSelector(wheelSel);
   const userPriceMin = useSelector(userPriceMinSel);
+  const userColor = useSelector(userColorSel);
+  const rateName = useSelector(rateNameSel);
+  const dateFrom = useSelector(dateFromSel);
+  const dateTo = useSelector(dateToSel);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState();
   const [hours, setHours] = useState(0);
@@ -34,9 +41,9 @@ const AddOptionsContainer = ({ colors, rates }) => {
   const changeColor = (color) => {
     dispatch(setUserColor(color));
   };
-  const calcPeriod = (startDate, endDate) => {
-    if (endDate) {
-      const x = Math.ceil((endDate.getTime() - startDate.getTime()) / (3600 * 1000));
+  const calcPeriod = (dateFrom, dateTo) => {
+    if (dateTo) {
+      const x = Math.ceil((dateTo.getTime() - dateFrom) / (3600 * 1000));
       let day = Math.ceil(x / 24);
       let h = x % 24;
       dispatch(setPeriod(day + 'д ' + h + 'ч'));
@@ -84,8 +91,8 @@ const AddOptionsContainer = ({ colors, rates }) => {
     dispatch(setWheel(!wheel));
   };
   useEffect(() => {
-    calcPeriod(startDate, endDate);
-  }, [startDate, endDate]);
+    calcPeriod(dateFrom, dateTo);
+  }, [dateFrom, dateTo]);
 
   useEffect(() => {
     if (tax) {
@@ -98,15 +105,18 @@ const AddOptionsContainer = ({ colors, rates }) => {
       colors={colors}
       rates={rates}
       changeColor={changeColor}
-      startDate={startDate}
-      setStartDate={setStartDate}
+      startDate={dateFrom}
       calcPeriod={calcPeriod}
-      endDate={endDate}
-      setEndDate={setEndDate}
+      endDate={dateTo}
       taxChange={taxChange}
       changeTank={changeTank}
       changeChair={changeChair}
       changeWheel={changeWheel}
+      tank={tank}
+      chair={chair}
+      wheel={wheel}
+      userColor={userColor}
+      rateName={rateName}
     />
   );
 };

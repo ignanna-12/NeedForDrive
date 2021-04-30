@@ -3,7 +3,7 @@ import styles from './Checkbox.module.scss';
 import SVG from 'react-inlinesvg';
 import Galochka from '../../../assets/icons/Galochka.svg';
 
-const Checkbox = ({ onClick, label }) => {
+const Checkbox = ({ onClick, label, checkedBefore }) => {
   const [checked, setChecked] = useState(false);
   return (
     <div
@@ -13,9 +13,9 @@ const Checkbox = ({ onClick, label }) => {
         setChecked(!checked);
       }}
     >
-      <input type="checkbox" checked={checked} />
-      {checked && <SVG src={Galochka} />}
-      <label checked={checked}>{label}</label>
+      <input type="checkbox" checked={checked || checkedBefore} />
+      {(checked || checkedBefore) && <SVG src={Galochka} />}
+      <label checked={checked || checkedBefore}>{label}</label>
     </div>
   );
 };
