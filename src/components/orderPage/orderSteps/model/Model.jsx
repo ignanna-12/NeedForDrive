@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Radios from '../../../common/radios/Radios';
 import CellTableCar from './CellTableCar';
 import styles from './Model.module.scss';
 
-const Model = ({ cars, filterCar, onChangeModel, setFilterCar, categor, filterCars }) => {
+const Model = ({
+  cars,
+  filterCar,
+  onChangeModel,
+  setFilterCar,
+  categor,
+  filterCars,
+  checkedBefore,
+}) => {
   return (
     <div className={styles.model_page}>
       <Radios
-        setDefaultValue={(e) => {
+        setDefaultValue={() => {
           setFilterCar(cars);
         }}
         selectedValue={(e) => {
@@ -16,6 +24,7 @@ const Model = ({ cars, filterCar, onChangeModel, setFilterCar, categor, filterCa
         defaultText={'Все модели'}
         list={categor}
         holeList={cars}
+        checkedBefore={checkedBefore}
       />
       <div className={styles.model}>
         {filterCar.map((c, i) => (

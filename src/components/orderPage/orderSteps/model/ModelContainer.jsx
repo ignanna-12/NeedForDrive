@@ -24,7 +24,10 @@ const ModelContainer = ({ cars }) => {
     dispatch(setModelImage(image));
   };
   const [fiterCar, setFilterCar] = useState(cars);
+  const [checkedCategory, setCheckedCategory] = useState('');
+
   const filterCars = (catName) => {
+    setCheckedCategory(catName);
     let filterCarWithCat = [];
     for (var i in cars) {
       if (cars[i].category == catName) {
@@ -46,6 +49,7 @@ const ModelContainer = ({ cars }) => {
       setFilterCar={setFilterCar}
       categor={categor}
       filterCars={filterCars}
+      checkedBefore={checkedCategory}
     />
   );
 };

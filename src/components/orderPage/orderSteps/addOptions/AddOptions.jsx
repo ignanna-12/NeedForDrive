@@ -71,7 +71,7 @@ const AddOptions = ({
             dateFormat="dd.MM.yy hh:mm"
             isClearable
             placeholderText="Введите дату и время"
-            minDate={new Date()}
+            minDate={startDate}
           />
         </div>
       </div>
